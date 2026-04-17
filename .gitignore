@@ -1,0 +1,36 @@
+# --- Godot 4+ (Arquivos ignorados) ---
+# Cache e dados temporários do editor
+.godot/
+*.translation
+
+# Arquivos de configuração de exportação (Ignorados por segurança)
+export.cfg
+export_presets.cfg
+
+# Builds e pacotes exportados (Mantenha seu repositório limpo)
+*.pck
+*.zip
+
+# --- Sistema de Controle de Versão (Git) ---
+# Arquivos de configuração local do Git
+.git/
+.gitignore
+.gitattributes
+
+# --- Sistema Operacional ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
