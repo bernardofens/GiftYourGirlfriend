@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://tn84iu8qyl2r"]
+
+[ext_resource type="Script" uid="uid://41m0t8w1g5xs" path="res://hud.gd" id="1_8sq4i"]
+[ext_resource type="Texture2D" uid="uid://3gsaxudc5bm7" path="res://Assets/Images/rose.png" id="1_64ctp"]
+[ext_resource type="FontFile" uid="uid://cw2hvq8blpx1l" path="res://Assets/Fonts/Schoolbell-Regular.ttf" id="2_8sq4i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
+bg_color = Color(0, 0, 0, 0.26666668)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="HUD" type="CanvasLayer" unique_id=1472270857]
+script = ExtResource("1_8sq4i")
+
+[node name="Panel" type="Panel" parent="." unique_id=1158110612]
+offset_left = 24.0
+offset_top = 26.0
+offset_right = 178.0
+offset_bottom = 88.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1816079066]
+offset_left = 39.0
+offset_top = 36.0
+offset_right = 69.0
+offset_bottom = 76.0
+texture = ExtResource("1_64ctp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1341096696]
+offset_left = 76.0
+offset_top = 37.0
+offset_right = 116.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 32
+text = "x"
+
+[node name="RosesLabel" type="Label" parent="." unique_id=29516147]
+offset_left = 103.0
+offset_top = 28.0
+offset_right = 160.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 48
+text = "##"

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dbxs52if8rhw0"]
+
+[ext_resource type="Script" uid="uid://extt04hpm2ri" path="res://coin.gd" id="1_d5gmh"]
+[ext_resource type="ArrayMesh" uid="uid://or3ef4ae8p6d" path="res://Assets/Models/Rose_Rose_Circle_005-Mesh.res" id="2_0t63x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7riw"]
+size = Vector3(0.8580322, 0.28756714, 0.23931122)
+
+[sub_resource type="Animation" id="Animation_v7riw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0t63x"]
+resource_name = "bounce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.19222, 0), Vector3(0, 0.8289521, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7riw"]
+_data = {
+&"RESET": SubResource("Animation_v7riw"),
+&"bounce": SubResource("Animation_0t63x")
+}
+
+[node name="Flower" type="Area3D" unique_id=283976943]
+collision_layer = 4
+script = ExtResource("1_d5gmh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1429220594]
+transform = Transform3D(-4.4044612e-09, -8.515024e-09, 0.1, 0.0003909415, 0.09999924, 8.5321785e-09, -0.09999924, 0.0003909415, -4.371139e-09, 0, 0, 0)
+mesh = ExtResource("2_0t63x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1172852841]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.02735747, 0.46509463, 0.0059318542)
+shape = SubResource("BoxShape3D_v7riw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=834147243]
+libraries/ = SubResource("AnimationLibrary_v7riw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
