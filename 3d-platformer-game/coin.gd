@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	Global.roses += 1
-	hud.get_node("RosesLabel").text = str(Global.roses)
+	hud.get_node("RosesPanel/RosesLabel").text = str(Global.roses)
 	# print(Global.coins) # debug
 	# restart level (could change it later on)
 	if Global.roses >= Global.NUM_ROSES_TO_WIN:
