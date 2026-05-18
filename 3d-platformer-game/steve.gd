@@ -121,7 +121,8 @@ func _unhandled_input(event):
 		target_cam_y_rotation -= event.relative.x * mouse_sensitivity
 		
 func _on_fall_zone_body_entered(body: Node3D) -> void:
-	get_tree().change_scene_to_file("res://level_1.tscn")
+	if body.name == "Steve":
+		get_tree().change_scene_to_file("res://level_1.tscn")
 	
 	
 	
