@@ -7,6 +7,7 @@
 [ext_resource type="MeshLibrary" uid="uid://m3qtj04tw8j8" path="res://Resources/world-blocks-v1.tres" id="4_rka8t"]
 [ext_resource type="PackedScene" uid="uid://tn84iu8qyl2r" path="res://hud.tscn" id="6_5hph3"]
 [ext_resource type="PackedScene" uid="uid://b46eg4tkkrxi1" path="res://tree.tscn" id="7_j7kpp"]
+[ext_resource type="PackedScene" uid="uid://dgb62lwnfirwd" path="res://enemy.tscn" id="8_bjebc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hn12h"]
 sky_top_color = Color(0.032333303, 0, 0.97, 1)
@@ -107,5 +108,22 @@ transform = Transform3D(0.42568448, 0, 0.90487164, 0, 1, 0, -0.90487164, 0, 0.42
 
 [node name="Tree4" parent="Trees" unique_id=263655092 instance=ExtResource("7_j7kpp")]
 transform = Transform3D(0.9650348, 0, 0.2621218, 0, 1, 0, -0.2621218, 0, 0.9650348, 16.85088, 2.0686173, -5.4713306)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=52555589]
+
+[node name="Enemy1" parent="Enemies" unique_id=422098778 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 4.8818192, 0.51566005, -1.3911514)
+
+[node name="Enemy2" parent="Enemies" unique_id=419619130 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 4.8818192, 0.51566005, 8.428134)
+
+[node name="Enemy3" parent="Enemies" unique_id=1950166923 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 4.8818192, 0.51566005, -6.7897453)
+
+[node name="Enemy4" parent="Enemies" unique_id=2079468646 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 4.8818192, 0.51566005, 5.179411)
+
+[node name="Enemy5" parent="Enemies" unique_id=1722247657 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 4.8818192, 0.51566005, 2.1955855)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
