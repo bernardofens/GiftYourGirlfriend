@@ -11,8 +11,23 @@ var target_cam_y_rotation : float = 0.0
 const CAM_ROTATION_SPEED : float = 8.0   # Ajuste para controlar a suavidade
 const CAM_ROTATION_STEP : float = 30.0   # Graus por toque
 
+@export var spawn_position: Vector3
+
 var xform: Transform3D
 
+func take_damage():
+	if !Global.can_take_damage:
+		return
+	Global.hearts -= 1
+	Global.can_take_damage = false
+	if Global.hearts <= 0:
+		Global.hearts =3
+		get_tree().change_scene_to_file("res://level_1.tscn")
+	else:
+		await get_tree().create_timer(1.0).timeout
+	Global.can_take_damage = true
+	
+	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -112,6 +127,7 @@ func align_with_floor(floor_normal):
 	
 	
 func _ready():
+	spawn_position = global_position
 	target_cam_y_rotation = $Camera_Controller.rotation.y
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 #Pra mexer a camera diretamente com o mouse mexendo
@@ -122,8 +138,10 @@ func _unhandled_input(event):
 		
 func _on_fall_zone_body_entered(body: Node3D) -> void:
 	if body.name == "Steve":
-		get_tree().change_scene_to_file("res://level_1.tscn")
-	
+		take_damage()
+		velocity = Vector3.ZERO
+		global_position = spawn_position
+		
 func bounce():
 	velocity.y = JUMP_VELOCITY * 0.7
 	

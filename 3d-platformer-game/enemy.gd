@@ -41,7 +41,9 @@ func turn_around():
 
 
 func _on_sides_checker_body_entered(body: Node3D) -> void:
-	get_tree().change_scene_to_file("res://level_1.tscn")
+	if body.has_method("take_damage"):
+		body.take_damage()
+
 
 
 func _on_top_checker_body_entered(body: Node3D) -> void:
