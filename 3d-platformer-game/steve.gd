@@ -22,7 +22,10 @@ func take_damage():
 	Global.can_take_damage = false
 	if Global.hearts <= 0:
 		Global.hearts =3
-		get_tree().change_scene_to_file("res://level_1.tscn")
+		if Global.level == 1:
+			get_tree().change_scene_to_file("res://level_1.tscn")
+		else:
+			get_tree().change_scene_to_file("res://level_2.tscn")
 	else:
 		await get_tree().create_timer(1.0).timeout
 	Global.can_take_damage = true
