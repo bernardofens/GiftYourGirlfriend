@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Global="*uid://b2b3iiaytyc5"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 sprint={
@@ -60,3 +64,5 @@ move_right={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

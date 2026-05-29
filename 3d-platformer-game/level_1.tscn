@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://c115r8mocvqq8"]
 
-[ext_resource type="PackedScene" uid="uid://b32440loh4ttm" path="res://block.tscn" id="1_3hls8"]
 [ext_resource type="Script" uid="uid://do0hs7baapiuu" path="res://level_1.gd" id="1_rka8t"]
 [ext_resource type="PackedScene" uid="uid://cv5xvuq2rh5ot" path="res://steve.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://dbxs52if8rhw0" path="res://coin.tscn" id="4_ihfcg"]
@@ -33,20 +32,6 @@ script = ExtResource("1_rka8t")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=360943947]
 transform = Transform3D(0.91166884, -0.29154548, 0.28958794, 0, 0.7047209, 0.70948464, -0.41092572, -0.64681506, 0.6424721, 1.4960904, 5.0006294, 2.967283)
 shadow_enabled = true
-
-[node name="Blocks" type="Node3D" parent="." unique_id=664881899]
-
-[node name="Block1" parent="Blocks" unique_id=1519517169 instance=ExtResource("1_3hls8")]
-transform = Transform3D(0.6139546, 0.78934133, 0, -0.78934133, 0.6139546, 0, 0, 0, 1, 0, 3.1249332, 0)
-
-[node name="Block2" parent="Blocks" unique_id=509946676 instance=ExtResource("1_3hls8")]
-transform = Transform3D(0.4501126, 0.57869506, -0.68008137, -0.72867465, 0.6782574, 0.09486887, 0.5161704, 0.45285642, 0.72697264, 0, 5.1681857, 0)
-
-[node name="Block3" parent="Blocks" unique_id=817080382 instance=ExtResource("1_3hls8")]
-transform = Transform3D(0.6139546, 0.78934133, 0, -0.13507287, 0.105060525, 0.98525, 0.7776985, -0.60489875, 0.171121, 0, 8.4317045, 1.0065575)
-
-[node name="Block4" parent="Blocks" unique_id=1323302965 instance=ExtResource("1_3hls8")]
-transform = Transform3D(0.4501126, 0.57869506, -0.68008137, 0.3838653, 0.5622409, 0.7324838, 0.8062542, -0.59075993, 0.03093078, 0, 8.781348, -1.0065575)
 
 [node name="Steve" parent="." unique_id=1717163893 instance=ExtResource("2_hbghi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 1.883693)
@@ -99,15 +84,19 @@ hud = NodePath("../../HUD")
 
 [node name="Tree1" parent="Trees" unique_id=945193515 instance=ExtResource("7_j7kpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.202035, -1.9312575, -16.980024)
+freeze = true
 
 [node name="Tree2" parent="Trees" unique_id=145194523 instance=ExtResource("7_j7kpp")]
 transform = Transform3D(-0.5694803, 0, -0.822005, 0, 1, 0, 0.822005, 0, -0.5694803, 18.529043, 2.1008544, 0)
+freeze = true
 
 [node name="Tree3" parent="Trees" unique_id=37182279 instance=ExtResource("7_j7kpp")]
 transform = Transform3D(0.42568448, 0, 0.90487164, 0, 1, 0, -0.90487164, 0, 0.42568448, 1.215992, 10.250885, 18.641636)
+freeze = true
 
 [node name="Tree4" parent="Trees" unique_id=263655092 instance=ExtResource("7_j7kpp")]
 transform = Transform3D(0.9650348, 0, 0.2621218, 0, 1, 0, -0.2621218, 0, 0.9650348, 16.85088, 2.0686173, -5.4713306)
+freeze = true
 
 [node name="Enemies" type="Node3D" parent="." unique_id=52555589]
 
