@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3gsaxudc5bm7" path="res://Assets/Images/rose.png" id="1_64ctp"]
 [ext_resource type="FontFile" uid="uid://cw2hvq8blpx1l" path="res://Assets/Fonts/Schoolbell-Regular.ttf" id="2_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://cqavphuvtpxef" path="res://Assets/Images/heart.png" id="4_640wx"]
+[ext_resource type="Texture2D" uid="uid://6e2dfob57x30" path="res://Assets/Images/acef5945ccfebe539355374821aa4be9-dia-dos-namorados-icone-de-chocolate.png.webp" id="4_a2258"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
 bg_color = Color(0, 0, 0, 0.26666668)
@@ -52,6 +53,45 @@ theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
 theme_override_fonts/font = ExtResource("2_8sq4i")
 theme_override_font_sizes/font_size = 48
 text = "##"
+
+[node name="ChocolatePanel" type="Panel" parent="." unique_id=1706541781]
+offset_left = 23.0
+offset_top = 103.0
+offset_right = 177.0
+offset_bottom = 165.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
+
+[node name="Label" type="Label" parent="ChocolatePanel" unique_id=1512824005]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 11.0
+offset_right = 92.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 32
+text = "x"
+
+[node name="ChocolateLabel" type="Label" parent="ChocolatePanel" unique_id=898179105]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 2.0
+offset_right = 136.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 48
+text = "##"
+
+[node name="TextureRect" type="TextureRect" parent="ChocolatePanel" unique_id=506445357]
+layout_mode = 0
+offset_left = -1.000001
+offset_top = 40.0
+offset_right = 511.0
+offset_bottom = 552.0
+rotation = -1.0375509
+scale = Vector2(0.09257969, 0.091952376)
+texture = ExtResource("4_a2258")
 
 [node name="HeartPanel" type="Panel" parent="." unique_id=563290922]
 offset_left = 198.0
