@@ -132,12 +132,12 @@ texture = ExtResource("4_a2258")
 layout_mode = 0
 offset_left = 320.0
 offset_top = 32.0
-offset_right = 474.0
+offset_right = 463.75806
 offset_bottom = 94.0
 scale = Vector2(1.3912263, 1.3947016)
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
 
-[node name="TextureRect" type="TextureRect" parent="Control/HeartPanel" unique_id=1708450548]
+[node name="Heart1" type="TextureRect" parent="Control/HeartPanel" unique_id=1708450548]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 5.0
@@ -146,24 +146,20 @@ offset_bottom = 59.0
 texture = ExtResource("4_640wx")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/HeartPanel" unique_id=1315127095]
+[node name="Heart2" type="TextureRect" parent="Control/HeartPanel" unique_id=1378040855]
 layout_mode = 0
-offset_left = 52.0
-offset_top = 11.0
-offset_right = 92.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("2_8sq4i")
-theme_override_font_sizes/font_size = 32
-text = "x"
+offset_left = 46.00258
+offset_top = 5.7359943
+offset_right = 96.00258
+offset_bottom = 59.735992
+texture = ExtResource("4_640wx")
+expand_mode = 1
 
-[node name="HeartLabel" type="Label" parent="Control/HeartPanel" unique_id=1444390631]
+[node name="Heart3" type="TextureRect" parent="Control/HeartPanel" unique_id=213933838]
 layout_mode = 0
-offset_left = 79.0
-offset_top = 2.0
-offset_right = 136.0
-offset_bottom = 68.0
-theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("2_8sq4i")
-theme_override_font_sizes/font_size = 48
-text = "##"
+offset_left = 92.00517
+offset_top = 5.7359943
+offset_right = 142.00517
+offset_bottom = 59.735992
+texture = ExtResource("4_640wx")
+expand_mode = 1

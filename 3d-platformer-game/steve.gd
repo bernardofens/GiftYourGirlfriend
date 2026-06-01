@@ -6,7 +6,6 @@ const JUMP_VELOCITY = 10
 const MAX_JUMPS = 2
 var jump_count = 0
 const SPRINT_SPEED = 7.0
-
 var target_cam_y_rotation : float = 0.0
 const CAM_ROTATION_SPEED : float = 8.0   # Ajuste para controlar a suavidade
 const CAM_ROTATION_STEP : float = 30.0   # Graus por toque
