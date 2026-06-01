@@ -12,6 +12,7 @@ const CAM_ROTATION_SPEED : float = 8.0   # Ajuste para controlar a suavidade
 const CAM_ROTATION_STEP : float = 30.0   # Graus por toque
 
 @export var spawn_position: Vector3
+signal player_died
 var xform: Transform3D
 
 # --- SISTEMA DE ESTAMINA ---
@@ -28,11 +29,8 @@ func take_damage():
 	Global.hearts -= 1
 	Global.can_take_damage = false
 	if Global.hearts <= 0:
-		Global.hearts = 3
-		if Global.level == 1:
-			get_tree().change_scene_to_file("res://level_1.tscn")
-		else:
-			get_tree().change_scene_to_file("res://level_2.tscn")
+		print("player died calling signal")
+		player_died.emit()
 	else:
 		await get_tree().create_timer(1.0).timeout
 	Global.can_take_damage = true

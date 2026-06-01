@@ -827,7 +827,7 @@ _data = {
 &"waveArm": SubResource("Animation_fu5rv")
 }
 
-[node name="Steve" type="CharacterBody3D" unique_id=1717163893]
+[node name="Steve" type="CharacterBody3D" unique_id=1717163893 groups=["Steve"]]
 collision_mask = 22
 script = ExtResource("1_bh3ft")
 
