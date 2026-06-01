@@ -14,16 +14,26 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [node name="HUD" type="CanvasLayer" unique_id=1472270857]
+follow_viewport_enabled = true
 script = ExtResource("1_8sq4i")
 
-[node name="RosesPanel" type="Panel" parent="." unique_id=1158110612]
-offset_left = 24.0
-offset_top = 26.0
-offset_right = 178.0
-offset_bottom = 88.0
+[node name="Control" type="Control" parent="." unique_id=791053326]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="RosesPanel" type="Panel" parent="Control" unique_id=1158110612]
+layout_mode = 0
+offset_left = 32.00004
+offset_top = 32.0
+offset_right = 186.0
+offset_bottom = 94.0
+scale = Vector2(1.4671848, 1.4671848)
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
 
-[node name="TextureRect" type="TextureRect" parent="RosesPanel" unique_id=1816079066]
+[node name="TextureRect" type="TextureRect" parent="Control/RosesPanel" unique_id=1816079066]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 10.0
@@ -32,7 +42,7 @@ offset_bottom = 50.0
 texture = ExtResource("1_64ctp")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="RosesPanel" unique_id=1341096696]
+[node name="Label" type="Label" parent="Control/RosesPanel" unique_id=1341096696]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 11.0
@@ -43,7 +53,7 @@ theme_override_fonts/font = ExtResource("2_8sq4i")
 theme_override_font_sizes/font_size = 32
 text = "x"
 
-[node name="RosesLabel" type="Label" parent="RosesPanel" unique_id=29516147]
+[node name="RosesLabel" type="Label" parent="Control/RosesPanel" unique_id=29516147]
 layout_mode = 0
 offset_left = 79.0
 offset_top = 2.0
@@ -54,14 +64,39 @@ theme_override_fonts/font = ExtResource("2_8sq4i")
 theme_override_font_sizes/font_size = 48
 text = "##"
 
-[node name="ChocolatePanel" type="Panel" parent="." unique_id=1706541781]
-offset_left = 23.0
-offset_top = 103.0
-offset_right = 177.0
-offset_bottom = 165.0
+[node name="YouWinPanel" type="Panel" parent="Control" unique_id=248852354]
+visible = false
+layout_mode = 0
+offset_left = 720.00006
+offset_top = 288.00003
+offset_right = 874.00006
+offset_bottom = 350.00003
+scale = Vector2(4.476174, 5.9930077)
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
 
-[node name="Label" type="Label" parent="ChocolatePanel" unique_id=1512824005]
+[node name="YouWinLabel" type="Label" parent="Control/YouWinPanel" unique_id=1367181179]
+layout_mode = 0
+offset_left = 8.367917
+offset_top = 10.069446
+offset_right = 182.36792
+offset_bottom = 76.06944
+scale = Vector2(0.79544944, 0.680555)
+theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 48
+text = "You Win!!"
+
+[node name="ChocolatePanel" type="Panel" parent="Control" unique_id=1706541781]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 186.0
+offset_bottom = 102.0
+scale = Vector2(1.5245496, 1.3572537)
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
+
+[node name="Label" type="Label" parent="Control/ChocolatePanel" unique_id=1512824005]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 11.0
@@ -72,7 +107,7 @@ theme_override_fonts/font = ExtResource("2_8sq4i")
 theme_override_font_sizes/font_size = 32
 text = "x"
 
-[node name="ChocolateLabel" type="Label" parent="ChocolatePanel" unique_id=898179105]
+[node name="ChocolateLabel" type="Label" parent="Control/ChocolatePanel" unique_id=898179105]
 layout_mode = 0
 offset_left = 79.0
 offset_top = 2.0
@@ -83,7 +118,7 @@ theme_override_fonts/font = ExtResource("2_8sq4i")
 theme_override_font_sizes/font_size = 48
 text = "##"
 
-[node name="TextureRect" type="TextureRect" parent="ChocolatePanel" unique_id=506445357]
+[node name="TextureRect" type="TextureRect" parent="Control/ChocolatePanel" unique_id=506445357]
 layout_mode = 0
 offset_left = -1.000001
 offset_top = 40.0
@@ -93,14 +128,16 @@ rotation = -1.0375509
 scale = Vector2(0.09257969, 0.091952376)
 texture = ExtResource("4_a2258")
 
-[node name="HeartPanel" type="Panel" parent="." unique_id=563290922]
-offset_left = 198.0
-offset_top = 26.0
-offset_right = 352.0
-offset_bottom = 88.0
+[node name="HeartPanel" type="Panel" parent="Control" unique_id=563290922]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 32.0
+offset_right = 474.0
+offset_bottom = 94.0
+scale = Vector2(1.3912263, 1.3947016)
 theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
 
-[node name="TextureRect" type="TextureRect" parent="HeartPanel" unique_id=1708450548]
+[node name="TextureRect" type="TextureRect" parent="Control/HeartPanel" unique_id=1708450548]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 5.0
@@ -109,7 +146,7 @@ offset_bottom = 59.0
 texture = ExtResource("4_640wx")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HeartPanel" unique_id=1315127095]
+[node name="Label" type="Label" parent="Control/HeartPanel" unique_id=1315127095]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 11.0
@@ -120,7 +157,7 @@ theme_override_fonts/font = ExtResource("2_8sq4i")
 theme_override_font_sizes/font_size = 32
 text = "x"
 
-[node name="HeartLabel" type="Label" parent="HeartPanel" unique_id=1444390631]
+[node name="HeartLabel" type="Label" parent="Control/HeartPanel" unique_id=1444390631]
 layout_mode = 0
 offset_left = 79.0
 offset_top = 2.0

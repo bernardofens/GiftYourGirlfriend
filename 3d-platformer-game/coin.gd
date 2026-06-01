@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if Global.level == 1:
 		Global.roses += 1
-		hud.get_node("RosesPanel/RosesLabel").text = str(Global.roses)
+		hud.get_node("Control/RosesPanel/RosesLabel").text = str(Global.roses)
 		# print(Global.coins) # debug
 		# restart level (could change it later on)
 		if Global.roses >= Global.NUM_ROSES_TO_WIN:
@@ -24,7 +24,7 @@ func _on_body_entered(body: Node3D) -> void:
 			get_tree().change_scene_to_file("res://level_2.tscn")
 	else:
 		Global.chocolates += 1
-		hud.get_node("ChocolatePanel/ChocolateLabel").text = str(Global.chocolates)
+		hud.get_node("Control/ChocolatePanel/ChocolateLabel").text = str(Global.chocolates)
 	set_collision_layer_value(3, false)
 	set_collision_mask_value(1, false)
 	$AnimationPlayer.play("bounce")
