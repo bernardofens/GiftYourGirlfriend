@@ -13,6 +13,9 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2258"]
+bg_color = Color(0.16095924, 0.6212474, 0.9842668, 1)
+
 [node name="HUD" type="CanvasLayer" unique_id=1472270857]
 follow_viewport_enabled = true
 script = ExtResource("1_8sq4i")
@@ -163,3 +166,17 @@ offset_right = 142.00517
 offset_bottom = 59.735992
 texture = ExtResource("4_640wx")
 expand_mode = 1
+
+[node name="StaminaBar" type="ProgressBar" parent="Control" unique_id=286866846]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022000002
+anchor_top = 0.127
+anchor_right = 0.022000002
+anchor_bottom = 0.127
+offset_left = 0.7599983
+offset_top = -0.16000366
+offset_right = 464.76
+offset_bottom = 26.839996
+theme_override_styles/fill = SubResource("StyleBoxFlat_a2258")
+show_percentage = false

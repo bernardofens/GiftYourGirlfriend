@@ -9,18 +9,29 @@ extends CanvasLayer
 @onready var heart3 = $Control/HeartPanel/Heart3
 @onready var heart2 = $Control/HeartPanel/Heart2
 @onready var heart1 = $Control/HeartPanel/Heart1
-# Called when the node enters the scene tree for the first time.
 
+# --- NOVA REFERÊNCIA DA BARRA DE ESTAMINA ---
+@onready var stamina_bar = $Control/StaminaBar 
+# --------------------------------------------
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	# Define o valor máximo da barra logo que o jogo começa
+	stamina_bar.max_value = Global.max_stamina
+
 func _process(delta: float) -> void:
 	roses_label.text = str(Global.roses)
 	chocolate_label.text = str(Global.chocolates)
+	
+	# --- ATUALIZA A BARRA DE ESTAMINA ---
+	stamina_bar.value = Global.stamina
+	# ------------------------------------
+	
 	if Global.chocolates >= 5:
 		win_screen.visible = true
 	if Global.level == 2:
 		chocolate_panel.visible = true
 		roses_panel.visible = false
+		
 	if Global.hearts == 2:
 		heart3.visible = false
 	if Global.hearts == 1:
@@ -31,5 +42,3 @@ func _process(delta: float) -> void:
 		heart3.visible = true
 		heart2.visible = true
 		heart1.visible = true
-		
-	pass
