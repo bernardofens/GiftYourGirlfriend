@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var speed = 3.0
+var speed = 6.0
 var turning := false
 var current_angle: float = 0.0
 var direction := Vector3.ZERO

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dehx77l1s44l2"
-path="res://.godot/imported/Bar.glb-ea8dd1bdf86cb3acf9fb0964ed307303.scn"
+uid="uid://6bg8sxh2j7vb"
+path="res://.godot/imported/Bar.glb-b7940e0c152b790d7bf9c42f59df8981.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Bar.glb"
-dest_files=["res://.godot/imported/Bar.glb-ea8dd1bdf86cb3acf9fb0964ed307303.scn"]
+source_file="res://Bar.glb"
+dest_files=["res://.godot/imported/Bar.glb-b7940e0c152b790d7bf9c42f59df8981.scn"]
 
 [params]
 
@@ -37,18 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"meshes": {
-"Bar_Cube_001": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/Models/Bar_Cube_001.res",
-"save_to_file/path": "uid://wddtmwcy5qaa"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

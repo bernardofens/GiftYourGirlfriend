@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://do0hs7baapiuu" path="res://level_1.gd" id="1_7dov7"]
 [ext_resource type="PackedScene" uid="uid://cv5xvuq2rh5ot" path="res://steve.tscn" id="3_15wb7"]
+[ext_resource type="PackedScene" uid="uid://dpl87wdci5b5h" path="res://chocolate.tscn" id="4_7j8ne"]
 [ext_resource type="MeshLibrary" uid="uid://m3qtj04tw8j8" path="res://Resources/world-blocks-v1.tres" id="4_eoq84"]
-[ext_resource type="PackedScene" uid="uid://dbxs52if8rhw0" path="res://coin.tscn" id="5_yl73a"]
 [ext_resource type="PackedScene" uid="uid://tn84iu8qyl2r" path="res://hud.tscn" id="6_xbcdb"]
 [ext_resource type="PackedScene" uid="uid://b46eg4tkkrxi1" path="res://tree.tscn" id="7_s77qv"]
 [ext_resource type="PackedScene" uid="uid://dgb62lwnfirwd" path="res://enemy.tscn" id="8_5hnhx"]
@@ -26,7 +26,7 @@ ambient_light_sky_contribution = 0.01
 [sub_resource type="BoxShape3D" id="BoxShape3D_ihfcg"]
 size = Vector3(150, 10, 150)
 
-[node name="Level1" type="Node3D" unique_id=213052112]
+[node name="Level2" type="Node3D" unique_id=213052112]
 script = ExtResource("1_7dov7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=360943947]
@@ -56,26 +56,26 @@ collision_layer = 16
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 shape = SubResource("BoxShape3D_ihfcg")
 
-[node name="Flowers" type="Node3D" parent="." unique_id=1661846793]
+[node name="Chocolates" type="Node3D" parent="." unique_id=1661846793]
 
-[node name="Flower1" parent="Flowers" unique_id=1460569006 node_paths=PackedStringArray("hud") instance=ExtResource("5_yl73a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8985004, 0.5608754, 3.3778577)
+[node name="Chocolate" parent="Chocolates" unique_id=283976943 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5574245, -4.929229)
 hud = NodePath("../../HUD")
 
-[node name="Flower2" parent="Flowers" unique_id=283976943 node_paths=PackedStringArray("hud") instance=ExtResource("5_yl73a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8478985, 2.686812, -2.976686)
+[node name="Chocolate2" parent="Chocolates" unique_id=1243397064 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.386406, 3.4382653, -1.610055)
 hud = NodePath("../../HUD")
 
-[node name="Flower3" parent="Flowers" unique_id=960810357 node_paths=PackedStringArray("hud") instance=ExtResource("5_yl73a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5664654, -0.7027335, -21.0464)
+[node name="Chocolate3" parent="Chocolates" unique_id=1684377336 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16083384, -18.621256)
 hud = NodePath("../../HUD")
 
-[node name="Flower4" parent="Flowers" unique_id=1263221834 node_paths=PackedStringArray("hud") instance=ExtResource("5_yl73a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8179512, 2.686812, -2.976686)
+[node name="Chocolate4" parent="Chocolates" unique_id=1931102166 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.653202, 0.11288357, -17.088078)
 hud = NodePath("../../HUD")
 
-[node name="Flower5" parent="Flowers" unique_id=1998124360 node_paths=PackedStringArray("hud") instance=ExtResource("5_yl73a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.737154, 2.686812, -2.976686)
+[node name="Chocolate5" parent="Chocolates" unique_id=844870737 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.741283, 3.1289177, 0)
 hud = NodePath("../../HUD")
 
 [node name="HUD" parent="." unique_id=1472270857 instance=ExtResource("6_xbcdb")]
@@ -86,7 +86,7 @@ hud = NodePath("../../HUD")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.202035, -1.9312575, -16.980024)
 
 [node name="Tree2" parent="Trees" unique_id=145194523 instance=ExtResource("7_s77qv")]
-transform = Transform3D(-0.5694803, 0, -0.822005, 0, 1, 0, 0.822005, 0, -0.5694803, 18.529043, 2.1008544, 0)
+transform = Transform3D(-0.5694803, 0, -0.822005, 0, 1, 0, 0.822005, 0, -0.5694803, 18.529043, 2.1008544, 4.8916674)
 
 [node name="Tree4" parent="Trees" unique_id=263655092 instance=ExtResource("7_s77qv")]
 transform = Transform3D(0.9650348, 0, 0.2621218, 0, 1, 0, -0.2621218, 0, 0.9650348, 16.85088, 2.0686173, -5.4713306)

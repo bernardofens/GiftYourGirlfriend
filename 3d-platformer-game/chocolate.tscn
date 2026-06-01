@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://dbxs52if8rhw0"]
+[gd_scene format=3 uid="uid://dpl87wdci5b5h"]
 
-[ext_resource type="Script" uid="uid://extt04hpm2ri" path="res://coin.gd" id="1_d5gmh"]
-[ext_resource type="ArrayMesh" uid="uid://dgycc60oyol5w" path="res://Assets/Models/Rose_Rose_Circle_005-Mesh.res" id="2_0t63x"]
+[ext_resource type="Script" uid="uid://extt04hpm2ri" path="res://coin.gd" id="1_w0y34"]
+[ext_resource type="ArrayMesh" uid="uid://krfrjrk8nkco" path="res://Assets/Models/Bar_Cube_001.res" id="2_w0y34"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v7riw"]
 size = Vector3(0.8580322, 0.28756714, 0.23931122)
@@ -43,13 +43,13 @@ _data = {
 &"bounce": SubResource("Animation_0t63x")
 }
 
-[node name="Flower" type="Area3D" unique_id=283976943]
+[node name="Chocolate" type="Area3D" unique_id=283976943]
 collision_layer = 4
-script = ExtResource("1_d5gmh")
+script = ExtResource("1_w0y34")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1429220594]
-transform = Transform3D(-4.4044612e-09, -8.515024e-09, 0.1, 0.0003909415, 0.09999924, 8.5321785e-09, -0.09999924, 0.0003909415, -4.371139e-09, 0, 0, 0)
-mesh = ExtResource("2_0t63x")
+transform = Transform3D(-0.0009956926, -0.01531888, -0.14068557, -0.0003205764, -0.0049319263, 0.43697834, -0.26756418, 6.291558e-05, -2.0066457e-08, 0, 0, 0)
+mesh = ExtResource("2_w0y34")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1172852841]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.02735747, 0.46509463, 0.0059318542)
