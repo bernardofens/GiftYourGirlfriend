@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bsrh7k8sq64lv" path="res://Assets/Models/Lowpoly_tree_sample_Geometry-mesh022.res" id="6_j7kpp"]
 [ext_resource type="PackedScene" uid="uid://dmhscwr1nddpf" path="res://platform3x2.tscn" id="7_j7kpp"]
 [ext_resource type="PackedScene" uid="uid://dgb62lwnfirwd" path="res://enemy.tscn" id="8_bjebc"]
+[ext_resource type="PackedScene" uid="uid://cloosk6t0k353" path="res://boss.tscn" id="9_5rr72"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hn12h"]
 sky_top_color = Color(0.032333303, 0, 0.97, 1)
@@ -132,5 +133,8 @@ a = Vector3(17.2, 1.374, -15.896)
 b = Vector3(17.202, -3.007, -15.896)
 
 [node name="HUD" parent="." unique_id=1472270857 instance=ExtResource("6_5hph3")]
+
+[node name="Boss" parent="." unique_id=1132303011 instance=ExtResource("9_5rr72")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.4956503, 1.4782186, -2.5678594)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]

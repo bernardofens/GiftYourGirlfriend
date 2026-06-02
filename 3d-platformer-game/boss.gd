@@ -1,17 +1,18 @@
 extends CharacterBody3D
 
-enum State { PATROL, CHASE, WINDUP, LUNGE }
+enum State { PATROL, CHASE, SHOOT }
 var current_state = State.PATROL
 
-@export var speed = 2.0 
-@export var chase_speed = 4.0 
-@export var lunge_speed = 9.0 
-@export var detection_range := 12.0
-@export var attack_range := 4.0 
+@export var speed = 4.0 
+@export var chase_speed = 6.0
+@export var detection_range := 25.0
+@export var shoot_range := 12.0
+@export var bullet_scene: PackedScene 
 
 var direction := Vector3.ZERO
 var player: Node3D
 var turning := false
+var can_shoot := true
 
 func _ready() -> void:
 	$RayCast3D.enabled = true
@@ -27,27 +28,23 @@ func _physics_process(delta: float) -> void:
 			_patrol_state()
 		State.CHASE:
 			_chase_state()
-		State.WINDUP:
-			_windup_state(delta)
-		State.LUNGE:
-			pass 
+		State.SHOOT:
+			_shoot_state(delta)
 
-	if not turning and current_state in [State.PATROL, State.CHASE]:
+	if not turning and current_state != State.SHOOT:
 		var current_speed = chase_speed if current_state == State.CHASE else speed
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
 		
 		if direction != Vector3.ZERO:
 			var target_rotation = atan2(direction.x, direction.z)
-			rotation.y = lerp_angle(rotation.y, target_rotation, 10 * delta)
-			
-	elif current_state == State.WINDUP or turning:
+			rotation.y = lerp_angle(rotation.y, target_rotation, 5 * delta)
+	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
-	
-	if current_state in [State.PATROL, State.CHASE]:
+	if current_state != State.SHOOT:
 		_check_collisions()
 
 func _patrol_state():
@@ -57,45 +54,58 @@ func _patrol_state():
 func _chase_state():
 	if not player: return
 	
-	var dist = global_position.distance_to(player.global_position)
+	var distance_to_player = global_position.distance_to(player.global_position)
 	
-	if dist > detection_range * 1.5:
+	if distance_to_player > detection_range * 1.5:
 		current_state = State.PATROL
 		definir_direcao_aleatoria()
-	elif dist <= attack_range:
-		_start_windup()
+	elif distance_to_player < shoot_range:
+		current_state = State.SHOOT 
 	else:
 		var dir_to_player = (player.global_position - global_position)
 		dir_to_player.y = 0
 		direction = dir_to_player.normalized()
 
-func _start_windup():
-	current_state = State.WINDUP
-	await get_tree().create_timer(0.8).timeout
-	if current_state == State.WINDUP:
-		_start_lunge()
-
-func _windup_state(delta: float):
-	if player:
-		var dir_to_player = (player.global_position - global_position)
-		dir_to_player.y = 0
-		var target_rotation = atan2(dir_to_player.x, dir_to_player.z)
-		rotation.y = lerp_angle(rotation.y, target_rotation, 12 * delta)
-
-func _start_lunge():
-	current_state = State.LUNGE
+func _shoot_state(delta: float):
+	if not player: return
+	
 	var dir_to_player = (player.global_position - global_position)
 	dir_to_player.y = 0
-	direction = dir_to_player.normalized()
-	velocity.x = direction.x * lunge_speed
-	velocity.z = direction.z * lunge_speed
-	velocity.y = 4.0 
+	var target_rotation = atan2(dir_to_player.x, dir_to_player.z)
+	rotation.y = lerp_angle(rotation.y, target_rotation, 8 * delta)
 	
-	await get_tree().create_timer(0.6).timeout
+	if global_position.distance_to(player.global_position) > shoot_range * 1.2:
+		current_state = State.CHASE
+		return
+		
+	if can_shoot and bullet_scene:
+		fire_projectile()
+
+func fire_projectile():
+	can_shoot = false
 	
-	if current_state == State.LUNGE:
-		current_state = State.PATROL
-		definir_direcao_aleatoria()
+	var bullet = bullet_scene.instantiate()
+	get_parent().add_child(bullet) 
+	
+	# Posição de origem: centro do Boss
+	var spawn_pos = global_position
+	spawn_pos.y += 0.5 
+	
+	# Posição do alvo: mira exata no peito do jogador
+	var target_pos = player.global_position
+	target_pos.y += 1.0 
+	
+	# Calcula a direção reta
+	var dir = (target_pos - spawn_pos).normalized()
+	
+	# Nasce um pouco à frente para não colidir com o próprio Boss
+	bullet.global_position = spawn_pos + (dir * 1.5) 
+	
+	if bullet.has_method("set_direction"):
+		bullet.set_direction(dir)
+	
+	await get_tree().create_timer(2.2).timeout
+	can_shoot = true
 
 func _check_collisions():
 	if not turning:
@@ -103,12 +113,13 @@ func _check_collisions():
 			mudar_direcao_por_colisao()
 
 func definir_direcao_aleatoria():
-	var angulo = randf_range(0, TAU)
+	var angulo = randf_range(0, TAU) 
 	direction = Vector3(sin(angulo), 0, cos(angulo)).normalized()
 
 func mudar_direcao_por_colisao():
 	if turning: return
 	turning = true
+	
 	direction = Vector3.ZERO
 	await get_tree().create_timer(0.2).timeout
 	
@@ -126,15 +137,11 @@ func _on_top_checker_body_entered(body: Node3D) -> void:
 	if "velocity" in body and body.velocity.y < 0:
 		if $AnimationPlayer.has_animation("squash"):
 			$AnimationPlayer.play("squash")
-			
 		if body is CharacterBody3D:
-			body.velocity.y = 8.0 
-			
+			body.velocity.y = 8.0
 		$SidesChecker.set_collision_mask_value(1, false)
 		$TopChecker.set_collision_mask_value(1, false)
 		direction = Vector3.ZERO
 		speed = 0
-		current_state = State.WINDUP 
-		
 		await get_tree().create_timer(1.0).timeout
 		queue_free()

@@ -1,6 +1,7 @@
-[gd_scene format=4 uid="uid://dgb62lwnfirwd"]
+[gd_scene format=4 uid="uid://cloosk6t0k353"]
 
-[ext_resource type="Script" uid="uid://ijp15qufwuxd" path="res://enemy.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://d4dflo4jsj74j" path="res://boss.gd" id="1_0bnu1"]
+[ext_resource type="PackedScene" uid="uid://de48n8sybsf1q" path="res://bullet.tscn" id="2_6xxrv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1476k"]
 resource_name = "Material"
@@ -176,10 +177,12 @@ radius = 0.3955078
 height = 0.18847656
 radius = 0.32763672
 
-[node name="Enemy" type="CharacterBody3D" unique_id=422098778]
+[node name="Boss" type="CharacterBody3D" unique_id=422098778]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_7k104")
+script = ExtResource("1_0bnu1")
+bullet_scene = ExtResource("2_6xxrv")
 
 [node name="Armature" type="Node3D" parent="." unique_id=539204057]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.2830758, 0)
