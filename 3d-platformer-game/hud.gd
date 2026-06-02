@@ -1,65 +1,168 @@
 extends CanvasLayer
 
-@onready var chocolate_panel = $Control/ChocolatePanel
-@onready var heart3 = $Control/HeartPanel/Heart3
-@onready var heart2 = $Control/HeartPanel/Heart2
-@onready var heart1 = $Control/HeartPanel/Heart1
-@onready var game_over = $Control/GameOverControl
+# --- PAINEL PRINCIPAL (ITENS) ---
+@onready var item_panel = $Control/RosesPanel
+@onready var item_icon = $Control/RosesPanel/TextureRect 
+@onready var item_label = $Control/RosesPanel/Label 
+
+# --- OUTROS NÓS ---
+@onready var heart3 = $Control/Healthbar/Heart3
+@onready var heart2 = $Control/Healthbar/Heart2
+@onready var heart1 = $Control/Healthbar/Heart1
+@onready var health_bar = $Control/Healthbar
 @onready var stamina_bar = $Control/StaminaBar 
-@onready var roses_label = $Control/RosesPanel/RosesLabel
-@onready var win_screen = $Control/YouWinPanel
-@onready var roses_panel = $Control/RosesPanel
-@onready var chocolate_label = $Control/ChocolatePanel/ChocolateLabel
+@onready var stamina = $Control/Stamina
+@onready var pause_button = $Control/PauseButton
+
+# --- TELAS DE ESTADO ---
+@onready var game_over = $Control/GameOverControl
+@onready var pause_control = $Control/PauseControl 
+@onready var win_screen = $Control/GameWinControl # Caminho atualizado para o novo nó
+
+# --- BOTÕES ---
+@onready var try_again_btn = $Control/GameOverControl/TryAgainButton
+@onready var quit_btn = $Control/GameOverControl/QuitButton
+
+@onready var resume_btn = $Control/PauseControl/ResumeButton 
+@onready var pause_quit_btn = $Control/PauseControl/QuitButton 
+
+@onready var win_restart_btn = $Control/GameWinControl/RestartButton # Novo botão da tela de vitória
+@onready var win_quit_btn = $Control/GameWinControl/QuitButton # Novo botão da tela de vitória
+
+# --- TEXTURAS ---
+var full_heart = preload("res://Assets/Images/heart-gyg.png")
+var empty_heart = preload("res://Assets/Images/heartless-gyg.png")
+
+var rose_tex = preload("res://Assets/Images/rose.png") 
+var chocolate_tex = preload("res://Assets/Images/chocolate.webp") 
+
+# --- VARIÁVEIS DE CONTROLE ---
+var game_won := false
+
 func _ready() -> void:
-	# 1. Setup Game Over initial state and signals
+	# Garante que as telas estejam invisíveis ao iniciar
 	game_over.visible = false
+	if win_screen: win_screen.visible = false
+	if pause_control: pause_control.visible = false
+	
 	var player = get_tree().get_first_node_in_group("Steve")
 	if player:
 		player.player_died.connect(_on_player_died)
 		
-	# 2. Setup Stamina Bar
 	if stamina_bar:
 		stamina_bar.max_value = Global.max_stamina
+		
+	# Conexões de botões Game Over
+	if try_again_btn: try_again_btn.pressed.connect(_on_retry_button_pressed)
+	if quit_btn: quit_btn.pressed.connect(_on_quit_button_pressed)
+	
+	# Conexões de botões Pause
+	if pause_button: pause_button.pressed.connect(toggle_pause)
+	if resume_btn: resume_btn.pressed.connect(toggle_pause)
+	if pause_quit_btn: pause_quit_btn.pressed.connect(_on_quit_button_pressed)
+		
+	# Conexões de botões Game Win
+	if win_restart_btn: win_restart_btn.pressed.connect(_on_win_restart_pressed)
+	if win_quit_btn: win_quit_btn.pressed.connect(_on_quit_button_pressed)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") and not game_over.visible and not game_won:
+		toggle_pause()
+
+func toggle_pause():
+	var is_paused = not get_tree().paused
+	get_tree().paused = is_paused
+	
+	if pause_control:
+		pause_control.visible = is_paused
+	
+	if is_paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) 
 
 func _on_player_died():
-	# Display UI before freezing the tree execution
+	if game_won: return 
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_over.visible = true
-	get_tree().paused = true	
+	
+	_hide_hud_elements()
+	get_tree().paused = true
+
+func show_win_screen():
+	game_won = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	win_screen.visible = true
+	
+	_hide_hud_elements()
+	get_tree().paused = true
+
+func _hide_hud_elements():
+	if item_panel: item_panel.visible = false
+	if stamina_bar: stamina_bar.visible = false
+	if health_bar: health_bar.visible = false
+	if pause_button: pause_button.visible = false
+	if stamina: stamina.visible = false
 
 func _on_retry_button_pressed():
+	# Reinicia o nível atual
 	Global.hearts = 3
 	Global.chocolates = 0
 	Global.roses = 0
 	Global.can_take_damage = true
 	get_tree().paused = false
+	game_won = false
+	
 	if Global.level == 1:
 		get_tree().change_scene_to_file("res://level_1.tscn")
 	else:
 		get_tree().change_scene_to_file("res://level_2.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _on_win_restart_pressed():
+	# Zera o jogo e força o retorno para o Nível 1
+	Global.hearts = 3
+	Global.chocolates = 0
+	Global.roses = 0
+	Global.level = 1
+	Global.can_take_damage = true
+	get_tree().paused = false
+	game_won = false
+	
+	get_tree().change_scene_to_file("res://level_1.tscn")
+
+func _on_quit_button_pressed():
+	# 1. É obrigatório despausar o jogo antes de sair, 
+	# senão o seu Menu Inicial vai carregar congelado!
+	get_tree().paused = false
+	
+	# 2. Carrega a cena do Menu Inicial
+	get_tree().change_scene_to_file("res://menu.tscn")
+
 func _process(delta: float) -> void:
-	roses_label.text = str(Global.roses)
-	chocolate_label.text = str(Global.chocolates)
-	
-	# --- ATUALIZA A BARRA DE ESTAMINA ---
-	stamina_bar.value = Global.stamina
-	# ------------------------------------
-	
-	if Global.chocolates >= 5:
-		win_screen.visible = true
-	if Global.level == 2:
-		chocolate_panel.visible = true
-		roses_panel.visible = false
+	if Global.level == 1:
+		item_icon.texture = rose_tex
+		item_label.text = "x " + str(Global.roses)
+	elif Global.level == 2:
+		item_icon.texture = chocolate_tex
+		item_label.text = "x " + str(Global.chocolates)
 		
-	if Global.hearts == 2:
-		heart3.visible = false
-	if Global.hearts == 1:
-		heart2.visible = false 
-	if Global.hearts == 0:
-		heart1.visible = false 
-	if Global.hearts == 3:
-		heart3.visible = true
-		heart2.visible = true
-		heart1.visible = true
+		if Global.chocolates >= 5 and not game_won:
+			show_win_screen()
+	
+	stamina_bar.value = Global.stamina
+		
+	if Global.hearts >= 1:
+		heart1.texture = full_heart
+	else:
+		heart1.texture = empty_heart
+		
+	if Global.hearts >= 2:
+		heart2.texture = full_heart
+	else:
+		heart2.texture = empty_heart
+		
+	if Global.hearts >= 3:
+		heart3.texture = full_heart
+	else:
+		heart3.texture = empty_heart

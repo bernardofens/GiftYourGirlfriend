@@ -3,8 +3,16 @@
 [ext_resource type="Script" uid="uid://41m0t8w1g5xs" path="res://hud.gd" id="1_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://3gsaxudc5bm7" path="res://Assets/Images/rose.png" id="1_64ctp"]
 [ext_resource type="FontFile" uid="uid://cw2hvq8blpx1l" path="res://Assets/Fonts/Schoolbell-Regular.ttf" id="2_8sq4i"]
-[ext_resource type="Texture2D" uid="uid://cqavphuvtpxef" path="res://Assets/Images/heart.png" id="4_640wx"]
-[ext_resource type="Texture2D" uid="uid://6e2dfob57x30" path="res://Assets/Images/acef5945ccfebe539355374821aa4be9-dia-dos-namorados-icone-de-chocolate.png.webp" id="4_a2258"]
+[ext_resource type="Texture2D" uid="uid://6e2dfob57x30" path="res://Assets/Images/chocolate.webp" id="4_a2258"]
+[ext_resource type="Texture2D" uid="uid://dc6e3tjkbsuxl" path="res://Assets/Images/game-over-gyg.png" id="5_4u2vk"]
+[ext_resource type="Texture2D" uid="uid://b4qjx4a056mdu" path="res://Assets/Images/big-button-gyg.png" id="5_amv7k"]
+[ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="7_1fv7p"]
+[ext_resource type="Texture2D" uid="uid://fxy411ymg0yi" path="res://Assets/Images/button-gyg.png" id="7_4q17s"]
+[ext_resource type="Texture2D" uid="uid://bunegnpuptro5" path="res://Assets/Images/empty-health.png" id="8_4u2vk"]
+[ext_resource type="Texture2D" uid="uid://txr0ssiwtsi6" path="res://Assets/Images/heart-gyg.png" id="9_4q17s"]
+[ext_resource type="Texture2D" uid="uid://b27mt6yoiuep1" path="res://Assets/Images/staminabar.png" id="10_2d608"]
+[ext_resource type="Texture2D" uid="uid://cakq3f4egovqk" path="res://Assets/Images/pause-button.png" id="11_w71nf"]
+[ext_resource type="Texture2D" uid="uid://dcc8veaq3kl8" path="res://Assets/Images/game-win.png" id="13_4u2vk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
 bg_color = Color(0, 0, 0, 0.26666668)
@@ -13,82 +21,28 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2258"]
-bg_color = Color(0.16095924, 0.6212474, 0.9842668, 1)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4u2vk"]
+load_path = "res://.godot/imported/button-gyg.png-88e559e98c2e3cd972d0274720c11865.ctex"
 
-[node name="HUD" type="CanvasLayer" unique_id=1472270857]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2258"]
+bg_color = Color(0.16078432, 0.85490197, 0.2, 0.46666667)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="HUD" type="CanvasLayer" unique_id=64238614]
 process_mode = 3
 follow_viewport_enabled = true
 script = ExtResource("1_8sq4i")
 
-[node name="Control" type="Control" parent="." unique_id=791053326]
+[node name="Control" type="Control" parent="." unique_id=1951190878]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-
-[node name="RosesPanel" type="Panel" parent="Control" unique_id=1158110612]
-layout_mode = 0
-offset_left = 32.00004
-offset_top = 32.0
-offset_right = 186.0
-offset_bottom = 94.0
-scale = Vector2(1.4671848, 1.4671848)
-theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
-
-[node name="TextureRect" type="TextureRect" parent="Control/RosesPanel" unique_id=1816079066]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 10.0
-offset_right = 45.0
-offset_bottom = 50.0
-texture = ExtResource("1_64ctp")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="Control/RosesPanel" unique_id=1341096696]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 11.0
-offset_right = 92.0
-offset_bottom = 55.0
-theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("2_8sq4i")
-theme_override_font_sizes/font_size = 32
-text = "x"
-
-[node name="RosesLabel" type="Label" parent="Control/RosesPanel" unique_id=29516147]
-layout_mode = 0
-offset_left = 79.0
-offset_top = 2.0
-offset_right = 136.0
-offset_bottom = 68.0
-theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("2_8sq4i")
-theme_override_font_sizes/font_size = 48
-text = "##"
-
-[node name="YouWinPanel" type="Panel" parent="Control" unique_id=248852354]
-visible = false
-layout_mode = 0
-offset_left = 720.00006
-offset_top = 288.00003
-offset_right = 874.00006
-offset_bottom = 350.00003
-scale = Vector2(4.476174, 5.9930077)
-theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
-
-[node name="YouWinLabel" type="Label" parent="Control/YouWinPanel" unique_id=1367181179]
-layout_mode = 0
-offset_left = 23.234116
-offset_top = 13.348892
-offset_right = 602.23413
-offset_bottom = 233.34889
-scale = Vector2(0.18296188, 0.15712827)
-theme_override_colors/font_color = Color(0.32156864, 0.5803922, 0.22745098, 1)
-theme_override_fonts/font = ExtResource("2_8sq4i")
-theme_override_font_sizes/font_size = 160
-text = "You Win!!"
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ChocolatePanel" type="Panel" parent="Control" unique_id=1706541781]
 visible = false
@@ -132,40 +86,164 @@ rotation = -1.0375509
 scale = Vector2(0.09257969, 0.091952376)
 texture = ExtResource("4_a2258")
 
-[node name="HeartPanel" type="Panel" parent="Control" unique_id=563290922]
+[node name="GameOverControl" type="Control" parent="Control" unique_id=435269318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="Control/GameOverControl" unique_id=924609939]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_4u2vk")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BackgroundGameOver" type="TextureRect" parent="Control/GameOverControl" unique_id=1796184607]
+texture_filter = 1
 layout_mode = 0
-offset_left = 320.0
+offset_left = 533.0
+offset_top = 158.0
+offset_right = 1434.0
+offset_bottom = 864.0
+texture = ExtResource("5_amv7k")
+stretch_mode = 5
+
+[node name="TryAgainButton" type="TextureButton" parent="Control/GameOverControl" unique_id=1528689530]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 421.0
+offset_right = 1202.0
+offset_bottom = 651.0
+focus_mode = 0
+texture_normal = SubResource("CompressedTexture2D_4u2vk")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/GameOverControl/TryAgainButton" unique_id=547904591]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 74.0
+offset_right = 351.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 64
+text = "Try Again"
+
+[node name="QuitButton" type="TextureButton" parent="Control/GameOverControl" unique_id=879912799]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 610.0
+offset_right = 1194.0
+offset_bottom = 757.0
+focus_mode = 0
+texture_normal = ExtResource("7_4q17s")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/GameOverControl/QuitButton" unique_id=970172854]
+layout_mode = 0
+offset_left = 140.0
 offset_top = 32.0
-offset_right = 463.75806
-offset_bottom = 94.0
-scale = Vector2(1.3912263, 1.3947016)
-theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
+offset_right = 263.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
 
-[node name="Heart1" type="TextureRect" parent="Control/HeartPanel" unique_id=1708450548]
+[node name="Label" type="Label" parent="Control/GameOverControl" unique_id=779697826]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 5.0
-offset_right = 52.0
-offset_bottom = 59.0
-texture = ExtResource("4_640wx")
+offset_left = 683.0
+offset_top = 274.0
+offset_right = 1275.0
+offset_bottom = 436.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 0.78431374)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 124
+text = "Game Over!"
+
+[node name="RosesPanel" type="TextureRect" parent="Control" unique_id=285449985]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 21.0
+offset_right = 258.0
+offset_bottom = 147.0
+texture = ExtResource("5_amv7k")
 expand_mode = 1
 
-[node name="Heart2" type="TextureRect" parent="Control/HeartPanel" unique_id=1378040855]
+[node name="TextureRect" type="TextureRect" parent="Control/RosesPanel" unique_id=1816079066]
 layout_mode = 0
-offset_left = 46.00258
-offset_top = 5.7359943
-offset_right = 96.00258
-offset_bottom = 59.735992
-texture = ExtResource("4_640wx")
+offset_left = 31.0
+offset_top = 27.0
+offset_right = 77.0
+offset_bottom = 95.0
+texture = ExtResource("1_64ctp")
 expand_mode = 1
 
-[node name="Heart3" type="TextureRect" parent="Control/HeartPanel" unique_id=213933838]
+[node name="Label" type="Label" parent="Control/RosesPanel" unique_id=1341096696]
 layout_mode = 0
-offset_left = 92.00517
-offset_top = 5.7359943
-offset_right = 142.00517
-offset_bottom = 59.735992
-texture = ExtResource("4_640wx")
+offset_left = 89.0
+offset_top = 30.0
+offset_right = 140.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 64
+text = "x"
+
+[node name="Healthbar" type="TextureRect" parent="Control" unique_id=167622422]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 27.0
+offset_right = 467.0
+offset_bottom = 93.0
+texture = ExtResource("8_4u2vk")
+expand_mode = 1
+
+[node name="Heart1" type="TextureRect" parent="Control/Healthbar" unique_id=272535806]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 20.0
+offset_right = 70.0
+offset_bottom = 46.0
+texture = ExtResource("9_4q17s")
+expand_mode = 1
+
+[node name="Heart2" type="TextureRect" parent="Control/Healthbar" unique_id=1371808108]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 20.0
+offset_right = 112.0
+offset_bottom = 46.0
+texture = ExtResource("9_4q17s")
+expand_mode = 1
+
+[node name="Heart3" type="TextureRect" parent="Control/Healthbar" unique_id=142147039]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 20.0
+offset_right = 153.0
+offset_bottom = 46.0
+texture = ExtResource("9_4q17s")
+expand_mode = 1
+
+[node name="Stamina" type="TextureRect" parent="Control" unique_id=1038491199]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 101.0
+offset_right = 470.0
+offset_bottom = 143.0
+texture = ExtResource("10_2d608")
 expand_mode = 1
 
 [node name="StaminaBar" type="ProgressBar" parent="Control" unique_id=286866846]
@@ -175,13 +253,25 @@ anchor_left = 0.022000002
 anchor_top = 0.127
 anchor_right = 0.022000002
 anchor_bottom = 0.127
-offset_left = 0.7599983
-offset_top = -0.16000366
-offset_right = 464.76
-offset_bottom = 26.839996
+offset_left = 241.76
+offset_top = -29.160004
+offset_right = 419.76
+offset_bottom = -0.16000366
 theme_override_styles/fill = SubResource("StyleBoxFlat_a2258")
 show_percentage = false
-[node name="GameOverControl" type="Control" parent="Control" unique_id=435269318]
+
+[node name="PauseButton" type="TextureButton" parent="Control" unique_id=1934275732]
+layout_mode = 0
+offset_left = 1735.0
+offset_top = 30.0
+offset_right = 1881.0
+offset_bottom = 147.0
+focus_mode = 0
+texture_normal = ExtResource("11_w71nf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PauseControl" type="Control" parent="Control" unique_id=2144738390]
 anchors_preset = 0
 offset_left = 16.0
 offset_top = -224.0
@@ -189,45 +279,156 @@ offset_right = 56.0
 offset_bottom = -184.0
 mouse_filter = 2
 
-[node name="GameOverPanel" type="Panel" parent="Control/GameOverControl" unique_id=2012147077]
+[node name="BackgroundGameOver" type="TextureRect" parent="Control/PauseControl" unique_id=2126273524]
+texture_filter = 1
 layout_mode = 0
-offset_left = 600.0
-offset_top = 424.0
-offset_right = 640.0
-offset_bottom = 464.0
-scale = Vector2(19.63858, 9.708327)
+offset_left = 505.0
+offset_top = 380.0
+offset_right = 1406.0
+offset_bottom = 1086.0
+texture = ExtResource("5_amv7k")
+stretch_mode = 5
+
+[node name="TryAgainButton" type="TextureButton" parent="Control/PauseControl" unique_id=331883979]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 643.0
+offset_right = 1174.0
+offset_bottom = 873.0
+focus_mode = 0
+texture_normal = SubResource("CompressedTexture2D_4u2vk")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/PauseControl/TryAgainButton" unique_id=1694322886]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 74.0
+offset_right = 351.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 64
+text = "Resume"
+horizontal_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="Control/PauseControl" unique_id=1359810843]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 832.0
+offset_right = 1166.0
+offset_bottom = 979.0
+focus_mode = 0
+texture_normal = ExtResource("7_4q17s")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/PauseControl/QuitButton" unique_id=439627206]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 32.0
+offset_right = 263.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="Label" type="Label" parent="Control/PauseControl" unique_id=1629948930]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 496.0
+offset_right = 1247.0
+offset_bottom = 658.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 0.78431374)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 124
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="GameWinControl" type="Control" parent="Control" unique_id=310004135]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Control/GameOverControl/GameOverPanel" unique_id=1661754020]
-layout_mode = 0
-offset_left = 2.0368073
-offset_top = 10.712452
-offset_right = 512.0368
-offset_bottom = 120.71245
-scale = Vector2(0.06990798, 0.14771274)
-theme_override_colors/font_color = Color(1, 0.16078432, 0, 1)
-theme_override_font_sizes/font_size = 80
-text = "Game over! :("
+[node name="Background" type="TextureRect" parent="Control/GameWinControl" unique_id=202814290]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_4u2vk")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Button" type="Button" parent="Control/GameOverControl" unique_id=1323271167]
+[node name="BackgroundGameOver" type="TextureRect" parent="Control/GameWinControl" unique_id=2068380474]
+texture_filter = 1
 layout_mode = 0
-offset_left = 744.0
-offset_top = 840.0
-offset_right = 752.0
-offset_bottom = 848.0
-scale = Vector2(71.3552, 12.852727)
-theme_override_colors/font_hover_color = Color(0, 0.72219145, 0.57155794, 1)
-theme_override_font_sizes/font_size = 50
+offset_left = 515.0
+offset_top = 84.0
+offset_right = 1398.0
+offset_bottom = 887.0
+texture = ExtResource("5_amv7k")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/GameOverControl/Button" unique_id=1973649661]
+[node name="TryAgainButton" type="TextureButton" parent="Control/GameWinControl" unique_id=760900331]
 layout_mode = 0
-offset_left = 1.7938426
-offset_top = 1.244872
-offset_right = 496.79385
-offset_bottom = 138.24487
-scale = Vector2(0.008414658, 0.0380522)
-theme_override_font_sizes/font_size = 100
-text = "Try Again?"
+offset_left = 745.0
+offset_top = 414.0
+offset_right = 1168.0
+offset_bottom = 644.0
+focus_mode = 0
+texture_normal = SubResource("CompressedTexture2D_4u2vk")
+ignore_texture_size = true
+stretch_mode = 5
 
-[connection signal="pressed" from="Control/GameOverControl/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Control/GameOverControl/Button" to="." method="_on_retry_button_pressed"]
+[node name="Label" type="Label" parent="Control/GameWinControl/TryAgainButton" unique_id=2033862985]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 74.0
+offset_right = 351.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 64
+text = "Play Again"
+
+[node name="QuitButton" type="TextureButton" parent="Control/GameWinControl" unique_id=1873358622]
+layout_mode = 0
+offset_left = 747.0
+offset_top = 603.0
+offset_right = 1160.0
+offset_bottom = 750.0
+focus_mode = 0
+texture_normal = ExtResource("7_4q17s")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/GameWinControl/QuitButton" unique_id=601452776]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 32.0
+offset_right = 263.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="Label" type="Label" parent="Control/GameWinControl" unique_id=294891231]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 267.0
+offset_right = 1252.0
+offset_bottom = 429.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 0.78431374)
+theme_override_fonts/font = ExtResource("7_1fv7p")
+theme_override_font_sizes/font_size = 124
+text = "You won!"
+horizontal_alignment = 1

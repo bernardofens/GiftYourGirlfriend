@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6e2dfob57x30"
-path="res://.godot/imported/acef5945ccfebe539355374821aa4be9-dia-dos-namorados-icone-de-chocolate.png.webp-2c1fa1e1740a68651884c2d3205ebb04.ctex"
+uid="uid://bunegnpuptro5"
+path="res://.godot/imported/empty-health.png-b11ebf37734d6f90687ffbc378683169.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/acef5945ccfebe539355374821aa4be9-dia-dos-namorados-icone-de-chocolate.png.webp"
-dest_files=["res://.godot/imported/acef5945ccfebe539355374821aa4be9-dia-dos-namorados-icone-de-chocolate.png.webp-2c1fa1e1740a68651884c2d3205ebb04.ctex"]
+source_file="res://Assets/Images/empty-health.png"
+dest_files=["res://.godot/imported/empty-health.png-b11ebf37734d6f90687ffbc378683169.ctex"]
 
 [params]
 

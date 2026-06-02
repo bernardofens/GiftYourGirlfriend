@@ -59,31 +59,23 @@ shape = SubResource("BoxShape3D_ihfcg")
 
 [node name="Flowers" type="Node3D" parent="." unique_id=1661846793]
 
-[node name="Flower1" parent="Flowers" unique_id=1460569006 node_paths=PackedStringArray("hud") instance=ExtResource("4_ihfcg")]
+[node name="Flower1" parent="Flowers" unique_id=1460569006 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8985004, 0.5608754, 3.3778577)
-hud = NodePath("../../HUD")
 
-[node name="Flower2" parent="Flowers" unique_id=283976943 node_paths=PackedStringArray("hud") instance=ExtResource("4_ihfcg")]
+[node name="Flower2" parent="Flowers" unique_id=283976943 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8478985, 2.686812, -2.976686)
-hud = NodePath("../../HUD")
 
-[node name="Flower3" parent="Flowers" unique_id=960810357 node_paths=PackedStringArray("hud") instance=ExtResource("4_ihfcg")]
+[node name="Flower3" parent="Flowers" unique_id=960810357 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5664654, -0.7027335, -21.0464)
-hud = NodePath("../../HUD")
 
-[node name="Flower4" parent="Flowers" unique_id=1263221834 node_paths=PackedStringArray("hud") instance=ExtResource("4_ihfcg")]
+[node name="Flower4" parent="Flowers" unique_id=1263221834 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8179512, 2.686812, -2.976686)
-hud = NodePath("../../HUD")
 
-[node name="Flower5" parent="Flowers" unique_id=1998124360 node_paths=PackedStringArray("hud") instance=ExtResource("4_ihfcg")]
+[node name="Flower5" parent="Flowers" unique_id=1998124360 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.737154, 2.686812, -2.976686)
-hud = NodePath("../../HUD")
 
-[node name="Flower6" parent="Flowers" unique_id=1704637564 node_paths=PackedStringArray("hud") instance=ExtResource("4_ihfcg")]
+[node name="Flower6" parent="Flowers" unique_id=1704637564 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.653795, -0.7027335, -22.508257)
-hud = NodePath("../../HUD")
-
-[node name="HUD" parent="." unique_id=1472270857 instance=ExtResource("6_5hph3")]
 
 [node name="Trees" type="Node3D" parent="." unique_id=2001182552]
 
@@ -138,5 +130,7 @@ collision_layer = 2
 collision_mask = 13
 a = Vector3(17.2, 1.374, -15.896)
 b = Vector3(17.202, -3.007, -15.896)
+
+[node name="HUD" parent="." unique_id=1472270857 instance=ExtResource("6_5hph3")]
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
