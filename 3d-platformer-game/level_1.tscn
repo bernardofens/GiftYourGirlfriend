@@ -28,6 +28,43 @@ ambient_light_sky_contribution = 0.01
 [sub_resource type="BoxShape3D" id="BoxShape3D_ihfcg"]
 size = Vector3(150, 10, 150)
 
+[sub_resource type="Animation" id="Animation_5rr72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 15.671507, 11.074234)]
+}
+
+[sub_resource type="Animation" id="Animation_gyffv"]
+resource_name = "cutscene entrada"
+length = 5.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 15.671507, 11.074234), Vector3(0.378, 3.872, 6.619)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pe0h"]
+_data = {
+&"RESET": SubResource("Animation_5rr72"),
+&"cutscene entrada": SubResource("Animation_gyffv")
+}
+
 [node name="Level1" type="Node3D" unique_id=213052112]
 script = ExtResource("1_rka8t")
 
@@ -36,7 +73,7 @@ transform = Transform3D(0.91166884, -0.29154548, 0.28958794, 0, 0.7047209, 0.709
 shadow_enabled = true
 
 [node name="Steve" parent="." unique_id=1717163893 instance=ExtResource("2_hbghi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 1.883693)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37833118, 1.7253809, 4.4720945)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1300185430]
 environment = SubResource("Environment_rka8t")
@@ -136,5 +173,11 @@ b = Vector3(17.202, -3.007, -15.896)
 
 [node name="Boss" parent="." unique_id=1132303011 instance=ExtResource("9_5rr72")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.4956503, 1.4782186, -2.5678594)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1529136287]
+transform = Transform3D(1, 0, 0, 0, 0.85172695, 0.5239859, 0, -0.5239859, 0.85172695, 0, 15.671507, 11.074234)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=945553689]
+libraries/ = SubResource("AnimationLibrary_1pe0h")
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
