@@ -17,7 +17,7 @@ extends CanvasLayer
 # --- TELAS DE ESTADO ---
 @onready var game_over = $Control/GameOverControl
 @onready var pause_control = $Control/PauseControl 
-@onready var win_screen = $Control/GameWinControl # Caminho atualizado para o novo nó
+@onready var win_screen = $Control/GameWinControl
 
 # --- BOTÕES ---
 @onready var try_again_btn = $Control/GameOverControl/TryAgainButton
@@ -26,8 +26,9 @@ extends CanvasLayer
 @onready var resume_btn = $Control/PauseControl/ResumeButton 
 @onready var pause_quit_btn = $Control/PauseControl/QuitButton 
 
-@onready var win_restart_btn = $Control/GameWinControl/RestartButton # Novo botão da tela de vitória
-@onready var win_quit_btn = $Control/GameWinControl/QuitButton # Novo botão da tela de vitória
+# CORRIGIDO: O nome real do nó na árvore de cenas é TryAgainButton
+@onready var win_restart_btn = $Control/GameWinControl/TryAgainButton 
+@onready var win_quit_btn = $Control/GameWinControl/QuitButton
 
 # --- TEXTURAS ---
 var full_heart = preload("res://Assets/Images/heart-gyg.png")
@@ -114,7 +115,6 @@ func _on_retry_button_pressed():
 	get_tree().paused = false
 	game_won = false
 	
-	# Direciona para a tela de loading correspondente ao nível atual
 	if Global.level == 1:
 		Global.next_scene_path = "res://level_1.tscn"
 	else:
@@ -137,11 +137,8 @@ func _on_win_restart_pressed():
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_quit_button_pressed():
-	# É obrigatório despausar o jogo antes de sair
 	get_tree().paused = false
 	
-	# Salva a rota do Menu e vai para a tela de loading
-	# (É bom usar o loading para voltar ao menu principal pois limpa a memória do mundo 3D de forma suave)
 	Global.next_scene_path = "res://menu.tscn"
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 

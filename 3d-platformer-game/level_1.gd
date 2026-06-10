@@ -1,23 +1,20 @@
 extends Node3D
 
-# Variável de controle para não carregar a cena repetidas vezes
 var changing_level := false
 
 func _ready() -> void:
 	Global.roses = 0
 	Global.hearts = 3
-	Global.level = 1 # Garante que o HUD saiba que estamos no nível 1
+	Global.level = 1
 
-func _process(delta: float) -> void:
-	# Verifica se pegou todas as rosas e se a transição ainda não começou
+func _process(_delta: float) -> void:
+	# Verifica se pegou as rosas e se já não está mudando de level
 	if Global.roses >= Global.NUM_ROSES_TO_WIN and not changing_level:
 		changing_level = true
 		
-		# Atualiza o nível global para o HUD mudar os ícones
+		# Prepara as variáveis para o Level 2
 		Global.level = 2 
-		
-		# Define o Nível 2 como destino
 		Global.next_scene_path = "res://level_2.tscn"
 		
-		# Chama a sua SEGUNDA tela de loading (a nova que criamos)
+		# Chama a nova cena de loading personalizada!
 		get_tree().change_scene_to_file("res://loading_screen_level.tscn")

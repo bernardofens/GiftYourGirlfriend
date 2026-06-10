@@ -136,22 +136,7 @@ transform = Transform3D(0.999009, 0, -0.044508655, 0, 1, 0, 0.044508655, 0, 0.99
 transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 4.8818192, 0.51566005, 5.179411)
 
 [node name="Enemy5" parent="Enemies" unique_id=1722247657 instance=ExtResource("8_bjebc")]
-transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 18.424948, 2.7862206, 5.7246113)
-
-[node name="Enemy6" parent="Enemies" unique_id=750875719 instance=ExtResource("8_bjebc")]
-transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, -0.9583874, -1.5401177, -22.354448)
-
-[node name="Enemy7" parent="Enemies" unique_id=1643808189 instance=ExtResource("8_bjebc")]
-transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 6.2000837, -1.6647553, -18.995438)
-
-[node name="Enemy8" parent="Enemies" unique_id=782323641 instance=ExtResource("8_bjebc")]
-transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, -1.5963559, -1.4017081, -15.395072)
-
-[node name="Enemy9" parent="Enemies" unique_id=939250966 instance=ExtResource("8_bjebc")]
-transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 6.5683217, -1.4017081, -15.395072)
-
-[node name="Enemy10" parent="Enemies" unique_id=636416684 instance=ExtResource("8_bjebc")]
-transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, -34.128254, -1.5372295, -18.549755)
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 18.424948, 2.7862206, 3.260559)
 
 [node name="Moving Platforms" type="Node3D" parent="." unique_id=1986120698]
 
@@ -172,7 +157,7 @@ b = Vector3(17.202, -3.007, -15.896)
 [node name="HUD" parent="." unique_id=1472270857 instance=ExtResource("6_5hph3")]
 
 [node name="Boss" parent="." unique_id=1132303011 instance=ExtResource("9_5rr72")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.4956503, 1.4782186, -2.5678594)
+transform = Transform3D(-1.0452745, 0, 2.8120103, 0, 3, 0, -2.8120103, 0, -1.0452745, 17.581741, 3.7194552, 7.8444567)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1529136287]
 transform = Transform3D(1, 0, 0, 0, 0.85172695, 0.5239859, 0, -0.5239859, 0.85172695, 0, 15.671507, 11.074234)

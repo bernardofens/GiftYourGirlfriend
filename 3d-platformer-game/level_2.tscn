@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdbaevrvj58hv"]
 
-[ext_resource type="Script" uid="uid://do0hs7baapiuu" path="res://level_1.gd" id="1_7dov7"]
+[ext_resource type="Script" uid="uid://bmqes8kvyo07x" path="res://level_2.gd" id="1_7j8ne"]
 [ext_resource type="PackedScene" uid="uid://cv5xvuq2rh5ot" path="res://steve.tscn" id="3_15wb7"]
 [ext_resource type="PackedScene" uid="uid://dpl87wdci5b5h" path="res://chocolate.tscn" id="4_7j8ne"]
 [ext_resource type="MeshLibrary" uid="uid://m3qtj04tw8j8" path="res://Resources/world-blocks-v1.tres" id="4_eoq84"]
@@ -27,7 +27,7 @@ ambient_light_sky_contribution = 0.01
 size = Vector3(150, 10, 150)
 
 [node name="Level2" type="Node3D" unique_id=213052112]
-script = ExtResource("1_7dov7")
+script = ExtResource("1_7j8ne")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=360943947]
 transform = Transform3D(0.91166884, -0.29154548, 0.28958794, 0, 0.7047209, 0.70948464, -0.41092572, -0.64681506, 0.6424721, 1.4960904, 5.0006294, 2.967283)
@@ -58,25 +58,20 @@ shape = SubResource("BoxShape3D_ihfcg")
 
 [node name="Chocolates" type="Node3D" parent="." unique_id=1661846793]
 
-[node name="Chocolate" parent="Chocolates" unique_id=283976943 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+[node name="Chocolate" parent="Chocolates" unique_id=283976943 instance=ExtResource("4_7j8ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5574245, -4.929229)
-hud = NodePath("../../HUD")
 
-[node name="Chocolate2" parent="Chocolates" unique_id=1243397064 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+[node name="Chocolate2" parent="Chocolates" unique_id=1243397064 instance=ExtResource("4_7j8ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.386406, 3.4382653, -1.610055)
-hud = NodePath("../../HUD")
 
-[node name="Chocolate3" parent="Chocolates" unique_id=1684377336 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+[node name="Chocolate3" parent="Chocolates" unique_id=1684377336 instance=ExtResource("4_7j8ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16083384, -18.621256)
-hud = NodePath("../../HUD")
 
-[node name="Chocolate4" parent="Chocolates" unique_id=1931102166 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+[node name="Chocolate4" parent="Chocolates" unique_id=1931102166 instance=ExtResource("4_7j8ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.653202, 0.11288357, -17.088078)
-hud = NodePath("../../HUD")
 
-[node name="Chocolate5" parent="Chocolates" unique_id=844870737 node_paths=PackedStringArray("hud") instance=ExtResource("4_7j8ne")]
+[node name="Chocolate5" parent="Chocolates" unique_id=844870737 instance=ExtResource("4_7j8ne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.741283, 3.1289177, 0)
-hud = NodePath("../../HUD")
 
 [node name="HUD" parent="." unique_id=1472270857 instance=ExtResource("6_xbcdb")]
 

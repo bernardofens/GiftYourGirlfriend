@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://8xr85lhdqerf"]
 
 [ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="1_164to"]
+[ext_resource type="Script" uid="uid://bi2vejiry6djm" path="res://loading_screen_level.gd" id="1_rcgsm"]
+[ext_resource type="Texture2D" uid="uid://cn7d0y0mk2tcf" path="res://Assets/Images/welcome-screen.png" id="2_gx0b5"]
 
 [node name="LoadingScreenLevel" type="Control" unique_id=2118790748]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rcgsm")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=934071419]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_gx0b5")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1842595280]
 layout_mode = 1
