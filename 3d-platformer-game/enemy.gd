@@ -13,10 +13,22 @@ var direction := Vector3.ZERO
 var player: Node3D
 var turning := false
 
+# --- SISTEMA DE ÁUDIO 3D ---
+var step_audio_player: AudioStreamPlayer3D
+var sfx_enemy_walk = preload("res://Assets/Audio/sfx_enemy_walk.wav")
+var step_timer := 0.0
+var step_interval := 0.5
+
 func _ready() -> void:
 	$RayCast3D.enabled = true
 	player = get_tree().get_first_node_in_group("Steve")
 	definir_direcao_aleatoria()
+	
+	# Inicializa e configura o player de áudio 3D
+	step_audio_player = AudioStreamPlayer3D.new()
+	add_child(step_audio_player)
+	step_audio_player.stream = sfx_enemy_walk
+	step_audio_player.max_distance = 15.0 # Distância máxima em metros para ouvir o som
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -49,6 +61,15 @@ func _physics_process(delta: float) -> void:
 	
 	if current_state in [State.PATROL, State.CHASE]:
 		_check_collisions()
+		
+	# Gerencia o som de passos tridimensional baseado no movimento
+	if is_on_floor() and velocity.length() > 0.1 and not turning and current_state in [State.PATROL, State.CHASE]:
+		step_timer += delta
+		# Reduz o intervalo se estiver perseguindo (passos mais rápidos)
+		var current_interval = step_interval * 0.6 if current_state == State.CHASE else step_interval
+		if step_timer >= current_interval:
+			step_audio_player.play()
+			step_timer = 0.0
 
 func _patrol_state():
 	if player and global_position.distance_to(player.global_position) < detection_range:
@@ -129,6 +150,8 @@ func _on_top_checker_body_entered(body: Node3D) -> void:
 			
 		if body is CharacterBody3D:
 			body.velocity.y = 8.0 
+			
+		AudioManager.play_sfx(AudioManager.sfx_damage_dealt)
 			
 		$SidesChecker.set_collision_mask_value(1, false)
 		$TopChecker.set_collision_mask_value(1, false)

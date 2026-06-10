@@ -22,18 +22,14 @@ extends CanvasLayer
 # --- BOTÕES ---
 @onready var try_again_btn = $Control/GameOverControl/TryAgainButton
 @onready var quit_btn = $Control/GameOverControl/QuitButton
-
 @onready var resume_btn = $Control/PauseControl/ResumeButton 
 @onready var pause_quit_btn = $Control/PauseControl/QuitButton 
-
-# CORRIGIDO: O nome real do nó na árvore de cenas é TryAgainButton
 @onready var win_restart_btn = $Control/GameWinControl/TryAgainButton 
 @onready var win_quit_btn = $Control/GameWinControl/QuitButton
 
 # --- TEXTURAS ---
 var full_heart = preload("res://Assets/Images/heart-gyg.png")
 var empty_heart = preload("res://Assets/Images/heartless-gyg.png")
-
 var rose_tex = preload("res://Assets/Images/rose.png") 
 var chocolate_tex = preload("res://Assets/Images/chocolate.webp") 
 
@@ -41,7 +37,6 @@ var chocolate_tex = preload("res://Assets/Images/chocolate.webp")
 var game_won := false
 
 func _ready() -> void:
-	# Garante que as telas estejam invisíveis ao iniciar
 	game_over.visible = false
 	if win_screen: win_screen.visible = false
 	if pause_control: pause_control.visible = false
@@ -53,16 +48,11 @@ func _ready() -> void:
 	if stamina_bar:
 		stamina_bar.max_value = Global.max_stamina
 		
-	# Conexões de botões Game Over
 	if try_again_btn: try_again_btn.pressed.connect(_on_retry_button_pressed)
 	if quit_btn: quit_btn.pressed.connect(_on_quit_button_pressed)
-	
-	# Conexões de botões Pause
 	if pause_button: pause_button.pressed.connect(toggle_pause)
 	if resume_btn: resume_btn.pressed.connect(toggle_pause)
 	if pause_quit_btn: pause_quit_btn.pressed.connect(_on_quit_button_pressed)
-		
-	# Conexões de botões Game Win
 	if win_restart_btn: win_restart_btn.pressed.connect(_on_win_restart_pressed)
 	if win_quit_btn: win_quit_btn.pressed.connect(_on_quit_button_pressed)
 
@@ -85,6 +75,9 @@ func toggle_pause():
 func _on_player_died():
 	if game_won: return 
 	
+	# Muda a música para Game Over
+	AudioManager.play_music(AudioManager.music_game_over)
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_over.visible = true
 	
@@ -93,6 +86,10 @@ func _on_player_died():
 
 func show_win_screen():
 	game_won = true
+	
+	# Muda a música para Game Win
+	AudioManager.play_music(AudioManager.music_game_win)
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	win_screen.visible = true
 	
@@ -107,7 +104,6 @@ func _hide_hud_elements():
 	if stamina: stamina.visible = false
 
 func _on_retry_button_pressed():
-	# Reinicia o nível atual
 	Global.hearts = 3
 	Global.chocolates = 0
 	Global.roses = 0
@@ -123,7 +119,6 @@ func _on_retry_button_pressed():
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_win_restart_pressed():
-	# Zera o jogo e força o retorno para o Nível 1
 	Global.hearts = 3
 	Global.chocolates = 0
 	Global.roses = 0
@@ -132,13 +127,11 @@ func _on_win_restart_pressed():
 	get_tree().paused = false
 	game_won = false
 	
-	# Salva a rota do Nível 1 e vai para a tela de loading
 	Global.next_scene_path = "res://level_1.tscn"
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
-	
 	Global.next_scene_path = "res://menu.tscn"
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 

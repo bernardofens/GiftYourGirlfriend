@@ -8,8 +8,8 @@ const MAX_JUMPS = 2
 var jump_count = 0
 const SPRINT_SPEED = 9.0
 var target_cam_y_rotation : float = 0.0
-const CAM_ROTATION_SPEED : float = 8.0   # Ajuste para controlar a suavidade
-const CAM_ROTATION_STEP : float = 30.0   # Graus por toque
+const CAM_ROTATION_SPEED : float = 8.0
+const CAM_ROTATION_STEP : float = 30.0
 
 @export var spawn_position: Vector3
 signal player_died
@@ -18,16 +18,34 @@ var xform: Transform3D
 # --- SISTEMA DE ESTAMINA ---
 @export var max_stamina := 100.0
 var current_stamina := 100.0
-@export var stamina_drain_rate := 25.0 # O quão rápido a estamina cai correndo
-@export var stamina_regen_rate := 15.0 # O quão rápido ela recupera
-@export var stamina_bar : ProgressBar  # Referência para a barra na tela
+@export var stamina_drain_rate := 25.0
+@export var stamina_regen_rate := 15.0
+@export var stamina_bar : ProgressBar
 # ---------------------------
+
+# --- CONTROLE DE ÁUDIO DE PASSOS ---
+var step_timer := 0.0
+var step_interval := 0.35
+
+func _ready() -> void:
+	spawn_position = global_position
+	target_cam_y_rotation = $Camera_Controller.rotation.y
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	current_stamina = max_stamina
+	if stamina_bar:
+		stamina_bar.max_value = max_stamina
+		stamina_bar.value = current_stamina
 
 func take_damage():
 	if !Global.can_take_damage:
 		return
 	Global.hearts -= 1
 	Global.can_take_damage = false
+	
+	# Executa o efeito sonoro de dano recebido
+	AudioManager.play_sfx(AudioManager.sfx_damage_taken)
+	
 	if Global.hearts <= 0:
 		print("player died calling signal")
 		player_died.emit()
@@ -46,8 +64,10 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ui_accept") and jump_count < MAX_JUMPS:
 		$AnimationPlayer.play("jump")
+		AudioManager.play_sfx(AudioManager.sfx_jump)
 	elif is_on_floor() and input_dir != Vector2.ZERO:
 		$AnimationPlayer.play("run")
+		_handle_step_audio(delta, current_stamina > 0 and Input.is_action_pressed("sprint"))
 	elif is_on_floor() and input_dir == Vector2.ZERO:
 		$AnimationPlayer.play("idle")
 	
@@ -66,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and jump_count < MAX_JUMPS:
 		if jump_count == 1:
 			if velocity.y < 0:
-					velocity.y = JUMP_VELOCITY/1.5
+				velocity.y = JUMP_VELOCITY/1.5
 			else:
 				velocity.y += JUMP_VELOCITY/1.5
 		else:
@@ -85,22 +105,17 @@ func _physics_process(delta: float) -> void:
 		align_with_floor(Vector3.UP)
 		global_transform = global_transform.interpolate_with(xform, 0.3)
 		
-	# --- SISTEMA DE ESTAMINA (Lógica de corrida) ---
 	var is_moving = direction != Vector3.ZERO
 	var is_trying_to_sprint = Input.is_action_pressed("sprint")
 	var current_speed = SPEED
 
-	# Se está tentando correr, está se movendo e tem estamina
 	if is_trying_to_sprint and is_moving and Global.stamina > 0:
 		current_speed = SPRINT_SPEED
 		Global.stamina -= stamina_drain_rate * delta
 	else:
-		# Se não está correndo, recupera
 		Global.stamina += stamina_regen_rate * delta
 
-	# Impede a estamina de passar do limite ou ficar negativa
 	Global.stamina = clamp(Global.stamina, 0.0, Global.max_stamina)
-	# -----------------------------------------------
 
 	if is_on_floor() and direction != Vector3.ZERO:
 		var floor_normal = get_floor_normal()
@@ -122,30 +137,26 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	$Camera_Controller.position = lerp($Camera_Controller.position, position, 0.15)
 
+func _handle_step_audio(delta: float, is_sprinting: bool) -> void:
+	step_timer += delta
+	var current_interval = step_interval * 0.6 if is_sprinting else step_interval
+	if step_timer >= current_interval:
+		# Passamos -12.0 dB para reduzir significativamente a intensidade do som
+		AudioManager.play_sfx(AudioManager.sfx_walk, -12.0)
+		step_timer = 0.0
+
 func align_with_floor(floor_normal):
 	xform = global_transform
 	xform.basis.y = floor_normal
 	xform.basis.x = -xform.basis.z.cross(floor_normal)
 	xform.basis = xform.basis.orthonormalized()
-	
-func _ready():
-	spawn_position = global_position
-	target_cam_y_rotation = $Camera_Controller.rotation.y
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	# --- SISTEMA DE ESTAMINA (Setup inicial) ---
-	current_stamina = max_stamina
-	if stamina_bar:
-		stamina_bar.max_value = max_stamina
-		stamina_bar.value = current_stamina
-	# -------------------------------------------
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		target_cam_y_rotation -= event.relative.x * mouse_sensitivity
 		
 func _on_fall_zone_body_entered(body: Node3D) -> void:
-	if body.name == "Steve": # Confirme se o nome do player é esse mesmo
+	if body.name == "Steve":
 		take_damage()
 		velocity = Vector3.ZERO
 		global_position = spawn_position

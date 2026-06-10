@@ -3,8 +3,8 @@ extends CharacterBody3D
 enum State { PATROL, CHASE, SHOOT }
 var current_state = State.PATROL
 
-@export var speed = 4.0 
-@export var chase_speed = 6.0
+@export var speed := 4.0 
+@export var chase_speed := 6.0
 @export var detection_range := 25.0
 @export var shoot_range := 12.0
 @export var bullet_scene: PackedScene 
@@ -14,10 +14,22 @@ var player: Node3D
 var turning := false
 var can_shoot := true
 
+# --- SISTEMA DE ÁUDIO 3D DO BOSS ---
+var step_audio_player: AudioStreamPlayer3D
+var sfx_boss_walk = preload("res://Assets/Audio/sfx_enemy_walk.wav")
+var step_timer := 0.0
+var step_interval := 0.65
+
 func _ready() -> void:
 	$RayCast3D.enabled = true
 	player = get_tree().get_first_node_in_group("Steve")
 	definir_direcao_aleatoria()
+	
+	# Inicializa e configura o player de áudio 3D do Boss
+	step_audio_player = AudioStreamPlayer3D.new()
+	add_child(step_audio_player)
+	step_audio_player.stream = sfx_boss_walk
+	step_audio_player.max_distance = 30.0 # O som do Boss alcança distâncias maiores
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -46,6 +58,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if current_state != State.SHOOT:
 		_check_collisions()
+		
+	# Gerencia os passos pesados do Boss tridimensionalmente
+	if is_on_floor() and velocity.length() > 0.1 and not turning and current_state != State.SHOOT:
+		step_timer += delta
+		var current_interval = step_interval * 0.7 if current_state == State.CHASE else step_interval
+		if step_timer >= current_interval:
+			step_audio_player.play()
+			step_timer = 0.0
 
 func _patrol_state():
 	if player and global_position.distance_to(player.global_position) < detection_range:
@@ -87,22 +107,19 @@ func fire_projectile():
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet) 
 	
-	# Posição de origem: centro do Boss
 	var spawn_pos = global_position
 	spawn_pos.y += 0.5 
 	
-	# Posição do alvo: mira exata no peito do jogador
 	var target_pos = player.global_position
 	target_pos.y += 1.0 
 	
-	# Calcula a direção reta
 	var dir = (target_pos - spawn_pos).normalized()
-	
-	# Nasce um pouco à frente para não colidir com o próprio Boss
 	bullet.global_position = spawn_pos + (dir * 1.5) 
 	
 	if bullet.has_method("set_direction"):
 		bullet.set_direction(dir)
+	
+	AudioManager.play_sfx(AudioManager.sfx_shoot)
 	
 	await get_tree().create_timer(2.2).timeout
 	can_shoot = true
