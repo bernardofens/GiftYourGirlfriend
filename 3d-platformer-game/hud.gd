@@ -27,13 +27,18 @@ extends CanvasLayer
 @onready var win_restart_btn = $Control/GameWinControl/TryAgainButton 
 @onready var win_quit_btn = $Control/GameWinControl/QuitButton
 
+# --- REFERÊNCIAS DE ÁUDIO NO PAUSE ---
+@onready var music_slider = $Control/PauseControl/MusicSlider
+@onready var music_mute_check = $Control/PauseControl/MusicMuteCheck
+@onready var sfx_slider = $Control/PauseControl/SfxSlider
+@onready var sfx_mute_check = $Control/PauseControl/SfxMuteCheck
+
 # --- TEXTURAS ---
 var full_heart = preload("res://Assets/Images/heart-gyg.png")
 var empty_heart = preload("res://Assets/Images/heartless-gyg.png")
 var rose_tex = preload("res://Assets/Images/rose.png") 
 var chocolate_tex = preload("res://Assets/Images/chocolate.webp") 
 
-# --- VARIÁVEIS DE CONTROLE ---
 var game_won := false
 
 func _ready() -> void:
@@ -56,6 +61,11 @@ func _ready() -> void:
 	if win_restart_btn: win_restart_btn.pressed.connect(_on_win_restart_pressed)
 	if win_quit_btn: win_quit_btn.pressed.connect(_on_quit_button_pressed)
 
+	if music_slider: music_slider.value_changed.connect(_on_music_slider_changed)
+	if music_mute_check: music_mute_check.toggled.connect(_on_music_mute_toggled)
+	if sfx_slider: sfx_slider.value_changed.connect(_on_sfx_slider_changed)
+	if sfx_mute_check: sfx_mute_check.toggled.connect(_on_sfx_mute_toggled)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and not game_over.visible and not game_won:
 		toggle_pause()
@@ -75,9 +85,7 @@ func toggle_pause():
 func _on_player_died():
 	if game_won: return 
 	
-	# Muda a música para Game Over
 	AudioManager.play_music(AudioManager.music_game_over)
-	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_over.visible = true
 	
@@ -86,10 +94,7 @@ func _on_player_died():
 
 func show_win_screen():
 	game_won = true
-	
-	# Muda a música para Game Win
 	AudioManager.play_music(AudioManager.music_game_win)
-	
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	win_screen.visible = true
 	
@@ -134,6 +139,34 @@ func _on_quit_button_pressed():
 	get_tree().paused = false
 	Global.next_scene_path = "res://menu.tscn"
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
+
+# --- SINAIS DE CONFIGURAÇÃO DE ÁUDIO COM SINCRONIZAÇÃO NO PAUSE ---
+
+func _on_music_slider_changed(value: float) -> void:
+	if AudioManager:
+		AudioManager.set_music_volume(value)
+	if music_mute_check:
+		music_mute_check.set_pressed_no_signal(value >= 100.0)
+
+func _on_music_mute_toggled(is_button_pressed: bool) -> void:
+	var target_volume = 100.0 if is_button_pressed else 0.0
+	if music_slider:
+		music_slider.set_value_no_signal(target_volume)
+	if AudioManager:
+		AudioManager.set_music_volume(target_volume)
+
+func _on_sfx_slider_changed(value: float) -> void:
+	if AudioManager:
+		AudioManager.set_sfx_volume(value)
+	if sfx_mute_check:
+		sfx_mute_check.set_pressed_no_signal(value >= 100.0)
+
+func _on_sfx_mute_toggled(is_button_pressed: bool) -> void:
+	var target_volume = 100.0 if is_button_pressed else 0.0
+	if sfx_slider:
+		sfx_slider.set_value_no_signal(target_volume)
+	if AudioManager:
+		AudioManager.set_sfx_volume(target_volume)
 
 func _process(delta: float) -> void:
 	if Global.level == 1:

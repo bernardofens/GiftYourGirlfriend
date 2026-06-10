@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dctjbpurdlkax" path="res://Assets/Images/gift-your-girlfriend.png" id="2_l48gv"]
 [ext_resource type="Texture2D" uid="uid://fxy411ymg0yi" path="res://Assets/Images/button-gyg.png" id="4_kk3ma"]
 [ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="5_nrnbx"]
+[ext_resource type="Texture2D" uid="uid://b4qjx4a056mdu" path="res://Assets/Images/big-button-gyg.png" id="6_l48gv"]
 
 [node name="MainMenu" type="Control" unique_id=1031286227]
 layout_mode = 3
@@ -38,12 +39,39 @@ grow_horizontal = 2
 pivot_offset = Vector2(744.5, 105)
 texture = ExtResource("2_l48gv")
 
+[node name="Settings" type="TextureButton" parent="." unique_id=888214568]
+process_mode = 3
+layout_mode = 0
+offset_left = 253.0
+offset_top = 588.0
+offset_right = 663.0
+offset_bottom = 762.0
+focus_mode = 0
+texture_normal = ExtResource("4_kk3ma")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Settings" type="Label" parent="Settings" unique_id=1193385847]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_top = 41.0
+offset_right = 71.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 80
+text = "Settings"
+
 [node name="PlayButton" type="TextureButton" parent="." unique_id=1851811695]
 layout_mode = 0
-offset_left = 245.0
-offset_top = 398.0
-offset_right = 715.0
-offset_bottom = 623.0
+offset_left = 255.0
+offset_top = 391.0
+offset_right = 655.0
+offset_bottom = 568.0
 focus_mode = 0
 texture_normal = ExtResource("4_kk3ma")
 ignore_texture_size = true
@@ -54,10 +82,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -71.0
-offset_top = 61.0
-offset_right = 71.0
-offset_bottom = 165.0
+offset_left = -73.0
+offset_top = 44.0
+offset_right = 69.0
+offset_bottom = 148.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
 theme_override_fonts/font = ExtResource("5_nrnbx")
@@ -66,10 +94,10 @@ text = "Play"
 
 [node name="QuitButton" type="TextureButton" parent="." unique_id=1047835523]
 layout_mode = 0
-offset_left = 245.0
-offset_top = 648.0
-offset_right = 715.0
-offset_bottom = 873.0
+offset_left = 256.0
+offset_top = 773.0
+offset_right = 653.0
+offset_bottom = 954.0
 focus_mode = 0
 texture_normal = ExtResource("4_kk3ma")
 ignore_texture_size = true
@@ -80,12 +108,88 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -71.0
-offset_top = 61.0
-offset_right = 71.0
-offset_bottom = 165.0
+offset_left = -76.5
+offset_top = 42.0
+offset_right = 77.5
+offset_bottom = 146.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
 theme_override_fonts/font = ExtResource("5_nrnbx")
 theme_override_font_sizes/font_size = 80
 text = "Quit"
+
+[node name="SettingsPanel" type="Control" parent="." unique_id=1832488416]
+process_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sliders" type="TextureRect" parent="SettingsPanel" unique_id=302342556]
+texture_filter = 1
+layout_mode = 0
+offset_left = 716.0
+offset_top = 534.0
+offset_right = 1617.0
+offset_bottom = 816.0
+texture = ExtResource("6_l48gv")
+expand_mode = 1
+
+[node name="MusicMuteCheck" type="CheckBox" parent="SettingsPanel" unique_id=1701716522]
+process_mode = 3
+layout_mode = 0
+offset_left = 806.0
+offset_top = 575.0
+offset_right = 1118.0
+offset_bottom = 683.0
+icon = ExtResource("4_kk3ma")
+expand_icon = true
+
+[node name="SfxMuteCheck" type="CheckBox" parent="SettingsPanel" unique_id=524733897]
+process_mode = 3
+layout_mode = 0
+offset_left = 807.0
+offset_top = 662.0
+offset_right = 1122.0
+offset_bottom = 792.0
+icon = ExtResource("4_kk3ma")
+expand_icon = true
+
+[node name="Sfx" type="Label" parent="SettingsPanel" unique_id=229224936]
+layout_mode = 0
+offset_left = 838.0
+offset_top = 691.0
+offset_right = 1107.0
+offset_bottom = 775.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 64
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="Music" type="Label" parent="SettingsPanel" unique_id=1118652893]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 590.0
+offset_right = 1110.0
+offset_bottom = 674.0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 64
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel" unique_id=1571038471]
+layout_mode = 0
+offset_left = 1137.0
+offset_top = 606.0
+offset_right = 1493.0
+offset_bottom = 650.0
+value = 100.0
+
+[node name="SfxSlider" type="HSlider" parent="SettingsPanel" unique_id=188333861]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 707.0
+offset_right = 1497.0
+offset_bottom = 751.0
+value = 100.0
