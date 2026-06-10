@@ -114,10 +114,13 @@ func _on_retry_button_pressed():
 	get_tree().paused = false
 	game_won = false
 	
+	# Direciona para a tela de loading correspondente ao nível atual
 	if Global.level == 1:
-		get_tree().change_scene_to_file("res://level_1.tscn")
+		Global.next_scene_path = "res://level_1.tscn"
 	else:
-		get_tree().change_scene_to_file("res://level_2.tscn")
+		Global.next_scene_path = "res://level_2.tscn"
+		
+	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_win_restart_pressed():
 	# Zera o jogo e força o retorno para o Nível 1
@@ -129,15 +132,18 @@ func _on_win_restart_pressed():
 	get_tree().paused = false
 	game_won = false
 	
-	get_tree().change_scene_to_file("res://level_1.tscn")
+	# Salva a rota do Nível 1 e vai para a tela de loading
+	Global.next_scene_path = "res://level_1.tscn"
+	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_quit_button_pressed():
-	# 1. É obrigatório despausar o jogo antes de sair, 
-	# senão o seu Menu Inicial vai carregar congelado!
+	# É obrigatório despausar o jogo antes de sair
 	get_tree().paused = false
 	
-	# 2. Carrega a cena do Menu Inicial
-	get_tree().change_scene_to_file("res://menu.tscn")
+	# Salva a rota do Menu e vai para a tela de loading
+	# (É bom usar o loading para voltar ao menu principal pois limpa a memória do mundo 3D de forma suave)
+	Global.next_scene_path = "res://menu.tscn"
+	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _process(delta: float) -> void:
 	if Global.level == 1:

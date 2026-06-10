@@ -348,6 +348,7 @@ text = "Paused"
 horizontal_alignment = 1
 
 [node name="GameWinControl" type="Control" parent="Control" unique_id=310004135]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -379,6 +380,7 @@ texture = ExtResource("5_amv7k")
 expand_mode = 1
 
 [node name="TryAgainButton" type="TextureButton" parent="Control/GameWinControl" unique_id=760900331]
+process_mode = 3
 layout_mode = 0
 offset_left = 745.0
 offset_top = 414.0
@@ -401,6 +403,7 @@ theme_override_font_sizes/font_size = 64
 text = "Play Again"
 
 [node name="QuitButton" type="TextureButton" parent="Control/GameWinControl" unique_id=1873358622]
+process_mode = 3
 layout_mode = 0
 offset_left = 747.0
 offset_top = 603.0

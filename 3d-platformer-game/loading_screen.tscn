@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cmoqiuh3bdpax"]
+
+[ext_resource type="Script" uid="uid://dx7eubp5fgdp8" path="res://loading_screen.gd" id="1_htrc2"]
+[ext_resource type="Texture2D" uid="uid://cn7d0y0mk2tcf" path="res://Assets/Images/welcome-screen.png" id="2_weff3"]
+[ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="3_weff3"]
+
+[node name="LoadingScreen" type="Control" unique_id=1595784554]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_htrc2")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=104723065]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_weff3")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=646808507]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 534.0
+offset_top = 454.0
+offset_right = 1353.0
+offset_bottom = 544.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_weff3")
+theme_override_font_sizes/font_size = 48

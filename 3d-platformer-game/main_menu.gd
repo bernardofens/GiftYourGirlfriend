@@ -31,7 +31,8 @@ func animate_menu_entrance() -> void:
 		tween.parallel().tween_property(quit_button, "modulate:a", 1.0, 0.5)
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://level_1.tscn")
+	Global.next_scene_path = "res://level_1.tscn" # Usando Global
+	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_quit_pressed() -> void:
 	# Fecha o jogo definitivamente
