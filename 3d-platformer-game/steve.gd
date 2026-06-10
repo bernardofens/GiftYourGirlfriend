@@ -28,6 +28,7 @@ var step_timer := 0.0
 var step_interval := 0.35
 
 func _ready() -> void:
+	Global.can_take_damage = true
 	spawn_position = global_position
 	target_cam_y_rotation = $Camera_Controller.rotation.y
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
