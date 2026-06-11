@@ -19,8 +19,8 @@ extends Control
 @onready var page_1_story = $TutorialOverlay/Panel/Page1_Story
 @onready var page_2_mechanics = $TutorialOverlay/Panel/Page2_Mechanics
 @onready var next_page_button: Button = $TutorialOverlay/Panel/Page1_Story/VBoxContainer/NextPageButton
-@onready var close_tutorial_button: Button = $TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/HBoxContainer/CloseTutorialButton
-@onready var prev_page_button: Button = $TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/HBoxContainer/PrevPageButton
+@onready var close_tutorial_button: Button = $TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/CloseTutorialButton
+@onready var prev_page_button: Button = $TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/PrevPageButton
 
 
 func _ready() -> void:

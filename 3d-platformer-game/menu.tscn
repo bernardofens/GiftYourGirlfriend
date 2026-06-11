@@ -227,21 +227,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.78431374)
+color = Color(0, 0, 0, 0.9019608)
 
 [node name="Panel" type="Panel" parent="TutorialOverlay" unique_id=1014449420]
 layout_mode = 0
-offset_left = 800.0
-offset_top = 200.0
-offset_right = 800.0
-offset_bottom = 200.0
+offset_left = 425.0
+offset_top = 75.0
+offset_right = 425.0
+offset_bottom = 75.0
 
 [node name="Page1_Story" type="MarginContainer" parent="TutorialOverlay/Panel" unique_id=105796509]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -295.0
+offset_right = 1365.0
+offset_bottom = 919.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TutorialOverlay/Panel/Page1_Story" unique_id=502551716]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=1757568208]
@@ -256,6 +258,7 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=177351834]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_nrnbx")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "O aniversário de namoro chegou, e você ainda não tem um presente!
 
@@ -272,18 +275,24 @@ Supere os desafios, prove o seu amor e ajude Leo a voltar para casa com o presen
 
 [ Pressione START para jogar ]
 
-Dica extra: Você pode separar cada uma das 4 primeiras frases em uma tela diferente (se o seu jogo tiver um sistema de diálogo ou transição de telas na introdução) para o jogador ir lendo aos poucos!"
+Dica extra: Você pode separar cada uma das 4 primeiras frases em uma tela diferente (se o seu jogo tiver um sistema de diálogo ou transição de telas na introdução) para o jogador ir lendo aos poucos!
+"
 fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=1253287360]
+layout_mode = 2
 
 [node name="NextPageButton" type="Button" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=825788320]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 32
 text = "Next"
 
 [node name="Page2_Mechanics" type="MarginContainer" parent="TutorialOverlay/Panel" unique_id=588210210]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -295.0
+offset_right = 1337.0
+offset_bottom = 967.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TutorialOverlay/Panel/Page2_Mechanics" unique_id=2143362838]
 layout_mode = 2
@@ -300,12 +309,13 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=1626010099]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_nrnbx")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "🎮 COMO JOGAR
 
 Controles:
 
-[ W, A, S, D ] - Mover o Leo.
+[ W, A, S, D ] - Mover o Jogador.
 [ Mouse ] - Mexer a câmera para olhar ao redor.
 [ Espaço ] - Pular (Pressione duas vezes no ar para o Pulo Duplo!).
 [ Shift ] - Correr para fugir dos Slimes mais rápido.
@@ -317,18 +327,21 @@ Regras de Sobrevivência:
 
 ⚡ Stamina: Fique de olho na barra de energia! Correr consome seu fôlego, então saiba a hora de descansar.
 
-🎁 Coleta de Itens: Simplesmente encoste nas 🌹 Rosas e nos 🍫 Chocolates pelo cenário para guardá-los no seu inventário."
+🎁 Coleta de Itens: Simplesmente encoste nas 🌹 Rosas e nos 🍫 Chocolates pelo cenário para guardá-los no seu inventário.
+"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=308426182]
+[node name="HSeparator2" type="HSeparator" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=841408300]
 layout_mode = 2
 
-[node name="PrevPageButton" type="Button" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/HBoxContainer" unique_id=1672495757]
+[node name="PrevPageButton" type="Button" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=1672495757]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 32
 text = "Previous"
 
-[node name="CloseTutorialButton" type="Button" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/HBoxContainer" unique_id=37216342]
+[node name="CloseTutorialButton" type="Button" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=37216342]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 32
 text = "Close"
