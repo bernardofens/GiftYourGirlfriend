@@ -22,10 +22,10 @@ extends CanvasLayer
 # --- BOTÕES ---
 @onready var try_again_btn = $Control/GameOverControl/TryAgainButton
 @onready var quit_btn = $Control/GameOverControl/QuitButton
-@onready var resume_btn = $Control/PauseControl/ResumeButton 
 @onready var pause_quit_btn = $Control/PauseControl/QuitButton 
 @onready var win_restart_btn = $Control/GameWinControl/TryAgainButton 
 @onready var win_quit_btn = $Control/GameWinControl/QuitButton
+@onready var resume_btn: TextureButton = $Control/PauseControl/TryAgainButton
 
 # --- REFERÊNCIAS DE ÁUDIO NO PAUSE ---
 @onready var music_slider = $Control/PauseControl/MusicSlider
