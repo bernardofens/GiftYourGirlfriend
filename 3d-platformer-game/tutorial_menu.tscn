@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://b207gyxk5yqxk"]
+
+[ext_resource type="Script" uid="uid://b7k6hwct3tpwv" path="res://tutorial_menu.gd" id="1_w2y4n"]
+[ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="2_1y1va"]
+
+[node name="TutorialMenu" type="Control" unique_id=1031608903]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w2y4n")
+
+[node name="Panel" type="Panel" parent="." unique_id=885531728]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1819086209]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1976559873]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1655895020]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1y1va")
+theme_override_font_sizes/font_size = 64
+text = "How to Play:"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1623360466]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1087916730]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_1y1va")
+bbcode_enabled = true
+text = "O aniversário de namoro chegou, e você ainda não tem um presente!
+
+Desesperado na internet, você clica em um anúncio misterioso e... ZAP! É sugado para dentro do computador!
+Agora, perdido em um perigoso mundo digital, ele precisa da sua ajuda.
+
+Sua Missão:
+
+🌹 Colete as Rosas Cintilantes.
+🍫 Encontre os Chocolates Lendários.
+👾 Sobreviva aos Slimes e às plataformas traiçoeiras!
+
+Supere os desafios, prove o seu amor e ajude Leo a voltar para casa com o presente perfeito!
+
+[ Pressione START para jogar ]
+
+Dica extra: Você pode separar cada uma das 4 primeiras frases em uma tela diferente (se o seu jogo tiver um sistema de diálogo ou transição de telas na introdução) para o jogador ir lendo aos poucos!"
+fit_content = true
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=548984802]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1y1va")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c1ry3wxy80eci"]
+[gd_scene format=3 uid="uid://clgpquj8gfpjq"]
 
 [ext_resource type="Script" uid="uid://fal6g2cmwj47" path="res://main_menu.gd" id="1_l48gv"]
 [ext_resource type="Texture2D" uid="uid://cn7d0y0mk2tcf" path="res://Assets/Images/welcome-screen.png" id="1_ytr4m"]
@@ -193,3 +193,142 @@ offset_top = 707.0
 offset_right = 1497.0
 offset_bottom = 751.0
 value = 100.0
+
+[node name="Tutorial" type="TextureButton" parent="." unique_id=1565479316]
+layout_mode = 0
+offset_left = 1519.0
+offset_top = 917.0
+offset_right = 1865.0
+offset_bottom = 1037.0
+focus_mode = 0
+texture_normal = ExtResource("4_kk3ma")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Tutorial" type="Label" parent="Tutorial" unique_id=555213905]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 33.0
+offset_right = 152.0
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 48
+text = "How to Play?"
+
+[node name="TutorialOverlay" type="ColorRect" parent="." unique_id=807460604]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="Panel" type="Panel" parent="TutorialOverlay" unique_id=1014449420]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 200.0
+offset_right = 800.0
+offset_bottom = 200.0
+
+[node name="Page1_Story" type="MarginContainer" parent="TutorialOverlay/Panel" unique_id=105796509]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialOverlay/Panel/Page1_Story" unique_id=502551716]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=1757568208]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 64
+text = "How to Play:"
+
+[node name="HSeparator" type="HSeparator" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=1612366378]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=177351834]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_nrnbx")
+bbcode_enabled = true
+text = "O aniversário de namoro chegou, e você ainda não tem um presente!
+
+Desesperado na internet, você clica em um anúncio misterioso e... ZAP! É sugado para dentro do computador!
+Agora, perdido em um perigoso mundo digital, ele precisa da sua ajuda.
+
+Sua Missão:
+
+🌹 Colete as Rosas Cintilantes.
+🍫 Encontre os Chocolates Lendários.
+👾 Sobreviva aos Slimes e às plataformas traiçoeiras!
+
+Supere os desafios, prove o seu amor e ajude Leo a voltar para casa com o presente perfeito!
+
+[ Pressione START para jogar ]
+
+Dica extra: Você pode separar cada uma das 4 primeiras frases em uma tela diferente (se o seu jogo tiver um sistema de diálogo ou transição de telas na introdução) para o jogador ir lendo aos poucos!"
+fit_content = true
+
+[node name="NextPageButton" type="Button" parent="TutorialOverlay/Panel/Page1_Story/VBoxContainer" unique_id=825788320]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nrnbx")
+text = "Next"
+
+[node name="Page2_Mechanics" type="MarginContainer" parent="TutorialOverlay/Panel" unique_id=588210210]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialOverlay/Panel/Page2_Mechanics" unique_id=2143362838]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=745967341]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nrnbx")
+theme_override_font_sizes/font_size = 64
+text = "How to Play:"
+
+[node name="HSeparator" type="HSeparator" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=562300265]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=1626010099]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_nrnbx")
+bbcode_enabled = true
+text = "🎮 COMO JOGAR
+
+Controles:
+
+[ W, A, S, D ] - Mover o Leo.
+[ Mouse ] - Mexer a câmera para olhar ao redor.
+[ Espaço ] - Pular (Pressione duas vezes no ar para o Pulo Duplo!).
+[ Shift ] - Correr para fugir dos Slimes mais rápido.
+[ Esc ] - Pausar o jogo.
+
+Regras de Sobrevivência:
+
+❤️ 3 Vidas: Você tem três chances! Cuidado com os inimigos e as quedas no abismo digital.
+
+⚡ Stamina: Fique de olho na barra de energia! Correr consome seu fôlego, então saiba a hora de descansar.
+
+🎁 Coleta de Itens: Simplesmente encoste nas 🌹 Rosas e nos 🍫 Chocolates pelo cenário para guardá-los no seu inventário."
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer" unique_id=308426182]
+layout_mode = 2
+
+[node name="PrevPageButton" type="Button" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/HBoxContainer" unique_id=1672495757]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nrnbx")
+text = "Previous"
+
+[node name="CloseTutorialButton" type="Button" parent="TutorialOverlay/Panel/Page2_Mechanics/VBoxContainer/HBoxContainer" unique_id=37216342]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_nrnbx")
+text = "Close"
