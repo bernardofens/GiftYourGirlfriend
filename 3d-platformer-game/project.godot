@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="3D Platformer Game"
-run/main_scene="uid://b207gyxk5yqxk"
+run/main_scene="uid://clgpquj8gfpjq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*uid://b2b3iiaytyc5"
-AudioManager="*uid://bnxpqcg5rcewl"
+Global="*res://global.gd"
+AudioManager="*res://audio_manager.gd"
 
 [display]
 
