@@ -328,7 +328,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.001644, -12.576136, -18.22
 [node name="ForestScene" parent="." unique_id=543716628 instance=ExtResource("13_sof0w")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -15.777351, -34.80832, -24.023758)
 
-[node name="ForestScene2" parent="." unique_id=560670806 instance=ExtResource("13_sof0w")]
+[node name="ForestScene2" parent="." unique_id=1425169724 instance=ExtResource("13_sof0w")]
 transform = Transform3D(-24.993624, 0, -0.56456673, 0, 25, 0, 0.56456673, 0, -24.993624, -15.777351, -34.80832, -46.602295)
 
 [node name="CutScene" type="AnimationPlayer" parent="." unique_id=271901906]
