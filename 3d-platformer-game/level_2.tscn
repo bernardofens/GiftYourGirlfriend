@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cffw3eaka82mg" path="res://Epirectangular Models/forest_clearing_1_top_skybox.glb" id="8_7dov7"]
 [ext_resource type="PackedScene" uid="uid://cloosk6t0k353" path="res://boss.tscn" id="8_ehv2h"]
 [ext_resource type="PackedScene" uid="uid://ba40va0jf3d72" path="res://Assets/Models/realistic_grass.glb" id="10_15wb7"]
+[ext_resource type="PackedScene" uid="uid://bpnwbfl3rvwho" path="res://forest_scene.tscn" id="11_eoq84"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hn12h"]
 sky_top_color = Color(0.032333303, 0, 0.97, 1)
@@ -150,5 +151,11 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.45313835, 2.0167215, 
 
 [node name="Tree2" parent="." unique_id=1258580514 instance=ExtResource("7_s77qv")]
 transform = Transform3D(0.33758828, 0, -0.94129384, 0, 1, 0, 0.94129384, 0, 0.33758828, 6.5472775, 2.13901, 23.686852)
+
+[node name="ForestScene" parent="." unique_id=543716628 instance=ExtResource("11_eoq84")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -24.836483, -41.156807, 0)
+
+[node name="ForestScene2" parent="." unique_id=494265327 instance=ExtResource("11_eoq84")]
+transform = Transform3D(-24.666721, 0, -4.068513, 0, 25, 0, 4.068513, 0, -24.666721, -24.836483, -41.156807, 0)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]

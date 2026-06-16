@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bpnwbfl3rvwho"]
+
+[ext_resource type="PackedScene" uid="uid://b755dxgo4c8vn" path="res://Assets/Models/low_poly_forest.glb" id="1_ug638"]
+
+[node name="ForestScene" type="Node3D" unique_id=543716628]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+
+[node name="Sketchfab_Scene" parent="." unique_id=1438713906 instance=ExtResource("1_ug638")]

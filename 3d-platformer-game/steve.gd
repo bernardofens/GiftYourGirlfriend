@@ -3,9 +3,9 @@ extends CharacterBody3D
 @export var mouse_sensitivity := 0.003
 
 # Valores ajustados para dar Match com as animações
-const SPEED = 3.5
-const SPRINT_SPEED = 6.0
-const JUMP_VELOCITY = 7.5
+const SPEED = 5.5
+const SPRINT_SPEED = 8.0
+const JUMP_VELOCITY = 9.5
 
 const MAX_JUMPS = 2
 var jump_count = 0
@@ -20,8 +20,8 @@ var xform: Transform3D
 # --- SISTEMA DE ESTAMINA ---
 @export var max_stamina := 100.0
 var current_stamina := 100.0
-@export var stamina_drain_rate := 25.0
-@export var stamina_regen_rate := 15.0
+@export var stamina_drain_rate := 15.0
+@export var stamina_regen_rate := 35.0
 @export var stamina_bar : ProgressBar
 # ---------------------------
 
