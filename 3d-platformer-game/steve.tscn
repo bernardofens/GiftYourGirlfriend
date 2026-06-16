@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://ccnq4qt4q82rv" path="res://steve.gd" id="1_bh3ft"]
 [ext_resource type="PackedScene" uid="uid://d2dq3ktebn45u" path="res://Assets/Character/Idle.fbx" id="2_u1phc"]
 [ext_resource type="Texture2D" uid="uid://bkqfeh8hi3lnr" path="res://Assets/Character/a38bb75a976d5627313dd4c4539bfd67/texture_pbr_20250901.png" id="3_0tgii"]
-[ext_resource type="Animation" uid="uid://pbkrxuom0nkq" path="res://Assets/Character/Jump.res" id="4_ng3dq"]
-[ext_resource type="Animation" uid="uid://bwdpgmhe1es7g" path="res://Assets/Character/Jumping.res" id="5_ofo8a"]
-[ext_resource type="Animation" uid="uid://dwrmvtity347k" path="res://Assets/Character/Running.res" id="6_2ahdc"]
-[ext_resource type="Animation" uid="uid://f3ai3faj3i5h" path="res://Assets/Character/Walking.res" id="7_svcdn"]
+[ext_resource type="Animation" uid="uid://35svmkh6sjy2" path="res://Assets/Character/Jump.res" id="4_ng3dq"]
+[ext_resource type="Animation" uid="uid://1ed5jiqg8lpa" path="res://Assets/Character/Jumping.res" id="5_ofo8a"]
+[ext_resource type="Animation" uid="uid://bsowmpabgg7fm" path="res://Assets/Character/Running.res" id="6_2ahdc"]
+[ext_resource type="Animation" uid="uid://qf3pkv36ly2o" path="res://Assets/Character/Walking.res" id="7_svcdn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gb21x"]
 albedo_texture = ExtResource("3_0tgii")
@@ -38,7 +38,7 @@ script = ExtResource("1_bh3ft")
 [node name="Armature" parent="." unique_id=1169635141 instance=ExtResource("2_u1phc")]
 transform = Transform3D(-124.99866, 0, -0.5759573, 0, 124.99999, 0, 0.5759573, 0, -124.99866, 0, -0.53394175, 0)
 
-[node name="Skeleton3D" parent="Armature" index="0" unique_id=1568248295]
+[node name="Skeleton3D" parent="Armature" index="0" unique_id=1976864756]
 bones/0/position = Vector3(1.109981e-05, 0.003153986, -3.8507016e-05)
 bones/0/rotation = Quaternion(-0.03713152, -0.3668161, -0.01158926, 0.9294799)
 bones/1/rotation = Quaternion(0.025389783, 0.04022499, -0.009371798, 0.9988241)
@@ -88,10 +88,10 @@ bones/30/rotation = Quaternion(0.68732333, 0.09161841, 0.09857226, 0.713776)
 bones/31/position = Vector3(2.0418886e-12, 0.00117803, -7.810237e-12)
 bones/31/rotation = Quaternion(0.2950672, -0.025398307, 0.0050879493, 0.9551254)
 
-[node name="node_0" parent="Armature/Skeleton3D" index="0" unique_id=1499718214]
+[node name="node_0" parent="Armature/Skeleton3D" index="0" unique_id=702182448]
 surface_material_override/0 = SubResource("StandardMaterial3D_gb21x")
 
-[node name="AnimationPlayer" parent="Armature" index="1" unique_id=272686305]
+[node name="AnimationPlayer" parent="Armature" index="1" unique_id=749749220]
 libraries/acao = SubResource("AnimationLibrary_u1phc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1191265441]

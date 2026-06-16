@@ -41,6 +41,12 @@ var chocolate_tex = preload("res://Assets/Images/chocolate.webp")
 
 var game_won := false
 
+# --- VARIÁVEIS DE FEEDBACK DE DANO ---
+var previous_hearts: int = 3
+var original_control_pos: Vector2
+var damage_overlay: ColorRect
+var shake_tween: Tween
+
 func _ready() -> void:
 	game_over.visible = false
 	if win_screen: win_screen.visible = false
@@ -65,6 +71,44 @@ func _ready() -> void:
 	if music_mute_check: music_mute_check.toggled.connect(_on_music_mute_toggled)
 	if sfx_slider: sfx_slider.value_changed.connect(_on_sfx_slider_changed)
 	if sfx_mute_check: sfx_mute_check.toggled.connect(_on_sfx_mute_toggled)
+	
+	_setup_damage_feedback()
+
+# --- CONFIGURA O FEEDBACK VISUAL DE DANO ---
+func _setup_damage_feedback() -> void:
+	# Guarda a posição original do Control para o Shake
+	original_control_pos = $Control.position
+	
+	# Cria um overlay vermelho dinamicamente para o "flash" de dano
+	damage_overlay = ColorRect.new()
+	damage_overlay.color = Color(0.8, 0.0, 0.0, 0.0) # Vermelho transparente
+	damage_overlay.set_anchors_preset(Control.PRESET_FULL_RECT) # Cobre a tela toda
+	damage_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE # Não bloqueia cliques
+	add_child(damage_overlay)
+	move_child(damage_overlay, 0) # Coloca atrás do $Control, mas na frente do jogo
+
+func trigger_damage_effect() -> void:
+	# 1. Efeito de Flash (Vermelho na tela)
+	var flash_tween = create_tween()
+	damage_overlay.color.a = 0.35 # Fica vermelho
+	flash_tween.tween_property(damage_overlay, "color:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE) # Esmaece suavemente
+	
+	# 2. Efeito de Shake do HUD
+	if shake_tween and shake_tween.is_running():
+		shake_tween.kill() # Para o shake anterior se tomar dano rápido demais
+		
+	shake_tween = create_tween()
+	var shakes = 6
+	var shake_strength = 15.0 # Intensidade do tremor em pixels
+	
+	for i in range(shakes):
+		var random_offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * shake_strength
+		shake_tween.tween_property($Control, "position", original_control_pos + random_offset, 0.04)
+		shake_strength *= 0.6 # O tremor vai diminuindo de intensidade
+		
+	# Retorna o HUD para a posição exata de origem no final
+	shake_tween.tween_property($Control, "position", original_control_pos, 0.05)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and not game_over.visible and not game_won:
@@ -169,6 +213,12 @@ func _on_sfx_mute_toggled(is_button_pressed: bool) -> void:
 		AudioManager.set_sfx_volume(target_volume)
 
 func _process(delta: float) -> void:
+	# DETECTA DANO: Se a vida for menor que no frame anterior, treme a tela
+	if Global.hearts < previous_hearts:
+		trigger_damage_effect()
+	previous_hearts = Global.hearts # Atualiza o rastreador
+	
+	
 	if Global.level == 1:
 		item_icon.texture = rose_tex
 		item_label.text = "x " + str(Global.roses)
