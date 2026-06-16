@@ -175,7 +175,7 @@ transform = Transform3D(1, 0, 0, 0, 0.85172695, 0.5239859, 0, -0.5239859, 0.8517
 libraries/ = SubResource("AnimationLibrary_1pe0h")
 
 [node name="Sketchfab_Scene" parent="." unique_id=421383993 instance=ExtResource("10_gyffv")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -7.3422565, 0, 9.518369)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -7.3422565, -22.4384, -19.704012)
 
 [node name="Sketchfab_Scene2" parent="." unique_id=1936926090 instance=ExtResource("10_gyffv")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.1445522, -22.432503, -19.771828)
