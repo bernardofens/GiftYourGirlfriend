@@ -1,5 +1,5 @@
 extends Node3D
-
+@onready var CutSceneAnim = $CutScene
 var changing_level := false
 
 func _ready() -> void:
@@ -9,6 +9,9 @@ func _ready() -> void:
 	Global.roses = 0
 	Global.hearts = 3
 	Global.level = 1
+	
+	CutSceneAnim.play("Intro")
+	
 
 func _process(_delta: float) -> void:
 	if Global.roses >= Global.NUM_ROSES_TO_WIN and not changing_level:

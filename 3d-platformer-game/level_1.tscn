@@ -69,6 +69,91 @@ _data = {
 &"cutscene entrada": SubResource("Animation_gyffv")
 }
 
+[sub_resource type="Animation" id="Animation_sof0w"]
+resource_name = "Intro"
+length = 5.3333335
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.05, 2.04, 3.16, 4.06, 4.6515884),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 9.991178, 12.256131), Vector3(0, 5.302681, 9.331298), Vector3(0, -4.6890755, -3.484497), Vector3(0, -8.94869, -11.716135), Vector3(0, -12.313619, -14.687887), Vector3(0, -18.007034, -21.51878)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.05, 2.04, 3.16, 4.06, 4.6515884),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.0734997, 0, 0), Vector3(-0.8449837, 0, 0), Vector3(-0.84498364, 0, 0), Vector3(-0.84498364, 0, 0), Vector3(-0.6413736, 0, 0), Vector3(-0.4751659, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.03333333, 5.3),
+"transitions": PackedFloat32Array(1, 0.088388555),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ggavl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 9.991178, 12.256131)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0734997, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubhxj"]
+_data = {
+&"Intro": SubResource("Animation_sof0w"),
+&"RESET": SubResource("Animation_ggavl")
+}
+
 [node name="Level1" type="Node3D" unique_id=213052112]
 script = ExtResource("1_rka8t")
 
@@ -245,5 +330,13 @@ transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -15.777351, -34.80832, -24
 
 [node name="ForestScene2" parent="." unique_id=560670806 instance=ExtResource("13_sof0w")]
 transform = Transform3D(-24.993624, 0, -0.56456673, 0, 25, 0, 0.56456673, 0, -24.993624, -15.777351, -34.80832, -46.602295)
+
+[node name="CutScene" type="AnimationPlayer" parent="." unique_id=271901906]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_ubhxj")
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=1063515727]
+transform = Transform3D(1, 0, 0, 0, 0.47705138, 0.87887543, 0, -0.87887543, 0.47705138, 0, 9.991178, 12.256131)
+current = true
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
