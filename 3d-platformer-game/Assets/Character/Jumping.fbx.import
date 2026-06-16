@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b8a653hunad0y"
-path="res://.godot/imported/Running.fbx-5a99e6a2c3faa8e8bec566a202d7016e.scn"
+uid="uid://mct5qbw6fpwb"
+path="res://.godot/imported/Jumping.fbx-cf9f381683dd55712d158dc283fedc7c.scn"
 
 [deps]
 
-source_file="res://Assets/Character/Running.fbx"
-dest_files=["res://.godot/imported/Running.fbx-5a99e6a2c3faa8e8bec566a202d7016e.scn"]
+source_file="res://Assets/Character/Jumping.fbx"
+dest_files=["res://.godot/imported/Jumping.fbx-cf9f381683dd55712d158dc283fedc7c.scn"]
 
 [params]
 
@@ -41,9 +41,9 @@ _subresources={
 "animations": {
 "mixamo_com": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Assets/Character/Running.res",
+"save_to_file/fallback_path": "res://Assets/Character/Jumping.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://bsowmpabgg7fm",
+"save_to_file/path": "uid://1ed5jiqg8lpa",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
