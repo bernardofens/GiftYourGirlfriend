@@ -12,26 +12,26 @@ extends CanvasLayer
 @onready var health_bar = $Control/Healthbar
 @onready var stamina_bar = $Control/StaminaBar 
 @onready var stamina = $Control/Stamina
-@onready var pause_button = $Control/PauseButton
 
 # --- TELAS DE ESTADO ---
 @onready var game_over = $Control/GameOverControl
 @onready var pause_control = $Control/PauseControl 
 @onready var win_screen = $Control/GameWinControl
 
-# --- BOTÕES ---
-@onready var try_again_btn = $Control/GameOverControl/TryAgainButton
-@onready var quit_btn = $Control/GameOverControl/QuitButton
-@onready var pause_quit_btn = $Control/PauseControl/QuitButton 
-@onready var win_restart_btn = $Control/GameWinControl/TryAgainButton 
-@onready var win_quit_btn = $Control/GameWinControl/QuitButton
-@onready var resume_btn: TextureButton = $Control/PauseControl/TryAgainButton
+# --- BOTÕES (Tipados como BaseButton para evitar conflitos) ---
+@onready var try_again_btn: BaseButton = $Control/GameOverControl/TryAgainButton
+@onready var quit_btn: BaseButton = $Control/GameOverControl/QuitButton
+@onready var pause_quit_btn: BaseButton = $Control/PauseControl/QuitButton 
+@onready var win_restart_btn: BaseButton = $Control/GameWinControl/TryAgainButton 
+@onready var win_quit_btn: BaseButton = $Control/GameWinControl/QuitButton
+@onready var resume_btn: BaseButton = $Control/PauseControl/TryAgainButton
+@onready var pause_button: BaseButton = $Control/PauseButton
 
 # --- REFERÊNCIAS DE ÁUDIO NO PAUSE ---
-@onready var music_slider = $Control/PauseControl/MusicSlider
-@onready var music_mute_check = $Control/PauseControl/MusicMuteCheck
-@onready var sfx_slider = $Control/PauseControl/SfxSlider
-@onready var sfx_mute_check = $Control/PauseControl/SfxMuteCheck
+@onready var music_slider: HSlider = $Control/PauseControl/MusicSlider
+@onready var music_mute_check: CheckBox = $Control/PauseControl/MusicMuteCheck
+@onready var sfx_slider: HSlider = $Control/PauseControl/SfxSlider
+@onready var sfx_mute_check: CheckBox = $Control/PauseControl/SfxMuteCheck
 
 # --- TEXTURAS ---
 var full_heart = preload("res://Assets/Images/heart-gyg.png")
@@ -59,54 +59,73 @@ func _ready() -> void:
 	if stamina_bar:
 		stamina_bar.max_value = Global.max_stamina
 		
-	if try_again_btn: try_again_btn.pressed.connect(_on_retry_button_pressed)
-	if quit_btn: quit_btn.pressed.connect(_on_quit_button_pressed)
-	if pause_button: pause_button.pressed.connect(toggle_pause)
-	if resume_btn: resume_btn.pressed.connect(toggle_pause)
-	if pause_quit_btn: pause_quit_btn.pressed.connect(_on_quit_button_pressed)
+	# Ajusta o pivot no centro para a animação de mola de TODOS os elementos interativos
+	var all_interactables = [try_again_btn, quit_btn, pause_quit_btn, win_restart_btn, win_quit_btn, resume_btn, pause_button, music_slider, sfx_slider, music_mute_check, sfx_mute_check]
+	for item in all_interactables:
+		if item: item.pivot_offset = item.size / 2.0
+		
+	# Conexão de sinais dos botões
+	if try_again_btn: try_again_btn.pressed.connect(_on_game_over_retry_pressed)
+	if quit_btn: quit_btn.pressed.connect(_on_game_over_quit_pressed)
+	if pause_button: pause_button.pressed.connect(_on_pause_button_pressed)
+	if resume_btn: resume_btn.pressed.connect(_on_resume_button_pressed)
+	if pause_quit_btn: pause_quit_btn.pressed.connect(_on_pause_quit_pressed)
 	if win_restart_btn: win_restart_btn.pressed.connect(_on_win_restart_pressed)
-	if win_quit_btn: win_quit_btn.pressed.connect(_on_quit_button_pressed)
+	if win_quit_btn: win_quit_btn.pressed.connect(_on_win_quit_pressed)
 
-	if music_slider: music_slider.value_changed.connect(_on_music_slider_changed)
+	# Conexão de sinais de áudio e interação manual (gui_input) para sliders
+	if music_slider: 
+		music_slider.value_changed.connect(_on_music_slider_changed)
+		music_slider.gui_input.connect(_on_audio_slider_gui_input.bind(music_slider))
+	if sfx_slider: 
+		sfx_slider.value_changed.connect(_on_sfx_slider_changed)
+		sfx_slider.gui_input.connect(_on_audio_slider_gui_input.bind(sfx_slider))
+		
 	if music_mute_check: music_mute_check.toggled.connect(_on_music_mute_toggled)
-	if sfx_slider: sfx_slider.value_changed.connect(_on_sfx_slider_changed)
 	if sfx_mute_check: sfx_mute_check.toggled.connect(_on_sfx_mute_toggled)
 	
 	_setup_damage_feedback()
 
+# --- FUNÇÕES DE ANIMAÇÃO E SOM PARA OS CONTROLES ---
+
+func _play_click_sfx() -> void:
+	if AudioManager:
+		AudioManager.play_sfx(AudioManager.sfx_collect)
+
+func _play_ui_interact_animation(node: Control) -> void:
+	var tween = create_tween()
+	# Permite que a animação continue processando mesmo quando a árvore estiver pausada
+	tween.tween_property(node, "scale", Vector2(0.9, 0.9), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(node, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
 # --- CONFIGURA O FEEDBACK VISUAL DE DANO ---
 func _setup_damage_feedback() -> void:
-	# Guarda a posição original do Control para o Shake
 	original_control_pos = $Control.position
 	
-	# Cria um overlay vermelho dinamicamente para o "flash" de dano
 	damage_overlay = ColorRect.new()
-	damage_overlay.color = Color(0.8, 0.0, 0.0, 0.0) # Vermelho transparente
-	damage_overlay.set_anchors_preset(Control.PRESET_FULL_RECT) # Cobre a tela toda
-	damage_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE # Não bloqueia cliques
+	damage_overlay.color = Color(0.8, 0.0, 0.0, 0.0)
+	damage_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	damage_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(damage_overlay)
-	move_child(damage_overlay, 0) # Coloca atrás do $Control, mas na frente do jogo
+	move_child(damage_overlay, 0)
 
 func trigger_damage_effect() -> void:
-	# 1. Efeito de Flash (Vermelho na tela)
 	var flash_tween = create_tween()
-	damage_overlay.color.a = 0.35 # Fica vermelho
-	flash_tween.tween_property(damage_overlay, "color:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE) # Esmaece suavemente
+	damage_overlay.color.a = 0.35
+	flash_tween.tween_property(damage_overlay, "color:a", 0.0, 0.4).set_trans(Tween.TRANS_SINE)
 	
-	# 2. Efeito de Shake do HUD
 	if shake_tween and shake_tween.is_running():
-		shake_tween.kill() # Para o shake anterior se tomar dano rápido demais
+		shake_tween.kill()
 		
 	shake_tween = create_tween()
 	var shakes = 6
-	var shake_strength = 15.0 # Intensidade do tremor em pixels
+	var shake_strength = 15.0
 	
 	for i in range(shakes):
 		var random_offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * shake_strength
 		shake_tween.tween_property($Control, "position", original_control_pos + random_offset, 0.04)
-		shake_strength *= 0.6 # O tremor vai diminuindo de intensidade
+		shake_strength *= 0.6
 		
-	# Retorna o HUD para a posição exata de origem no final
 	shake_tween.tween_property($Control, "position", original_control_pos, 0.05)
 
 
@@ -152,7 +171,25 @@ func _hide_hud_elements():
 	if pause_button: pause_button.visible = false
 	if stamina: stamina.visible = false
 
-func _on_retry_button_pressed():
+# --- SINAIS ESPECÍFICOS DOS BOTÕES ---
+
+func _on_pause_button_pressed():
+	_play_click_sfx()
+	_play_ui_interact_animation(pause_button)
+	await get_tree().create_timer(0.1).timeout
+	toggle_pause()
+
+func _on_resume_button_pressed():
+	_play_click_sfx()
+	_play_ui_interact_animation(resume_btn)
+	await get_tree().create_timer(0.15).timeout
+	toggle_pause()
+
+func _on_game_over_retry_pressed():
+	_play_click_sfx()
+	_play_ui_interact_animation(try_again_btn)
+	await get_tree().create_timer(0.15).timeout
+	
 	Global.hearts = 3
 	Global.chocolates = 0
 	Global.roses = 0
@@ -168,6 +205,10 @@ func _on_retry_button_pressed():
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_win_restart_pressed():
+	_play_click_sfx()
+	_play_ui_interact_animation(win_restart_btn)
+	await get_tree().create_timer(0.15).timeout
+	
 	Global.hearts = 3
 	Global.chocolates = 0
 	Global.roses = 0
@@ -179,12 +220,35 @@ func _on_win_restart_pressed():
 	Global.next_scene_path = "res://level_1.tscn"
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
-func _on_quit_button_pressed():
+func _on_game_over_quit_pressed():
+	_play_click_sfx()
+	_play_ui_interact_animation(quit_btn)
+	await get_tree().create_timer(0.15).timeout
+	_execute_quit()
+
+func _on_pause_quit_pressed():
+	_play_click_sfx()
+	_play_ui_interact_animation(pause_quit_btn)
+	await get_tree().create_timer(0.15).timeout
+	_execute_quit()
+
+func _on_win_quit_pressed():
+	_play_click_sfx()
+	_play_ui_interact_animation(win_quit_btn)
+	await get_tree().create_timer(0.15).timeout
+	_execute_quit()
+
+func _execute_quit():
 	get_tree().paused = false
 	Global.next_scene_path = "res://menu.tscn"
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
-# --- SINAIS DE CONFIGURAÇÃO DE ÁUDIO COM SINCRONIZAÇÃO NO PAUSE ---
+# --- SINAIS DE CONFIGURAÇÃO DE ÁUDIO COM SINCRONIZAÇÃO E ANIMAÇÃO ---
+
+func _on_audio_slider_gui_input(event: InputEvent, slider: Control) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		_play_click_sfx()
+		_play_ui_interact_animation(slider)
 
 func _on_music_slider_changed(value: float) -> void:
 	if AudioManager:
@@ -193,6 +257,8 @@ func _on_music_slider_changed(value: float) -> void:
 		music_mute_check.set_pressed_no_signal(value >= 100.0)
 
 func _on_music_mute_toggled(is_button_pressed: bool) -> void:
+	_play_click_sfx()
+	_play_ui_interact_animation(music_mute_check)
 	var target_volume = 100.0 if is_button_pressed else 0.0
 	if music_slider:
 		music_slider.set_value_no_signal(target_volume)
@@ -206,6 +272,8 @@ func _on_sfx_slider_changed(value: float) -> void:
 		sfx_mute_check.set_pressed_no_signal(value >= 100.0)
 
 func _on_sfx_mute_toggled(is_button_pressed: bool) -> void:
+	_play_click_sfx()
+	_play_ui_interact_animation(sfx_mute_check)
 	var target_volume = 100.0 if is_button_pressed else 0.0
 	if sfx_slider:
 		sfx_slider.set_value_no_signal(target_volume)
@@ -213,11 +281,9 @@ func _on_sfx_mute_toggled(is_button_pressed: bool) -> void:
 		AudioManager.set_sfx_volume(target_volume)
 
 func _process(delta: float) -> void:
-	# DETECTA DANO: Se a vida for menor que no frame anterior, treme a tela
 	if Global.hearts < previous_hearts:
 		trigger_damage_effect()
-	previous_hearts = Global.hearts # Atualiza o rastreador
-	
+	previous_hearts = Global.hearts 
 	
 	if Global.level == 1:
 		item_icon.texture = rose_tex
