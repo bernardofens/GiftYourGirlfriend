@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://41m0t8w1g5xs" path="res://hud.gd" id="1_8sq4i"]
 [ext_resource type="Texture2D" uid="uid://3gsaxudc5bm7" path="res://Assets/Images/rose.png" id="1_64ctp"]
 [ext_resource type="FontFile" uid="uid://cw2hvq8blpx1l" path="res://Assets/Fonts/Schoolbell-Regular.ttf" id="2_8sq4i"]
+[ext_resource type="VideoStream" uid="uid://c2b6jsb34m0h3" path="res://Assets/Videos/game_over.ogv" id="4_4u2vk"]
 [ext_resource type="Texture2D" uid="uid://6e2dfob57x30" path="res://Assets/Images/chocolate.webp" id="4_a2258"]
-[ext_resource type="Texture2D" uid="uid://dc6e3tjkbsuxl" path="res://Assets/Images/game-over-gyg.png" id="5_4u2vk"]
 [ext_resource type="Texture2D" uid="uid://b4qjx4a056mdu" path="res://Assets/Images/big-button-gyg.png" id="5_amv7k"]
 [ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="7_1fv7p"]
 [ext_resource type="Texture2D" uid="uid://fxy411ymg0yi" path="res://Assets/Images/button-gyg.png" id="7_4q17s"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://txr0ssiwtsi6" path="res://Assets/Images/heart-gyg.png" id="9_4q17s"]
 [ext_resource type="Texture2D" uid="uid://b27mt6yoiuep1" path="res://Assets/Images/staminabar.png" id="10_2d608"]
 [ext_resource type="Texture2D" uid="uid://cakq3f4egovqk" path="res://Assets/Images/pause-button.png" id="11_w71nf"]
-[ext_resource type="Texture2D" uid="uid://dcc8veaq3kl8" path="res://Assets/Images/game-win.png" id="13_4u2vk"]
+[ext_resource type="VideoStream" uid="uid://1gqpcd36kpau" path="res://Assets/Videos/game_win.ogv" id="13_4q17s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
 bg_color = Color(0, 0, 0, 0.26666668)
@@ -95,7 +95,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Background" type="TextureRect" parent="Control/GameOverControl" unique_id=924609939]
+[node name="Background" type="VideoStreamPlayer" parent="Control/GameOverControl" unique_id=1902543828]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -103,9 +103,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_4u2vk")
-expand_mode = 1
-stretch_mode = 6
+stream = ExtResource("4_4u2vk")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
 
 [node name="BackgroundGameOver" type="TextureRect" parent="Control/GameOverControl" unique_id=1796184607]
 texture_filter = 1
@@ -417,7 +419,6 @@ value = 100.0
 
 [node name="GameWinControl" type="Control" parent="Control" unique_id=310004135]
 process_mode = 3
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -426,7 +427,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Background" type="TextureRect" parent="Control/GameWinControl" unique_id=202814290]
+[node name="Background" type="VideoStreamPlayer" parent="Control/GameWinControl" unique_id=436163185]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -434,9 +435,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("13_4u2vk")
-expand_mode = 1
-stretch_mode = 6
+stream = ExtResource("13_4q17s")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
 
 [node name="BackgroundGameOver" type="TextureRect" parent="Control/GameWinControl" unique_id=2068380474]
 texture_filter = 1

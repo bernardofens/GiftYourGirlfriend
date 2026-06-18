@@ -11,8 +11,8 @@ const LOGO_HOVER_DURATION = 1.0
 @onready var settings_button = $Settings
 @onready var tutorial_button = $Tutorial 
 
-# --- REFERÊNCIA DO FUNDO ---
-@onready var background = $Background 
+# --- REFERÊNCIA DO FUNDO EM VÍDEO ---
+@onready var background: VideoStreamPlayer = $Background 
 
 # --- REFERÊNCIAS DO PAINEL DE CONFIGURAÇÕES ---
 @onready var settings_panel = $SettingsPanel
@@ -35,6 +35,9 @@ var _logo_original_position: Vector2
 func _ready() -> void:
 	if AudioManager:
 		AudioManager.play_music(AudioManager.music_menu)
+	
+	if background:
+		background.play()
 	
 	if title_logo: 
 		title_logo.scale = Vector2.ZERO 
@@ -115,6 +118,7 @@ func _on_play_pressed() -> void:
 	_play_click_sfx()
 	_play_ui_interact_animation(play_button)
 	await get_tree().create_timer(0.15).timeout
+	if background: background.stop()
 	Global.next_scene_path = "res://level_1.tscn"
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 

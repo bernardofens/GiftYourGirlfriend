@@ -18,6 +18,11 @@ extends CanvasLayer
 @onready var pause_control = $Control/PauseControl 
 @onready var win_screen = $Control/GameWinControl
 
+# --- REFERÊNCIAS DE VÍDEO ---
+# Apontando para os nós corretos conforme a sua árvore (sem tipagem estrita para evitar crashes)
+@onready var video_game_over = $Control/GameOverControl/Background
+@onready var video_game_win = $Control/GameWinControl/Background 
+
 # --- BOTÕES (Tipados como BaseButton para evitar conflitos) ---
 @onready var try_again_btn: BaseButton = $Control/GameOverControl/TryAgainButton
 @onready var quit_btn: BaseButton = $Control/GameOverControl/QuitButton
@@ -152,6 +157,10 @@ func _on_player_died():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	game_over.visible = true
 	
+	# Checagem de segurança para garantir que o nó suporta vídeo
+	if video_game_over and video_game_over.has_method("play"):
+		video_game_over.play()
+	
 	_hide_hud_elements()
 	get_tree().paused = true
 
@@ -160,6 +169,9 @@ func show_win_screen():
 	AudioManager.play_music(AudioManager.music_game_win)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	win_screen.visible = true
+	
+	if video_game_win and video_game_win.has_method("play"):
+		video_game_win.play()
 	
 	_hide_hud_elements()
 	get_tree().paused = true
@@ -190,6 +202,9 @@ func _on_game_over_retry_pressed():
 	_play_ui_interact_animation(try_again_btn)
 	await get_tree().create_timer(0.15).timeout
 	
+	if video_game_over and video_game_over.has_method("stop"):
+		video_game_over.stop()
+	
 	Global.hearts = 3
 	Global.chocolates = 0
 	Global.roses = 0
@@ -209,6 +224,9 @@ func _on_win_restart_pressed():
 	_play_ui_interact_animation(win_restart_btn)
 	await get_tree().create_timer(0.15).timeout
 	
+	if video_game_win and video_game_win.has_method("stop"):
+		video_game_win.stop()
+	
 	Global.hearts = 3
 	Global.chocolates = 0
 	Global.roses = 0
@@ -224,6 +242,8 @@ func _on_game_over_quit_pressed():
 	_play_click_sfx()
 	_play_ui_interact_animation(quit_btn)
 	await get_tree().create_timer(0.15).timeout
+	if video_game_over and video_game_over.has_method("stop"):
+		video_game_over.stop()
 	_execute_quit()
 
 func _on_pause_quit_pressed():
@@ -236,6 +256,8 @@ func _on_win_quit_pressed():
 	_play_click_sfx()
 	_play_ui_interact_animation(win_quit_btn)
 	await get_tree().create_timer(0.15).timeout
+	if video_game_win and video_game_win.has_method("stop"):
+		video_game_win.stop()
 	_execute_quit()
 
 func _execute_quit():
