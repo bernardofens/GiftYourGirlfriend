@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b46eg4tkkrxi1" path="res://tree.tscn" id="11_1pe0h"]
 [ext_resource type="PackedScene" uid="uid://cffw3eaka82mg" path="res://Epirectangular Models/forest_clearing_1_top_skybox.glb" id="12_27bay"]
 [ext_resource type="PackedScene" uid="uid://bpnwbfl3rvwho" path="res://forest_scene.tscn" id="13_sof0w"]
+[ext_resource type="PackedScene" uid="uid://g6jm8te7epy7" path="res://water_surface.tscn" id="14_ggavl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hn12h"]
 sky_top_color = Color(0.032333303, 0, 0.97, 1)
@@ -178,7 +179,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="FallZone" type="Area3D" parent="." unique_id=92828706]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.215725, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.026678, -26.789045)
 collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallZone" unique_id=292098169]
@@ -322,7 +323,7 @@ transform = Transform3D(0.54868734, 0, -0.8360276, 0, 1, 0, 0.8360276, 0, 0.5486
 [node name="Tree11" parent="." unique_id=1555788992 instance=ExtResource("11_1pe0h")]
 transform = Transform3D(0.7887732, 0, -0.6146846, 0, 1, 0, 0.6146846, 0, 0.7887732, 0.643558, -23.89627, -49.876297)
 
-[node name="Sketchfab_Scene14" parent="." unique_id=1059846109 instance=ExtResource("12_27bay")]
+[node name="EpirectangularEnvironment" parent="." unique_id=1183097827 instance=ExtResource("12_27bay")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.001644, -12.576136, -18.224876)
 
 [node name="ForestScene" parent="." unique_id=543716628 instance=ExtResource("13_sof0w")]
@@ -338,5 +339,8 @@ libraries/ = SubResource("AnimationLibrary_ubhxj")
 [node name="Camera3D2" type="Camera3D" parent="." unique_id=1063515727]
 transform = Transform3D(1, 0, 0, 0, 0.47705138, 0.87887543, 0, -0.87887543, 0.47705138, 0, 9.991178, 12.256131)
 current = true
+
+[node name="WaterSurface" parent="." unique_id=2026986709 instance=ExtResource("14_ggavl")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.417824, -29.087255, -203.78574)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]

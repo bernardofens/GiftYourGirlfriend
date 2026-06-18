@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://g6jm8te7epy7"]
+
+[ext_resource type="PackedScene" uid="uid://dfmkdal4nl3aq" path="res://Epirectangular Models/animated_water_surface.glb" id="1_tb7rk"]
+[ext_resource type="Script" uid="uid://c74dk2kncvop2" path="res://sketchfab_model.gd" id="2_kgfud"]
+
+[node name="Sketchfab_Scene" unique_id=2026986709 instance=ExtResource("1_tb7rk")]
+
+[node name="Sketchfab_model" parent="." index="0" unique_id=771171355]
+script = ExtResource("2_kgfud")
+
+[node name="0" parent="Sketchfab_model/926ee8718a8947f3ad66ac7e401f3e5d_fbx/Object_2/RootNode/Plane003" parent_id_path=PackedInt32Array(23515853) index="0" unique_id=2004804173]
+blend_shapes/morph_0 = 1.0
+
+[node name="02" parent="Sketchfab_model/926ee8718a8947f3ad66ac7e401f3e5d_fbx/Object_2/RootNode/Plane003" parent_id_path=PackedInt32Array(23515853) index="1" unique_id=128502908]
+blend_shapes/morph_0 = 1.0
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=632322614]
+autoplay = &"Take 001"
