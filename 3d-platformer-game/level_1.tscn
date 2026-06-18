@@ -327,7 +327,7 @@ transform = Transform3D(0.7887732, 0, -0.6146846, 0, 1, 0, 0.6146846, 0, 0.78877
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.001644, -12.576136, -18.224876)
 
 [node name="ForestScene" parent="." unique_id=543716628 instance=ExtResource("13_sof0w")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -15.777351, -34.80832, -24.023758)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -15.777351, -34.80832, -24.023758)
 
 [node name="ForestScene2" parent="." unique_id=1425169724 instance=ExtResource("13_sof0w")]
 transform = Transform3D(-24.993624, 0, -0.56456673, 0, 25, 0, 0.56456673, 0, -24.993624, -15.777351, -34.80832, -46.602295)
@@ -341,6 +341,6 @@ transform = Transform3D(1, 0, 0, 0, 0.47705138, 0.87887543, 0, -0.87887543, 0.47
 current = true
 
 [node name="WaterSurface" parent="." unique_id=2026986709 instance=ExtResource("14_ggavl")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.417824, -29.087255, -203.78574)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.417824, -28.295565, -203.78574)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]

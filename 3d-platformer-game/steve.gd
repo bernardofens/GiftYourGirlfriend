@@ -23,6 +23,7 @@ var current_stamina := 100.0
 @export var stamina_drain_rate := 15.0
 @export var stamina_regen_rate := 35.0
 @export var stamina_bar : ProgressBar
+var is_exhausted := false # Nova variável para controlar a exaustão
 # ---------------------------
 
 # --- CONTROLE DE ÁUDIO DE PASSOS ---
@@ -95,7 +96,15 @@ func _physics_process(delta: float) -> void:
 	
 	# 3. Lógica de Velocidade e Estamina
 	var current_speed = SPEED
-	var is_sprinting = is_trying_to_sprint and is_moving and Global.stamina > 0
+	
+	# Verifica exaustão: se zerar, fica exausto. Se soltar o botão, recupera o fôlego.
+	if Global.stamina <= 0:
+		is_exhausted = true
+	elif not is_trying_to_sprint or Global.stamina >= Global.max_stamina:
+		is_exhausted = false
+
+	# Só pode correr se não estiver exausto
+	var is_sprinting = is_trying_to_sprint and is_moving and not is_exhausted
 
 	if is_sprinting:
 		current_speed = SPRINT_SPEED

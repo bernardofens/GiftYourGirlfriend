@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cloosk6t0k353" path="res://boss.tscn" id="8_ehv2h"]
 [ext_resource type="PackedScene" uid="uid://ba40va0jf3d72" path="res://Assets/Models/realistic_grass.glb" id="10_15wb7"]
 [ext_resource type="PackedScene" uid="uid://bpnwbfl3rvwho" path="res://forest_scene.tscn" id="11_eoq84"]
+[ext_resource type="PackedScene" uid="uid://g6jm8te7epy7" path="res://water_surface.tscn" id="12_yl73a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hn12h"]
 sky_top_color = Color(0.032333303, 0, 0.97, 1)
@@ -157,9 +158,12 @@ transform = Transform3D(0.005101131, 0, -0.09986981, 0, 0.1, 0, 0.09986981, 0, 0
 transform = Transform3D(-0.9228475, 0, -0.3851654, 0, 1, 0, 0.3851654, 0, -0.9228475, -20.584702, -25.130516, 6.5114536)
 
 [node name="ForestScene" parent="." unique_id=543716628 instance=ExtResource("11_eoq84")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, -24.836483, -41.156807, 0)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -24.836483, -41.156807, 0)
 
 [node name="ForestScene2" parent="." unique_id=494265327 instance=ExtResource("11_eoq84")]
 transform = Transform3D(-24.666721, 0, -4.068513, 0, 25, 0, 4.068513, 0, -24.666721, -24.836483, -41.156807, 0)
+
+[node name="Sketchfab_Scene10" parent="." unique_id=2026986709 instance=ExtResource("12_yl73a")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.8462524, -32.97152, -170.56819)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
