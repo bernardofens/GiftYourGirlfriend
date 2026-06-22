@@ -40,6 +40,9 @@ func _ready() -> void:
 	if stamina_bar:
 		stamina_bar.max_value = max_stamina
 		stamina_bar.value = current_stamina
+		
+	xform = global_transform
+	$RayCast3D.collision_mask = collision_mask
 
 func take_damage():
 	if !Global.can_take_damage:
@@ -114,16 +117,7 @@ func _physics_process(delta: float) -> void:
 
 	Global.stamina = clamp(Global.stamina, 0.0, Global.max_stamina)
 
-	# 4. Cálculo de Ladeiras
-	if is_on_floor() and direction != Vector3.ZERO:
-		var floor_normal = get_floor_normal()
-		var downhill = Vector3.DOWN.slide(floor_normal).normalized()
-		var slope_dot = direction.dot(downhill)
-		if slope_dot < 0:
-			current_speed *= lerp(1.0, 0.6, -slope_dot)
-		elif slope_dot > 0:
-			current_speed *= lerp(1.0, 1.4, slope_dot)
-			
+
 	# 5. Aplicação do Movimento
 	if direction:
 		velocity.x = direction.x * current_speed
@@ -134,7 +128,8 @@ func _physics_process(delta: float) -> void:
 		
 	# 6. Alinhamento com o chão
 	if is_on_floor():
-		align_with_floor($RayCast3D.get_collision_normal())
+		var normal = $RayCast3D.get_collision_normal() if $RayCast3D.is_colliding() else get_floor_normal()
+		align_with_floor(normal)
 		global_transform = global_transform.interpolate_with(xform, 0.3)
 	else:
 		align_with_floor(Vector3.UP)
@@ -169,10 +164,18 @@ func _handle_step_audio(delta: float, is_sprinting: bool) -> void:
 		AudioManager.play_sfx(AudioManager.sfx_walk, -12.0)
 		step_timer = 0.0
 
-func align_with_floor(floor_normal):
+func align_with_floor(floor_normal: Vector3):
+	if floor_normal == Vector3.ZERO:
+		floor_normal = Vector3.UP
+		
 	xform = global_transform
 	xform.basis.y = floor_normal
 	xform.basis.x = -xform.basis.z.cross(floor_normal)
+	if xform.basis.x == Vector3.ZERO:
+		xform.basis.x = xform.basis.y.cross(Vector3.RIGHT)
+		if xform.basis.x == Vector3.ZERO:
+			xform.basis.x = xform.basis.y.cross(Vector3.FORWARD)
+	xform.basis.z = xform.basis.x.cross(xform.basis.y)
 	xform.basis = xform.basis.orthonormalized()
 
 func _unhandled_input(event):
