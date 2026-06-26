@@ -273,7 +273,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.366478, -28.115168, -203.89
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -39.11782, -21.939522, -14.699478)
 
 [node name="Bridge" parent="." unique_id=1121634208 instance=ExtResource("13_65or1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.039913, -23.50186, -43.72334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.039913, -23.811935, -43.846096)
 
 [node name="NPC" parent="." unique_id=1936384739 instance=ExtResource("14_gjkv5")]
 transform = Transform3D(1.1554495, 0, -0.47690284, 0, 1.25, 0, 0.47690284, 0, 1.1554495, 4.7466536, -22.106474, -21.40641)
