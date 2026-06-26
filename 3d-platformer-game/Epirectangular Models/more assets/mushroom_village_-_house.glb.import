@@ -117,7 +117,49 @@ _subresources={
 "physics/mask": 11,
 "physics/shape_type": 2
 },
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_001/Rocks_001_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
 "PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_002/Rocks_002_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_003/Rocks_003_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_004/Rocks_004_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_005/Rocks_005_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_006/Rocks_006_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_007/Rocks_007_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_008/Rocks_008_Atlas_Mushroom_0": {
 "generate/physics": true,
 "physics/layer": 11,
 "physics/mask": 11,

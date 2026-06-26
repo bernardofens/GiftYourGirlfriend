@@ -199,16 +199,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.70317, 1.2881126, -1.6700
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9571552, 2.0205307, 7.9313526)
 
 [node name="Flower3" parent="Flowers" unique_id=1106331319 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.18249, 2.0205307, 7.9313526)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1486969, 1.6451836, 16.137175)
 
 [node name="Flower4" parent="Flowers" unique_id=229708498 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.821323, 2.0205307, 7.9313526)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.02925, 2.4421291, 4.875952)
 
 [node name="Flower5" parent="Flowers" unique_id=77692244 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.885303, 2.0205307, 10.439608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.596325, 1.1797047, 0.17792702)
 
 [node name="Flower6" parent="Flowers" unique_id=919491894 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.247105, 2.0205307, 1.8274765)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.983234, 0.38868523, 2.1668224)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=52555589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.419277, -19.16266, -29.023924)
@@ -277,10 +277,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.039913, -23.50186, -43.72
 [node name="Island2" parent="." unique_id=1749982017 instance=ExtResource("14_lhbbi")]
 transform = Transform3D(0, 0, 1.4999999, 0, 1.5, 0, -1.4999999, 0, 0, -38.36473, -23.554914, -30.377151)
 
-[node name="House" parent="." unique_id=503111303 instance=ExtResource("15_gjkv5")]
+[node name="House" parent="." unique_id=1769025378 instance=ExtResource("15_gjkv5")]
 transform = Transform3D(-0.18982534, 0, 5.9969964, 0, 6, 0, -5.9969964, 0, -0.18982534, 1.2421665, -22.160347, -29.03755)
 
-[node name="Sketchfab_Scene" parent="." unique_id=415602112 instance=ExtResource("16_65or1")]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 38.32216, -24.940392, -28.100021)
+[node name="Island3" parent="." unique_id=415602112 instance=ExtResource("16_65or1")]
+transform = Transform3D(0.17497335, -0.0030541709, 0, 0.0030541709, 0.17497335, 0, 0, 0, 0.175, 38.99897, -24.811546, -27.807716)
+
+[node name="Island4" parent="." unique_id=529954670 instance=ExtResource("12_ubhxj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.2269487, -23.041302, -12.760149)
+
+[node name="Island5" parent="." unique_id=1777007243 instance=ExtResource("12_ubhxj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.582055, -23.504295, -42.572395)
+
+[node name="Island6" parent="." unique_id=1882179103 instance=ExtResource("12_ubhxj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 18.976126, -24.266766, -26.886)
+
+[node name="Island7" parent="." unique_id=2071719890 instance=ExtResource("12_ubhxj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.549417, -23.556488, -28.893562)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]

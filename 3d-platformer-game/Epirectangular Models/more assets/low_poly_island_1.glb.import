@@ -37,6 +37,15 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model/97fad86b15c3415fbce084922de1a9a2_fbx/RootNode/Island_1/Island_1__0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
