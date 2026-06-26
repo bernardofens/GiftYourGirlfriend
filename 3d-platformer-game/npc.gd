@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var dialog_text: String = "Ola, Steve! Que bom ver voce."
+@export var dialog_text: String = "Colete as 6 Rosas para avancar!"
 @export var victory_anim: String = "misty_rig|misty_victory"
 @export var idle_anim: String = "misty_rig|misty_idle"
 

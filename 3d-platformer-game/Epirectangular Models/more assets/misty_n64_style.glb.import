@@ -2098,7 +2098,6 @@ _subresources={
 },
 "nodes": {
 "PATH:Sketchfab_model/Misty_fbx/Object_2/RootNode/misty_rig/Object_6/Skeleton3D/Object_9": {
-"generate/physics": true,
 "physics/layer": 11,
 "physics/mask": 11,
 "physics/shape_type": 2

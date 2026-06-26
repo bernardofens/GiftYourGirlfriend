@@ -33,6 +33,8 @@ height = 2.2640991
 
 [node name="Steve" type="CharacterBody3D" unique_id=1717163893 groups=["Steve"]]
 collision_mask = 23
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 script = ExtResource("1_bh3ft")
 
 [node name="Armature" parent="." unique_id=1169635141 instance=ExtResource("2_u1phc")]
