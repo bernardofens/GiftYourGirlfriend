@@ -2,10 +2,10 @@ extends CharacterBody3D
 
 @export var mouse_sensitivity := 0.003
 
-# Valores ajustados para dar Match com as animações
-const SPEED = 5.5
-const SPRINT_SPEED = 8.0
-const JUMP_VELOCITY = 9.5
+# Valores aumentados para um personagem mais rápido e com pulo maior
+const SPEED = 7.0
+const SPRINT_SPEED = 10.0
+const JUMP_VELOCITY = 11.5
 
 const MAX_JUMPS = 2
 var jump_count = 0
@@ -15,7 +15,6 @@ const CAM_ROTATION_STEP : float = 30.0
 
 @export var spawn_position: Vector3
 signal player_died
-var xform: Transform3D
 
 # --- SISTEMA DE ESTAMINA ---
 @export var max_stamina := 100.0
@@ -23,7 +22,7 @@ var current_stamina := 100.0
 @export var stamina_drain_rate := 15.0
 @export var stamina_regen_rate := 35.0
 @export var stamina_bar : ProgressBar
-var is_exhausted := false # Nova variável para controlar a exaustão
+var is_exhausted := false 
 # ---------------------------
 
 # --- CONTROLE DE ÁUDIO DE PASSOS ---
@@ -49,7 +48,6 @@ func take_damage():
 	
 	AudioManager.play_sfx(AudioManager.sfx_damage_taken)
 	
-	# Chama o efeito visual de piscar em vermelho
 	flash_damage()
 	
 	if Global.hearts <= 0:
@@ -97,13 +95,11 @@ func _physics_process(delta: float) -> void:
 	# 3. Lógica de Velocidade e Estamina
 	var current_speed = SPEED
 	
-	# Verifica exaustão: se zerar, fica exausto. Se soltar o botão, recupera o fôlego.
 	if Global.stamina <= 0:
 		is_exhausted = true
 	elif not is_trying_to_sprint or Global.stamina >= Global.max_stamina:
 		is_exhausted = false
 
-	# Só pode correr se não estiver exausto
 	var is_sprinting = is_trying_to_sprint and is_moving and not is_exhausted
 
 	if is_sprinting:
@@ -114,17 +110,7 @@ func _physics_process(delta: float) -> void:
 
 	Global.stamina = clamp(Global.stamina, 0.0, Global.max_stamina)
 
-	# 4. Cálculo de Ladeiras
-	if is_on_floor() and direction != Vector3.ZERO:
-		var floor_normal = get_floor_normal()
-		var downhill = Vector3.DOWN.slide(floor_normal).normalized()
-		var slope_dot = direction.dot(downhill)
-		if slope_dot < 0:
-			current_speed *= lerp(1.0, 0.6, -slope_dot)
-		elif slope_dot > 0:
-			current_speed *= lerp(1.0, 1.4, slope_dot)
-			
-	# 5. Aplicação do Movimento
+	# 4. Aplicação do Movimento
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
@@ -132,24 +118,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 		
-	# 6. Alinhamento com o chão
-	if is_on_floor():
-		align_with_floor($RayCast3D.get_collision_normal())
-		global_transform = global_transform.interpolate_with(xform, 0.3)
-	else:
-		align_with_floor(Vector3.UP)
-		global_transform = global_transform.interpolate_with(xform, 0.3)
-		
+	# A função move_and_slide resolve a física sem precisar inclinar o transform
 	move_and_slide()
 	$Camera_Controller.position = lerp($Camera_Controller.position, position, 0.15)
 
-	# 7. MÁQUINA DE ANIMAÇÃO E ÁUDIO
+	# 5. MÁQUINA DE ANIMAÇÃO E ÁUDIO
 	if not is_on_floor():
-		# Se estiver no ar E apertando algum botão de andar, toca o salto direcional
 		if is_moving:
 			$Armature/AnimationPlayer.play("acao/Jump", 0.2)
 		else:
-			# Se pulou parado, toca o salto vertical
 			$Armature/AnimationPlayer.play("acao/Jumping", 0.2)
 	else:
 		if is_moving:
@@ -169,12 +146,6 @@ func _handle_step_audio(delta: float, is_sprinting: bool) -> void:
 		AudioManager.play_sfx(AudioManager.sfx_walk, -12.0)
 		step_timer = 0.0
 
-func align_with_floor(floor_normal):
-	xform = global_transform
-	xform.basis.y = floor_normal
-	xform.basis.x = -xform.basis.z.cross(floor_normal)
-	xform.basis = xform.basis.orthonormalized()
-
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		target_cam_y_rotation -= event.relative.x * mouse_sensitivity
@@ -190,13 +161,10 @@ func bounce():
 
 # --- SISTEMA DE FEEDBACK VISUAL DE DANO ---
 func flash_damage():
-	# Acessa a malha onde a textura principal foi aplicada
 	var mesh_node = $Armature/Skeleton3D/node_0
 	var mat = mesh_node.get_surface_override_material(0)
 	
 	if mat:
 		var tween = create_tween()
-		# Fica vermelho em 0.1 segundos
 		tween.tween_property(mat, "albedo_color", Color.RED, 0.1)
-		# Retorna à cor original em 0.2 segundos
 		tween.tween_property(mat, "albedo_color", Color.WHITE, 0.2)

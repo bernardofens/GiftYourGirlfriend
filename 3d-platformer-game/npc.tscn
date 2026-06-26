@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://x8jx0p43koim"]
+
+[ext_resource type="PackedScene" uid="uid://bxxjhkn17m5ms" path="res://Epirectangular Models/more assets/misty_n64_style.glb" id="1_ideak"]
+[ext_resource type="Script" uid="uid://bq4gfgeai13vc" path="res://npc.gd" id="2_xxcha"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xxcha"]
+radius = 0.8155866
+
+[node name="NPC" unique_id=1936384739 instance=ExtResource("1_ideak")]
+script = ExtResource("2_xxcha")
+
+[node name="Skeleton3D" parent="Sketchfab_model/Misty_fbx/Object_2/RootNode/misty_rig/Object_6" parent_id_path=PackedInt32Array(990216514) index="0" unique_id=1448704562]
+bones/2/rotation = Quaternion(0.8233047, 6.766322e-08, 9.8145584e-08, 0.5675998)
+bones/4/rotation = Quaternion(-0.057876337, 3.6895675e-15, -1.3798795e-08, 0.9983238)
+bones/5/rotation = Quaternion(-0.03956847, 1.030537e-14, -9.433843e-09, 0.9992169)
+bones/6/rotation = Quaternion(0.0776705, 1.18849194e-07, 2.777713e-08, 0.9969791)
+bones/7/rotation = Quaternion(-0.004403653, -3.5762446e-07, -5.2493915e-10, 0.99999034)
+bones/8/rotation = Quaternion(-0.030658936, 2.3830661e-07, -8.885767e-15, 0.9995299)
+bones/10/position = Vector3(0, -6.938894e-18, -0.0083889365)
+bones/21/rotation = Quaternion(0.9755585, -4.0242063e-05, -0.0001782802, 0.21973975)
+bones/21/scale = Vector3(1.0038787, 0.99228704, 1.0038787)
+bones/23/rotation = Quaternion(0.120087355, 0.00018184284, -2.1730251e-05, 0.99276334)
+bones/23/scale = Vector3(0.9990671, 1.0012145, 0.99973434)
+bones/24/rotation = Quaternion(1.8626439e-08, 5.6984015e-07, 2.9284875e-09, 1)
+bones/25/rotation = Quaternion(-0.30898523, -0.00029590982, 9.67922e-05, 0.95106685)
+bones/25/scale = Vector3(0.9975253, 1.0019302, 1.0005841)
+bones/26/rotation = Quaternion(-0.000157289, 0.86251444, -0.50603265, -0.00026805064)
+bones/26/scale = Vector3(0.99954015, 0.99986887, 1.0005932)
+bones/27/rotation = Quaternion(0.9755585, -4.023917e-05, -0.0001785253, 0.21974002)
+bones/27/scale = Vector3(1.0038787, 0.9922871, 1.0038788)
+bones/28/rotation = Quaternion(2.794423e-08, -1.7379293e-07, 2.4562983e-08, 1)
+bones/29/rotation = Quaternion(0.1200876, 0.00018178095, -2.177823e-05, 0.9927633)
+bones/29/scale = Vector3(0.999067, 1.0012146, 0.999734)
+bones/31/rotation = Quaternion(-0.30898535, -0.00029618933, 9.695794e-05, 0.9510668)
+bones/32/rotation = Quaternion(-0.00015744269, 0.86251444, -0.5060326, -0.00026857806)
+bones/33/rotation = Quaternion(-0.0019744681, 0, 0, 0.9999981)
+bones/41/rotation = Quaternion(-0.4255218, 0.6207589, -0.41374612, 0.5122537)
+bones/42/rotation = Quaternion(-7.650871e-08, 0.060525734, 1.0823186e-07, 0.9981667)
+bones/43/rotation = Quaternion(0.27280253, 0.060362503, -0.01693422, 0.96002525)
+bones/43/scale = Vector3(1.0007629, 0.9927193, 1.0067481)
+bones/44/rotation = Quaternion(-6.519741e-08, -0.0121764885, -4.6569615e-09, 0.99992585)
+bones/45/rotation = Quaternion(-0.11587753, -0.01322729, -0.08986333, 0.98910165)
+bones/45/scale = Vector3(0.99291754, 1.0138428, 0.99346805)
+bones/48/rotation = Quaternion(-0.4255221, -0.620759, 0.41374564, 0.5122538)
+bones/49/rotation = Quaternion(6.531232e-08, -0.060525898, 2.4258856e-07, 0.9981667)
+bones/50/rotation = Quaternion(0.272803, -0.060362495, 0.016934065, 0.9600251)
+bones/52/rotation = Quaternion(-0.11587817, 0.013227056, 0.08986342, 0.9891016)
+bones/52/scale = Vector3(0.9929178, 1.013843, 0.9934682)
+
+[node name="Label3D" type="Label3D" parent="." index="2" unique_id=1586451881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1
+
+[node name="Area3D" type="Area3D" parent="." index="3" unique_id=1405499565]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=1250450674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9366455, 0)
+shape = SubResource("SphereShape3D_xxcha")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

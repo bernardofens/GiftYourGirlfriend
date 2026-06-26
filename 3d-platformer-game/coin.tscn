@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://extt04hpm2ri" path="res://coin.gd" id="1_d5gmh"]
 [ext_resource type="ArrayMesh" uid="uid://dgycc60oyol5w" path="res://Assets/Models/Rose_Rose_Circle_005-Mesh.res" id="2_0t63x"]
+[ext_resource type="PackedScene" uid="uid://ue7jnhs4b3g3" path="res://bubble.tscn" id="3_v7riw"]
+[ext_resource type="Script" uid="uid://bspi682aux111" path="res://bubble.gd" id="4_pdq0q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v7riw"]
 size = Vector3(0.8580322, 0.28756714, 0.23931122)
@@ -57,6 +59,11 @@ shape = SubResource("BoxShape3D_v7riw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=834147243]
 libraries/ = SubResource("AnimationLibrary_v7riw")
+
+[node name="Bubble" parent="." unique_id=892846902 instance=ExtResource("3_v7riw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43569732, 0)
+visible = false
+script = ExtResource("4_pdq0q")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

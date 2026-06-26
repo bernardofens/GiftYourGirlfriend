@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ue7jnhs4b3g3"]
+
+[ext_resource type="PackedScene" uid="uid://txyjc2osk7a3" path="res://Epirectangular Models/more assets/bolha-vazia.glb" id="1_n2mqj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2db8"]
+transparency = 1
+albedo_color = Color(0, 1.104327, 1.104327, 0.05490196)
+
+[node name="Bubble" unique_id=892846902 instance=ExtResource("1_n2mqj")]
+
+[node name="mesh_0" parent="Sketchfab_model/root/GLTF_SceneRootNode/Icosphere_0_0" parent_id_path=PackedInt32Array(60813843) index="0" unique_id=447929446]
+surface_material_override/0 = SubResource("StandardMaterial3D_y2db8")
