@@ -197,19 +197,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.432503, -29.023924)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.70317, 1.2881126, -1.6700153)
 
 [node name="Flower2" parent="Flowers" unique_id=283976943 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2521081, 2.0205307, 9.280642)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7579858, 1.2195683, 8.452551)
 
 [node name="Flower3" parent="Flowers" unique_id=1106331319 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1486969, 1.6451836, 16.137175)
 
 [node name="Flower4" parent="Flowers" unique_id=229708498 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.02925, 2.4421291, 4.875952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.167816, 5.043556, 2.0189838)
 
 [node name="Flower5" parent="Flowers" unique_id=77692244 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.596325, 1.1797047, 0.17792702)
 
 [node name="Flower6" parent="Flowers" unique_id=919491894 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.983234, 0.38868523, 2.1668224)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.21025, -1.5226936, -5.2368984)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=52555589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.419277, -19.16266, -29.023924)
@@ -285,7 +285,7 @@ transform = Transform3D(0, 0, 1.4999999, 0, 1.5, 0, -1.4999999, 0, 0, -38.36473,
 transform = Transform3D(-0.18982534, 0, 5.9969964, 0, 6, 0, -5.9969964, 0, -0.18982534, 1.2421665, -22.160347, -29.03755)
 
 [node name="Island3" parent="." unique_id=415602112 instance=ExtResource("16_65or1")]
-transform = Transform3D(0.17497335, -0.0030541709, 0, 0.0030541709, 0.17497335, 0, 0, 0, 0.175, 38.99897, -24.811546, -27.807716)
+transform = Transform3D(0.17500001, 0, 0, 0, 0.17500001, 0, 0, 0, 0.175, 39.560505, -24.669258, -27.807716)
 
 [node name="Island4" parent="." unique_id=529954670 instance=ExtResource("12_ubhxj")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.2269487, -23.041302, -12.760149)
@@ -293,10 +293,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.2269487, -23.041302, -12.76
 [node name="Island5" parent="." unique_id=1777007243 instance=ExtResource("12_ubhxj")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.582055, -23.504295, -42.572395)
 
-[node name="Island6" parent="." unique_id=1882179103 instance=ExtResource("12_ubhxj")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 18.976126, -24.266766, -26.886)
-
 [node name="Island7" parent="." unique_id=2071719890 instance=ExtResource("12_ubhxj")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.549417, -23.556488, -28.893562)
+
+[node name="Island8" parent="." unique_id=2116781315 instance=ExtResource("14_lhbbi")]
+transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, 57.885212, -46.268417, -25.150278)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]
