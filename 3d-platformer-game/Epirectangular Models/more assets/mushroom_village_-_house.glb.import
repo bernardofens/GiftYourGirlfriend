@@ -1,0 +1,135 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://clo173istynvl"
+path="res://.godot/imported/mushroom_village_-_house.glb-8e1f599dfd798714a2a0d941a9e1484d.scn"
+
+[deps]
+
+source_file="res://Epirectangular Models/more assets/mushroom_village_-_house.glb"
+dest_files=["res://.godot/imported/mushroom_village_-_house.glb-8e1f599dfd798714a2a0d941a9e1484d.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Barriel/Barriel_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Barriel_001/Barriel_001_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Barriel_002/Barriel_002_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Base/Base_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Fence/Fence_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Fence_001/Fence_001_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/House/House_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Mushroom/Mushroom_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Mushroom_001/Mushroom_001_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Mushroom_002/Mushroom_002_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Mushroom_003/Mushroom_003_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Mushroom_004/Mushroom_004_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks/Rocks_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Rocks_002/Rocks_002_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/7d4f5a8f170a427b99ca2b14fe008675_fbx/RootNode/Sign/Sign_Atlas_Mushroom_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
+"physics/shape_type": 2
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

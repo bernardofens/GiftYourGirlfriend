@@ -29,16 +29,16 @@ material = SubResource("StandardMaterial3D_bh3ft")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bh3ft"]
 radius = 0.36669922
-height = 1.524292
+height = 2.2640991
 
 [node name="Steve" type="CharacterBody3D" unique_id=1717163893 groups=["Steve"]]
 collision_mask = 23
 script = ExtResource("1_bh3ft")
 
 [node name="Armature" parent="." unique_id=1169635141 instance=ExtResource("2_u1phc")]
-transform = Transform3D(-124.99866, 0, -0.5759573, 0, 124.99999, 0, 0.5759573, 0, -124.99866, 0, -0.53394175, 0)
+transform = Transform3D(-184.99803, 0, -0.85240114, 0, 185, 0, 0.85240114, 0, -184.99803, 0, -0.53394175, 0)
 
-[node name="Skeleton3D" parent="Armature" index="0" unique_id=1976864756]
+[node name="Skeleton3D" parent="Armature" index="0" unique_id=35033459]
 bones/0/position = Vector3(1.109981e-05, 0.003153986, -3.8507016e-05)
 bones/0/rotation = Quaternion(-0.03713152, -0.3668161, -0.01158926, 0.9294799)
 bones/1/rotation = Quaternion(0.025389783, 0.04022499, -0.009371798, 0.9988241)
@@ -88,10 +88,10 @@ bones/30/rotation = Quaternion(0.68732333, 0.09161841, 0.09857226, 0.713776)
 bones/31/position = Vector3(2.0418886e-12, 0.00117803, -7.810237e-12)
 bones/31/rotation = Quaternion(0.2950672, -0.025398307, 0.0050879493, 0.9551254)
 
-[node name="node_0" parent="Armature/Skeleton3D" index="0" unique_id=702182448]
+[node name="node_0" parent="Armature/Skeleton3D" index="0" unique_id=1954818204]
 surface_material_override/0 = SubResource("StandardMaterial3D_gb21x")
 
-[node name="AnimationPlayer" parent="Armature" index="1" unique_id=749749220]
+[node name="AnimationPlayer" parent="Armature" index="1" unique_id=1443313880]
 libraries/acao = SubResource("AnimationLibrary_u1phc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1191265441]
@@ -104,14 +104,14 @@ transform = Transform3D(0.5315214, 0, 0, 0, -4.057542e-09, 0.5315213, 0, -0.0928
 mesh = SubResource("CylinderMesh_bh3ft")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=477753827]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237854, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60775757, 0)
 shape = SubResource("CapsuleShape3D_bh3ft")
 
 [node name="Camera_Controller" type="Node3D" parent="." unique_id=100522801]
 top_level = true
 
 [node name="Camera_Target" type="Node3D" parent="Camera_Controller" unique_id=1175291392]
-transform = Transform3D(1, 0, 0, 0, 0.85126936, 0.52472895, 0, -0.52472895, 0.85126936, 0, 2.1468463, 3.4603562)
+transform = Transform3D(1, 0, 0, 0, 0.85126936, 0.52472895, 0, -0.52472895, 0.85126936, 0, 2.871468, 5.247955)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target" unique_id=887421347]
 transform = Transform3D(1, 0, 0, 0, 0.9888475, -0.1489313, 0, 0.1489313, 0.9888475, 0, 0, 0)

@@ -45,6 +45,14 @@ _subresources={
 },
 "PATH:Sketchfab_model/daec15f7ece74e9fb7aa96e8b45da715_fbx/RootNode/grnd/grnd_grnd_0": {
 "generate/physics": true,
+"physics/layer": 13,
+"physics/mask": 13,
+"physics/shape_type": 2
+},
+"PATH:Sketchfab_model/daec15f7ece74e9fb7aa96e8b45da715_fbx/RootNode/slope/slope_slope_0": {
+"generate/physics": true,
+"physics/layer": 11,
+"physics/mask": 11,
 "physics/shape_type": 2
 }
 }
