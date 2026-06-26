@@ -220,6 +220,15 @@ transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08
 [node name="Enemy2" parent="Enemies" unique_id=419619130 instance=ExtResource("8_bjebc")]
 transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, -56.134068, -1.8990383, 1.017252)
 
+[node name="Enemy3" parent="Enemies" unique_id=1975631741 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 15.091854, -4.349581, -5.6281223)
+
+[node name="Enemy4" parent="Enemies" unique_id=710246853 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 15.091854, -4.349581, 6.579527)
+
+[node name="Enemy5" parent="Enemies" unique_id=1209725701 instance=ExtResource("8_bjebc")]
+transform = Transform3D(0.08892904, 0, 0.99603796, 0, 1, 0, -0.99603796, 0, 0.08892904, 17.889812, -4.349581, -2.1632519)
+
 [node name="Moving Platforms" type="Node3D" parent="." unique_id=1986120698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -35.963005, -29.023924)
 visible = false
@@ -241,7 +250,7 @@ b = Vector3(17.202, -3.007, -15.896)
 [node name="HUD" parent="." unique_id=1472270857 instance=ExtResource("6_5hph3")]
 
 [node name="Boss" parent="." unique_id=1132303011 instance=ExtResource("9_5rr72")]
-transform = Transform3D(-1.0452745, 0, 2.8120103, 0, 3, 0, -2.8120103, 0, -1.0452745, -25.376822, -19.191944, -50.036736)
+transform = Transform3D(-0.10213411, 0, 2.9982612, 0, 3, 0, -2.9982612, 0, -0.10213411, 29.509544, -22.62472, -28.166826)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1529136287]
 transform = Transform3D(1, 0, 0, 0, 0.85172695, 0.5239859, 0, -0.5239859, 0.85172695, 0, 15.671507, 11.074234)

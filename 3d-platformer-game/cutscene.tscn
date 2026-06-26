@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://ktcgcehkwvgu"]
+
+[ext_resource type="Script" uid="uid://bxid7nu3l6ti3" path="res://cutscene.gd" id="1_ix241"]
+[ext_resource type="VideoStream" uid="uid://b2xavwkx3qrs4" path="res://Assets/Videos/cutscene.ogv" id="1_ye7fo"]
+[ext_resource type="Texture2D" uid="uid://fxy411ymg0yi" path="res://Assets/Images/button-gyg.png" id="3_bl24s"]
+[ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="4_u4yv4"]
+
+[node name="Cutscene" type="Control" unique_id=1815764248]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ix241")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=793571626]
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(1.5, 1.5)
+stream = ExtResource("1_ye7fo")
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=66512842]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -534.0
+offset_top = -231.0
+offset_right = -78.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_bl24s")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=189155674]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -471.0
+offset_top = -189.0
+offset_right = -129.0
+offset_bottom = -126.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.24705882, 0.12941177, 0.03529412, 1)
+theme_override_fonts/font = ExtResource("4_u4yv4")
+theme_override_font_sizes/font_size = 48
+text = "Press 'Esc' to skip"

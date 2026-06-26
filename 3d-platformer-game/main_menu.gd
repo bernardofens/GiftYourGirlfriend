@@ -119,7 +119,7 @@ func _on_play_pressed() -> void:
 	_play_ui_interact_animation(play_button)
 	await get_tree().create_timer(0.15).timeout
 	if background: background.stop()
-	Global.next_scene_path = "res://level_1.tscn"
+	Global.next_scene_path = "res://cutscene.tscn" 
 	get_tree().change_scene_to_file("res://loading_screen.tscn")
 
 func _on_quit_pressed() -> void:

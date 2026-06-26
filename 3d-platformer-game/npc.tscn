@@ -6,10 +6,11 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_xxcha"]
 radius = 0.8155866
 
-[node name="NPC" unique_id=1936384739 instance=ExtResource("1_ideak")]
+[node name="NPC" unique_id=1451020647 instance=ExtResource("1_ideak")]
+transform = Transform3D(1.5567603, 0, 0, 0, 0.68770945, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("2_xxcha")
 
-[node name="Skeleton3D" parent="Sketchfab_model/Misty_fbx/Object_2/RootNode/misty_rig/Object_6" parent_id_path=PackedInt32Array(990216514) index="0" unique_id=1448704562]
+[node name="Skeleton3D" parent="Sketchfab_model/Misty_fbx/Object_2/RootNode/misty_rig/Object_6" parent_id_path=PackedInt32Array(2122743714) index="0" unique_id=185949473]
 bones/2/rotation = Quaternion(0.8233047, 6.766322e-08, 9.8145584e-08, 0.5675998)
 bones/4/rotation = Quaternion(-0.057876337, 3.6895675e-15, -1.3798795e-08, 0.9983238)
 bones/5/rotation = Quaternion(-0.03956847, 1.030537e-14, -9.433843e-09, 0.9992169)
