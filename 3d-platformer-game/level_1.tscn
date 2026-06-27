@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dgb62lwnfirwd" path="res://enemy.tscn" id="8_bjebc"]
 [ext_resource type="PackedScene" uid="uid://cloosk6t0k353" path="res://boss.tscn" id="9_5rr72"]
 [ext_resource type="PackedScene" uid="uid://cffw3eaka82mg" path="res://Epirectangular Models/forest_clearing_1_top_skybox.glb" id="12_27bay"]
-[ext_resource type="PackedScene" uid="uid://olmmaju74lbx" path="res://Epirectangular Models/more assets/floating_island.glb" id="12_ubhxj"]
 [ext_resource type="PackedScene" uid="uid://cgk5fcswby37w" path="res://Epirectangular Models/more assets/lowpoly_bridge.glb" id="13_65or1"]
 [ext_resource type="PackedScene" uid="uid://bpnwbfl3rvwho" path="res://forest_scene.tscn" id="13_sof0w"]
 [ext_resource type="PackedScene" uid="uid://g6jm8te7epy7" path="res://water_surface.tscn" id="14_ggavl"]
@@ -197,7 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.432503, -29.023924)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.70317, 1.2881126, -1.6700153)
 
 [node name="Flower2" parent="Flowers" unique_id=283976943 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7579858, 1.2195683, 8.452551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0346518, 1.2195683, 8.130487)
 
 [node name="Flower3" parent="Flowers" unique_id=1106331319 instance=ExtResource("4_ihfcg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1486969, 1.6451836, 16.137175)
@@ -278,14 +277,11 @@ current = true
 [node name="WaterSurface" parent="." unique_id=2026986709 instance=ExtResource("14_ggavl")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.366478, -28.115168, -203.89313)
 
-[node name="Island" parent="." unique_id=1621695351 instance=ExtResource("12_ubhxj")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -39.11782, -21.939522, -14.699478)
-
 [node name="Bridge" parent="." unique_id=1121634208 instance=ExtResource("13_65or1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.039913, -23.811935, -43.846096)
+transform = Transform3D(1.05, 0, 0, 0, 1.0471802, 0.07690011, 0, -0.07690011, 1.0471802, -39.188133, -23.91784, -42.950447)
 
-[node name="NPC" parent="." unique_id=1936384739 instance=ExtResource("14_gjkv5")]
-transform = Transform3D(1.1554495, 0, -0.47690284, 0, 1.25, 0, 0.47690284, 0, 1.1554495, 4.7466536, -22.106474, -21.40641)
+[node name="NPC" parent="." unique_id=1451020647 instance=ExtResource("14_gjkv5")]
+transform = Transform3D(1.0041094, 0, 1.4332706, 0, 1.75, 0, -1.4332706, 0, 1.0041094, -2.7039227, -22.106474, -21.40641)
 
 [node name="Island2" parent="." unique_id=1749982017 instance=ExtResource("14_lhbbi")]
 transform = Transform3D(0, 0, 1.4999999, 0, 1.5, 0, -1.4999999, 0, 0, -38.36473, -23.554914, -30.377151)
@@ -296,16 +292,30 @@ transform = Transform3D(-0.18982534, 0, 5.9969964, 0, 6, 0, -5.9969964, 0, -0.18
 [node name="Island3" parent="." unique_id=415602112 instance=ExtResource("16_65or1")]
 transform = Transform3D(0.17500001, 0, 0, 0, 0.17500001, 0, 0, 0, 0.175, 39.560505, -24.669258, -27.807716)
 
-[node name="Island4" parent="." unique_id=529954670 instance=ExtResource("12_ubhxj")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.2269487, -23.041302, -12.760149)
-
-[node name="Island5" parent="." unique_id=1777007243 instance=ExtResource("12_ubhxj")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.582055, -23.504295, -42.572395)
-
-[node name="Island7" parent="." unique_id=2071719890 instance=ExtResource("12_ubhxj")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -16.549417, -23.556488, -28.893562)
-
 [node name="Island8" parent="." unique_id=2116781315 instance=ExtResource("14_lhbbi")]
 transform = Transform3D(-3.496911e-07, 0, 8, 0, 8, 0, -8, 0, -3.496911e-07, 57.885212, -46.268417, -25.150278)
+
+[node name="MovingIslands" type="Node3D" parent="." unique_id=695888455]
+
+[node name="Platform3x2" parent="MovingIslands" unique_id=348371978 instance=ExtResource("7_j7kpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.01759, -20.161377, -14.619078)
+collision_layer = 2
+collision_mask = 13
+a = Vector3(-39.018, -27.188, -14.619)
+b = Vector3(-39.018, -20.161, -14.619)
+
+[node name="Platform3x3" parent="MovingIslands" unique_id=159401831 instance=ExtResource("7_j7kpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.633144, -21.765165, -28.733837)
+collision_layer = 2
+collision_mask = 13
+a = Vector3(-10.35, -21.765, -28.734)
+b = Vector3(-24.983, -21.765, -28.734)
+
+[node name="Platform3x4" parent="MovingIslands" unique_id=892309989 instance=ExtResource("7_j7kpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.643091, -24.29688, -27.218079)
+collision_layer = 2
+collision_mask = 13
+a = Vector3(1.175, -21.557, -12.886)
+b = Vector3(17.643, -24.297, -27.218)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]

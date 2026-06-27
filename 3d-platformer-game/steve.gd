@@ -5,7 +5,7 @@ extends CharacterBody3D
 # Valores aumentados para um personagem mais rápido e com pulo maior
 const SPEED = 7.0
 const SPRINT_SPEED = 10.0
-const JUMP_VELOCITY = 11.5
+const JUMP_VELOCITY = 9.5
 
 const MAX_JUMPS = 2
 var jump_count = 0
