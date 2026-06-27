@@ -282,6 +282,19 @@ offset_right = 56.0
 offset_bottom = -184.0
 mouse_filter = 2
 
+[node name="ColorRect" type="ColorRect" parent="Control/PauseControl" unique_id=390690147]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = 217.0
+offset_right = 1902.0
+offset_bottom = 1277.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.62352943)
+
 [node name="BackgroundGameOver" type="TextureRect" parent="Control/PauseControl" unique_id=2126273524]
 texture_filter = 1
 layout_mode = 0
