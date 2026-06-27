@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://fal6g2cmwj47" path="res://main_menu.gd" id="1_l48gv"]
 [ext_resource type="VideoStream" uid="uid://bh1ifq1282pku" path="res://Assets/Videos/menu_video.ogv" id="2_ecwwl"]
 [ext_resource type="Texture2D" uid="uid://dctjbpurdlkax" path="res://Assets/Images/gift-your-girlfriend.png" id="2_l48gv"]
+[ext_resource type="Texture2D" uid="uid://cphmfenscgbow" path="res://Assets/Images/ParallaxLayer1.png" id="2_nrnbx"]
+[ext_resource type="Texture2D" uid="uid://b626tqqpq4bc1" path="res://Assets/Images/ParallaxLayer2.png" id="3_iqepy"]
+[ext_resource type="Texture2D" uid="uid://bhf3k6l84e05m" path="res://Assets/Images/ParallaxLayer3.png" id="4_h1wq0"]
 [ext_resource type="Texture2D" uid="uid://fxy411ymg0yi" path="res://Assets/Images/button-gyg.png" id="4_kk3ma"]
 [ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="5_nrnbx"]
 [ext_resource type="Texture2D" uid="uid://b4qjx4a056mdu" path="res://Assets/Images/big-button-gyg.png" id="6_l48gv"]
@@ -16,7 +19,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l48gv")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1965405521]
+scale = Vector2(0.91, 0.91)
+transform = Transform2D(0.91, 0, 0, 0.91, 0, 0)
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=25347277]
+position = Vector2(1064.4445, 598.8889)
+scale = Vector2(0.91, 0.91)
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1" unique_id=1693297891]
+scale = Vector2(0.91, 0.91)
+texture = ExtResource("2_nrnbx")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=856204589]
+position = Vector2(1064.4445, 598.8889)
+scale = Vector2(0.91, 0.91)
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=566491950]
+scale = Vector2(0.91, 0.91)
+texture = ExtResource("3_iqepy")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1672871481]
+position = Vector2(1064.4445, 598.8889)
+scale = Vector2(0.91, 0.91)
+
+[node name="Sprite3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=150796750]
+scale = Vector2(0.91, 0.91)
+texture = ExtResource("4_h1wq0")
+
 [node name="Background" type="VideoStreamPlayer" parent="." unique_id=1055591805]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

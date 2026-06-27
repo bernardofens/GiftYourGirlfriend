@@ -32,6 +32,26 @@ const LOGO_HOVER_DURATION = 1.0
 # Variáveis de controle de animação
 var _logo_original_position: Vector2
 
+# --- REFERÊNCIA E VARIÁVEIS DO FUNDO (PARALLAX) ---
+@onready var parallax_bg = $ParallaxBackground
+
+# Variáveis para controlar o "vai e vem" suave (efeito flutuante)
+var sway_time: float = 0.0
+const SWAY_SPEED: float = 0.5    # O quão rápido ele balança (menor = mais lento)
+const SWAY_AMOUNT_X: float = 35.0 # Distância máxima que o fundo vai para a esquerda/direita
+const SWAY_AMOUNT_Y: float = 15.0 # Distância máxima que o fundo vai para cima/baixo
+
+func _process(delta: float) -> void:
+	# Atualiza o tempo contínuo
+	sway_time += delta
+	
+	if parallax_bg:
+		# Usa a função matemática seno (sin) e cosseno (cos) para criar uma onda infinita de vai e volta.
+		parallax_bg.scroll_offset.x = sin(sway_time * SWAY_SPEED) * SWAY_AMOUNT_X
+		
+		# O eixo Y usa cosseno e uma velocidade ligeiramente diferente para o movimento não ficar robótico/circular
+		parallax_bg.scroll_offset.y = cos(sway_time * (SWAY_SPEED * 0.7)) * SWAY_AMOUNT_Y
+
 func _ready() -> void:
 	if AudioManager:
 		AudioManager.play_music(AudioManager.music_menu)
