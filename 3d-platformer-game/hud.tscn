@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://3gsaxudc5bm7" path="res://Assets/Images/rose.png" id="1_64ctp"]
 [ext_resource type="FontFile" uid="uid://cw2hvq8blpx1l" path="res://Assets/Fonts/Schoolbell-Regular.ttf" id="2_8sq4i"]
 [ext_resource type="VideoStream" uid="uid://c2b6jsb34m0h3" path="res://Assets/Videos/game_over.ogv" id="4_4u2vk"]
+[ext_resource type="Texture2D" uid="uid://fobh2kj7j21s" path="res://Assets/Images/ParallaxLayer1-GameOver.png" id="4_615i1"]
 [ext_resource type="Texture2D" uid="uid://6e2dfob57x30" path="res://Assets/Images/chocolate.webp" id="4_a2258"]
 [ext_resource type="Texture2D" uid="uid://b4qjx4a056mdu" path="res://Assets/Images/big-button-gyg.png" id="5_amv7k"]
+[ext_resource type="Texture2D" uid="uid://d02oalkgi6bkb" path="res://Assets/Images/ParallaxLayer2-GameOver.png" id="5_pw7dr"]
 [ext_resource type="FontFile" uid="uid://dl21p7bq17omu" path="res://Assets/Fonts/FinkHeavy Regular.ttf" id="7_1fv7p"]
 [ext_resource type="Texture2D" uid="uid://fxy411ymg0yi" path="res://Assets/Images/button-gyg.png" id="7_4q17s"]
 [ext_resource type="Texture2D" uid="uid://bunegnpuptro5" path="res://Assets/Images/empty-health.png" id="8_4u2vk"]
@@ -13,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://b27mt6yoiuep1" path="res://Assets/Images/staminabar.png" id="10_2d608"]
 [ext_resource type="Texture2D" uid="uid://cakq3f4egovqk" path="res://Assets/Images/pause-button.png" id="11_w71nf"]
 [ext_resource type="VideoStream" uid="uid://1gqpcd36kpau" path="res://Assets/Videos/game_win.ogv" id="13_4q17s"]
+[ext_resource type="Texture2D" uid="uid://cphmfenscgbow" path="res://Assets/Images/ParallaxLayer1.png" id="15_615i1"]
+[ext_resource type="Texture2D" uid="uid://btv0mg0gb5jka" path="res://Assets/Images/ParallaxLayer2-GameWin.png" id="16_5kc73"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
 bg_color = Color(0, 0, 0, 0.26666668)
@@ -95,7 +99,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Control/GameOverControl" unique_id=1597198887]
+scale = Vector2(0.85, 0.85)
+transform = Transform2D(0.85, 0, 0, 0.85, 0, 0)
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="Control/GameOverControl/ParallaxBackground" unique_id=1954751354]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite1" type="Sprite2D" parent="Control/GameOverControl/ParallaxBackground/ParallaxLayer1" unique_id=267899070]
+texture = ExtResource("4_615i1")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Control/GameOverControl/ParallaxBackground" unique_id=89137829]
+
+[node name="Sprite2" type="Sprite2D" parent="Control/GameOverControl/ParallaxBackground/ParallaxLayer2" unique_id=537487571]
+texture = ExtResource("5_pw7dr")
+centered = false
+
 [node name="Background" type="VideoStreamPlayer" parent="Control/GameOverControl" unique_id=1902543828]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -440,7 +462,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Control/GameWinControl" unique_id=622427652]
+scale = Vector2(0.85, 0.85)
+transform = Transform2D(0.85, 0, 0, 0.85, 0, 0)
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="Control/GameWinControl/ParallaxBackground" unique_id=1918826295]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite1" type="Sprite2D" parent="Control/GameWinControl/ParallaxBackground/ParallaxLayer1" unique_id=659041070]
+texture = ExtResource("15_615i1")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Control/GameWinControl/ParallaxBackground" unique_id=467746747]
+
+[node name="Sprite2" type="Sprite2D" parent="Control/GameWinControl/ParallaxBackground/ParallaxLayer2" unique_id=2123110191]
+texture = ExtResource("16_5kc73")
+centered = false
+
 [node name="Background" type="VideoStreamPlayer" parent="Control/GameWinControl" unique_id=436163185]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
