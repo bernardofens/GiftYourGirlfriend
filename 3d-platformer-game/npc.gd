@@ -80,13 +80,19 @@ func show_dialog_line() -> void:
 	if dialog_balloon:
 		dialog_balloon.text = dialog_lines[current_dialog_index]
 		dialog_balloon.show()
+		
+		# Toca o som (toda vez que uma nova frase aparece)
+		AudioManager.play_npc_voice(AudioManager.sfx_npc, 1.0)
 
 func end_interaction() -> void:
 	is_interacting = false
+	
+	# --- AQUI ESTÁ O CORTE DO SOM ---
+	AudioManager.stop_npc_voice() 
+	
 	if dialog_balloon:
 		dialog_balloon.text = prompt_text
 		
-	# Volta para o Idle com uma TRANSIÇÃO SUAVE de 0.5 segundos
 	if anim_player and anim_player.has_animation(idle_anim):
 		anim_player.play(idle_anim, 0.5)
 

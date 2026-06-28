@@ -124,26 +124,39 @@ func _physics_process(delta: float) -> void:
 
 	# 5. MÁQUINA DE ANIMAÇÃO E ÁUDIO
 	if not is_on_floor():
+		step_timer = 0.0 # Zera ao pular
 		if is_moving:
 			$Armature/AnimationPlayer.play("acao/Jump", 0.2)
 		else:
 			$Armature/AnimationPlayer.play("acao/Jumping", 0.2)
-	else:
+	else: # Está no chão
 		if is_moving:
 			if is_sprinting:
 				$Armature/AnimationPlayer.play("acao/Running", 0.2)
-				_handle_step_audio(delta, true)
 			else:
 				$Armature/AnimationPlayer.play("acao/Walking", 0.2)
-				_handle_step_audio(delta, false)
+			
+			# Chama a função de áudio apenas quando está movendo
+			_handle_step_audio(delta, is_sprinting)
 		else:
 			$Armature/AnimationPlayer.play("mixamo_com", 0.2)
+			# Garante o mute quando parado
+			_handle_step_audio(delta, false)
 
 func _handle_step_audio(delta: float, is_sprinting: bool) -> void:
+	# Verifica a velocidade real (se estiver parado, para o som)
+	var velocity_magnitude = Vector2(velocity.x, velocity.z).length()
+	
+	if velocity_magnitude < 0.1:
+		AudioManager.stop_step() # <--- AQUI O SOM PARA NA HORA
+		step_timer = 0.0
+		return
+
 	step_timer += delta
 	var current_interval = step_interval * 0.6 if is_sprinting else step_interval
+	
 	if step_timer >= current_interval:
-		AudioManager.play_sfx(AudioManager.sfx_walk, -12.0)
+		AudioManager.play_step(AudioManager.sfx_walk, -12.0)
 		step_timer = 0.0
 
 func _unhandled_input(event):

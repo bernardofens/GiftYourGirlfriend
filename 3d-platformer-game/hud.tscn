@@ -293,7 +293,7 @@ offset_right = 1902.0
 offset_bottom = 1277.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.62352943)
+color = Color(0, 0, 0, 0.7137255)
 
 [node name="BackgroundGameOver" type="TextureRect" parent="Control/PauseControl" unique_id=2126273524]
 texture_filter = 1
