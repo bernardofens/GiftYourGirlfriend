@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.37285, -19.443787, -33.20
 environment = SubResource("Environment_rka8t")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=1940497397]
-transform = Transform3D(0.051011305, 0, -0.99869806, 0, 1, 0, 0.99869806, 0, 0.051011305, 2.7373285, -38.746536, -1.2355975)
+transform = Transform3D(0.051011305, 0, -0.99869806, 0, 1, 0, 0.99869806, 0, 0.051011305, 2.7373285, -83.5087, -1.2355975)
 mesh_library = ExtResource("4_eoq84")
 collision_layer = 2
 collision_mask = 13
