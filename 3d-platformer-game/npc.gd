@@ -1,9 +1,9 @@
 extends Node3D
 
 @export var dialog_lines: Array[String] = [
-	"Ola, Steve!",
-	"Colete os 5 chocolates para avancar!",
-	"Tome cuidado com os perigos pelo caminho.",
+	"Ola, Steve! [E]",
+	"Colete os 5 chocolates para avancar! [E]",
+	"Tome cuidado com os perigos pelo caminho. [E]",
 	"Boa sorte!"
 ]
 
@@ -37,9 +37,9 @@ func _ready() -> void:
 	
 	# Ajusta o diálogo dependendo do level
 	if scene_name == "Level1":
-		dialog_lines[1] = "Colete as 6 Rosas para avancar!"
+		dialog_lines[1] = "Colete as 6 Rosas para avancar! [E]"
 	elif scene_name == "Level2":
-		dialog_lines[1] = "Colete os 5 chocolates para ganhar!"
+		dialog_lines[1] = "Colete os 5 chocolates para ganhar! [E]"
 
 func _process(delta: float) -> void:
 	var target_rotation_y = original_rotation_y
