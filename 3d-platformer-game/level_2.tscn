@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://g6jm8te7epy7" path="res://water_surface.tscn" id="12_yl73a"]
 [ext_resource type="PackedScene" uid="uid://b4cor7xu7buln" path="res://sketchfab_scene.tscn" id="13_78pok"]
 [ext_resource type="PackedScene" uid="uid://dmhscwr1nddpf" path="res://platform3x2.tscn" id="14_lvfll"]
+[ext_resource type="PackedScene" uid="uid://x8jx0p43koim" path="res://npc.tscn" id="15_5hnhx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hn12h"]
 sky_top_color = Color(0.032333303, 0, 0.97, 1)
@@ -41,7 +42,7 @@ transform = Transform3D(0.91166884, -0.29154548, 0.28958794, 0, 0.7047209, 0.709
 shadow_enabled = true
 
 [node name="Steve" parent="." unique_id=1717163893 instance=ExtResource("3_15wb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.867584, -26.86556, -18.73052)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.37285, -19.443787, -33.206375)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1300185430]
 environment = SubResource("Environment_rka8t")
@@ -153,5 +154,8 @@ collision_mask = 13
 a = Vector3(-50.868, -2.703, 0.852)
 b = Vector3(17.847, -2.703, 0.852)
 time = 7.0
+
+[node name="NPC" parent="." unique_id=1451020647 instance=ExtResource("15_5hnhx")]
+transform = Transform3D(1.0041094, 0, 1.4332706, 0, 1.75, 0, -1.4332706, 0, 1.0041094, -42.065926, -21.317019, -36.574234)
 
 [connection signal="body_entered" from="FallZone" to="Steve" method="_on_fall_zone_body_entered"]

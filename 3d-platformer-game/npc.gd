@@ -2,7 +2,7 @@ extends Node3D
 
 @export var dialog_lines: Array[String] = [
 	"Ola, Steve!",
-	"Colete as 6 Rosas para avancar!",
+	"Colete os 5 chocolates para avancar!",
 	"Tome cuidado com os perigos pelo caminho.",
 	"Boa sorte!"
 ]
@@ -30,6 +30,16 @@ func _ready() -> void:
 	
 	if anim_player and anim_player.has_animation(idle_anim):
 		anim_player.play(idle_anim)
+		
+	# --- VERIFICA O NOME DO LEVEL ---
+	# Pega o nome da cena principal atual (ex: "Level1", "level2", etc)
+	var scene_name = get_tree().current_scene.name
+	
+	# Ajusta o diálogo dependendo do level
+	if scene_name == "Level1":
+		dialog_lines[1] = "Colete as 6 Rosas para avancar!"
+	elif scene_name == "Level2":
+		dialog_lines[1] = "Colete os 5 chocolates para ganhar!"
 
 func _process(delta: float) -> void:
 	var target_rotation_y = original_rotation_y
