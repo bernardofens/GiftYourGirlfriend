@@ -56,9 +56,8 @@ Sua Missão:
 
 Supere os desafios, prove o seu amor e ajude Leo a voltar para casa com o presente perfeito!
 
-[ Pressione START para jogar ]
-
-Dica extra: Você pode separar cada uma das 4 primeiras frases em uma tela diferente (se o seu jogo tiver um sistema de diálogo ou transição de telas na introdução) para o jogador ir lendo aos poucos!"
+[ Pressione PLAY para jogar ]
+"
 fit_content = true
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=548984802]
